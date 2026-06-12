@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefWidth="1200.0"
+      prefHeight="720.0"
+      styleClass="admin-page-root">
+
+    <stylesheets>
+        <URL value="@../css/style.css"/>
+    </stylesheets>
+
+    <children>
+
+        <!-- SIDEBAR ADMIN -->
+        <VBox minWidth="240.0"
+              prefWidth="240.0"
+              maxWidth="240.0"
+              prefHeight="720.0"
+              HBox.hgrow="NEVER"
+              spacing="10.0"
+              styleClass="sidebar">
+
+            <padding>
+                <Insets top="30.0"
+                        right="24.0"
+                        bottom="24.0"
+                        left="24.0"/>
+            </padding>
+
+            <children>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0">
+
+                    <children>
+
+                        <Label text="C"
+                               alignment="CENTER"
+                               styleClass="sidebar-logo"/>
+
+                        <VBox spacing="1.0">
+
+                            <children>
+
+                                <Label text="CrowdCare"
+                                       styleClass="sidebar-title"/>
+
+                                <Label text="Admin Panel"
+                                       styleClass="sidebar-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <Region prefHeight="28.0"/>
+
+                <Label text="ADMINISTRASI"
+                       styleClass="menu-caption"/>
+
+                <Button text="Dashboard Admin"
+                        onAction="#openAdminDashboard"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Approval Campaign"
+                        onAction="#openAdminApproval"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button-active"/>
+
+                <Button text="Kelola Pengguna"
+                        onAction="#handleViewUsers"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Laporan Sistem"
+                        onAction="#handleViewReports"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Region prefHeight="18.0"/>
+
+                <Label text="SISTEM"
+                       styleClass="menu-caption"/>
+
+                <Button text="Muat Ulang Data"
+                        onAction="#handleRefresh"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Pengaturan Admin"
+                        onAction="#handleAdminSettings"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Separator styleClass="sidebar-separator"/>
+
+                <Button text="Keluar"
+                        onAction="#handleLogout"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="logout-button"/>
+
+            </children>
+        </VBox>
+
+        <!-- KONTEN ADMIN -->
+        <VBox minWidth="0.0"
+              prefHeight="720.0"
+              HBox.hgrow="ALWAYS"
+              styleClass="admin-page-main">
+
+            <children>
+
+                <!-- HEADER -->
+                <HBox prefHeight="82.0"
+                      alignment="CENTER_LEFT"
+                      styleClass="dashboard-header">
+
+                    <padding>
+                        <Insets top="18.0"
+                                right="30.0"
+                                bottom="18.0"
+                                left="30.0"/>
+                    </padding>
+
+                    <children>
+
+                        <VBox spacing="3.0">
+
+                            <children>
+
+                                <Label text="Approval Campaign"
+                                       styleClass="dashboard-title"/>
+
+                                <Label text="Periksa campaign sebelum dipublikasikan."
+                                       styleClass="dashboard-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <VBox alignment="CENTER_RIGHT"
+                              spacing="2.0">
+
+                            <children>
+
+                                <Label text="Administrator"
+                                       styleClass="profile-name"/>
+
+                                <Label text="Super Admin"
+                                       styleClass="profile-role"/>
+
+                            </children>
+                        </VBox>
+
+                        <StackPane prefWidth="44.0"
+                                   prefHeight="44.0"
+                                   styleClass="admin-avatar">
+
+                            <children>
+
+                                <Label text="AD"
+                                       styleClass="admin-avatar-text"/>
+
+                            </children>
+                        </StackPane>
+
+                    </children>
+                </HBox>
+
+                <!-- SCROLL -->
+                <ScrollPane fitToWidth="true"
+                            hbarPolicy="NEVER"
+                            vbarPolicy="AS_NEEDED"
+                            VBox.vgrow="ALWAYS"
+                            styleClass="dashboard-scroll">
+
+                    <content>
+
+                        <VBox spacing="22.0"
+                              styleClass="admin-content">
+
+                            <padding>
+                                <Insets top="28.0"
+                                        right="30.0"
+                                        bottom="38.0"
+                                        left="30.0"/>
+                            </padding>
+
+                            <children>
+
+                                <!-- SAMBUTAN -->
+                                <VBox spacing="4.0">
+
+                                    <children>
+
+                                        <Label text="Selamat datang, Admin!"
+                                               styleClass="welcome-title"/>
+
+                                        <Label text="Berikut ringkasan aktivitas dan campaign yang memerlukan pemeriksaan."
+                                               styleClass="welcome-subtitle"/>
+
+                                    </children>
+                                </VBox>
+
+                                <!-- STATISTIK ADMIN -->
+                                <HBox spacing="16.0">
+
+                                    <children>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="admin-stat-card">
+
+                                            <children>
+
+                                                <Label text="Menunggu Approval"
+                                                       styleClass="admin-stat-label"/>
+
+                                                <Label text="4"
+                                                       styleClass="admin-stat-value"/>
+
+                                                <Label text="Perlu segera diperiksa"
+                                                       styleClass="admin-stat-warning"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="admin-stat-card">
+
+                                            <children>
+
+                                                <Label text="Campaign Aktif"
+                                                       styleClass="admin-stat-label"/>
+
+                                                <Label text="12"
+                                                       styleClass="admin-stat-value"/>
+
+                                                <Label text="+3 bulan ini"
+                                                       styleClass="admin-stat-positive"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="admin-stat-card">
+
+                                            <children>
+
+                                                <Label text="Total Pengguna"
+                                                       styleClass="admin-stat-label"/>
+
+                                                <Label text="248"
+                                                       styleClass="admin-stat-value"/>
+
+                                                <Label text="182 donatur aktif"
+                                                       styleClass="admin-stat-description"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="admin-stat-card">
+
+                                            <children>
+
+                                                <Label text="Total Donasi"
+                                                       styleClass="admin-stat-label"/>
+
+                                                <Label text="Rp48,5 Jt"
+                                                       styleClass="admin-stat-value"/>
+
+                                                <Label text="+18% dari bulan lalu"
+                                                       styleClass="admin-stat-positive"/>
+
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </HBox>
+
+                                <!-- DAFTAR APPROVAL -->
+                                <VBox spacing="16.0"
+                                      styleClass="admin-approval-section">
+
+                                    <children>
+
+                                        <HBox alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <VBox spacing="3.0"
+                                                      HBox.hgrow="ALWAYS">
+
+                                                    <children>
+
+                                                        <Label text="Campaign Menunggu Persetujuan"
+                                                               styleClass="admin-section-title"/>
+
+                                                        <Label text="Periksa kelengkapan data sebelum memberikan keputusan."
+                                                               styleClass="admin-section-description"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <Label text="4 PENDING"
+                                                       fx:id="pendingBadgeLabel"
+                                                       styleClass="admin-pending-badge"/>
+
+                                            </children>
+                                        </HBox>
+
+                                        <Separator/>
+
+                                        <!-- CAMPAIGN 1 -->
+                                        <HBox alignment="CENTER_LEFT"
+                                              spacing="16.0"
+                                              styleClass="admin-campaign-row">
+
+                                            <children>
+
+                                                <StackPane minWidth="78.0"
+                                                           prefWidth="78.0"
+                                                           maxWidth="78.0"
+                                                           prefHeight="72.0"
+                                                           styleClass="admin-cover-blue">
+
+                                                    <children>
+
+                                                        <Label text="P"
+                                                               styleClass="admin-cover-text"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <VBox spacing="5.0"
+                                                      HBox.hgrow="ALWAYS">
+
+                                                    <children>
+
+                                                        <Label text="Bantuan Perpustakaan Desa"
+                                                               styleClass="admin-campaign-title"/>
+
+                                                        <Label text="Kategori Pendidikan • Diajukan oleh Andi Pratama"
+                                                               styleClass="admin-campaign-meta"/>
+
+                                                        <Label text="Target Rp15.000.000 • Batas waktu 30 Juli 2026"
+                                                               styleClass="admin-campaign-target"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <Label text="PENDING"
+                                                       styleClass="admin-status-pending"/>
+
+                                                <Button text="Tolak"
+                                                        onAction="#handleReject"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-reject-button"/>
+
+                                                <Button text="Setujui"
+                                                        onAction="#handleApprove"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-approve-button"/>
+
+                                            </children>
+                                        </HBox>
+
+                                        <Separator/>
+
+                                        <!-- CAMPAIGN 2 -->
+                                        <HBox alignment="CENTER_LEFT"
+                                              spacing="16.0"
+                                              styleClass="admin-campaign-row">
+
+                                            <children>
+
+                                                <StackPane minWidth="78.0"
+                                                           prefWidth="78.0"
+                                                           maxWidth="78.0"
+                                                           prefHeight="72.0"
+                                                           styleClass="admin-cover-green">
+
+                                                    <children>
+
+                                                        <Label text="K"
+                                                               styleClass="admin-cover-text"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <VBox spacing="5.0"
+                                                      HBox.hgrow="ALWAYS">
+
+                                                    <children>
+
+                                                        <Label text="Pengobatan Anak Penderita Jantung"
+                                                               styleClass="admin-campaign-title"/>
+
+                                                        <Label text="Kategori Kesehatan • Diajukan oleh Siti Aminah"
+                                                               styleClass="admin-campaign-meta"/>
+
+                                                        <Label text="Target Rp30.000.000 • Batas waktu 15 Agustus 2026"
+                                                               styleClass="admin-campaign-target"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <Label text="PENDING"
+                                                       styleClass="admin-status-pending"/>
+
+                                                <Button text="Tolak"
+                                                        onAction="#handleReject"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-reject-button"/>
+
+                                                <Button text="Setujui"
+                                                        onAction="#handleApprove"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-approve-button"/>
+
+                                            </children>
+                                        </HBox>
+
+                                        <Separator/>
+
+                                        <!-- CAMPAIGN 3 -->
+                                        <HBox alignment="CENTER_LEFT"
+                                              spacing="16.0"
+                                              styleClass="admin-campaign-row">
+
+                                            <children>
+
+                                                <StackPane minWidth="78.0"
+                                                           prefWidth="78.0"
+                                                           maxWidth="78.0"
+                                                           prefHeight="72.0"
+                                                           styleClass="admin-cover-orange">
+
+                                                    <children>
+
+                                                        <Label text="S"
+                                                               styleClass="admin-cover-text"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <VBox spacing="5.0"
+                                                      HBox.hgrow="ALWAYS">
+
+                                                    <children>
+
+                                                        <Label text="Renovasi Panti Asuhan Kasih"
+                                                               styleClass="admin-campaign-title"/>
+
+                                                        <Label text="Kategori Sosial • Diajukan oleh Budi Setiawan"
+                                                               styleClass="admin-campaign-meta"/>
+
+                                                        <Label text="Target Rp12.000.000 • Batas waktu 25 Juli 2026"
+                                                               styleClass="admin-campaign-target"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <Label text="PENDING"
+                                                       styleClass="admin-status-pending"/>
+
+                                                <Button text="Tolak"
+                                                        onAction="#handleReject"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-reject-button"/>
+
+                                                <Button text="Setujui"
+                                                        onAction="#handleApprove"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-approve-button"/>
+
+                                            </children>
+                                        </HBox>
+
+                                        <Separator/>
+
+                                        <!-- CAMPAIGN 4 -->
+                                        <HBox alignment="CENTER_LEFT"
+                                              spacing="16.0"
+                                              styleClass="admin-campaign-row">
+
+                                            <children>
+
+                                                <StackPane minWidth="78.0"
+                                                           prefWidth="78.0"
+                                                           maxWidth="78.0"
+                                                           prefHeight="72.0"
+                                                           styleClass="admin-cover-purple">
+
+                                                    <children>
+
+                                                        <Label text="B"
+                                                               styleClass="admin-cover-text"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <VBox spacing="5.0"
+                                                      HBox.hgrow="ALWAYS">
+
+                                                    <children>
+
+                                                        <Label text="Bantuan Korban Longsor"
+                                                               styleClass="admin-campaign-title"/>
+
+                                                        <Label text="Kategori Bencana • Diajukan oleh Rudi Hartono"
+                                                               styleClass="admin-campaign-meta"/>
+
+                                                        <Label text="Target Rp25.000.000 • Batas waktu 20 Juli 2026"
+                                                               styleClass="admin-campaign-target"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <Label text="PENDING"
+                                                       styleClass="admin-status-pending"/>
+
+                                                <Button text="Tolak"
+                                                        onAction="#handleReject"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-reject-button"/>
+
+                                                <Button text="Setujui"
+                                                        onAction="#handleApprove"
+                                                        prefHeight="36.0"
+                                                        styleClass="admin-approve-button"/>
+
+                                            </children>
+                                        </HBox>
+
+                                    </children>
+                                </VBox>
+
+                                <!-- AKTIVITAS ADMIN -->
+                                <VBox spacing="14.0"
+                                      styleClass="admin-activity-section">
+
+                                    <children>
+
+                                        <Label text="Aktivitas Admin Terbaru"
+                                               styleClass="admin-section-title"/>
+
+                                        <HBox alignment="CENTER_LEFT"
+                                              spacing="14.0"
+                                              styleClass="admin-activity-row">
+
+                                            <children>
+
+                                                <Label text="APPROVE"
+                                                       styleClass="admin-activity-approved"/>
+
+                                                <VBox spacing="3.0"
+                                                      HBox.hgrow="ALWAYS">
+
+                                                    <children>
+
+                                                        <Label text="Campaign Gerakan Tanam Seribu Pohon disetujui"
+                                                               styleClass="activity-title"/>
+
+                                                        <Label text="Hari ini, 09.20 WIB"
+                                                               styleClass="activity-time"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <Label text="Admin"
+                                                       styleClass="activity-status"/>
+
+                                            </children>
+                                        </HBox>
+
+                                        <HBox alignment="CENTER_LEFT"
+                                              spacing="14.0"
+                                              styleClass="admin-activity-row">
+
+                                            <children>
+
+                                                <Label text="REJECT"
+                                                       styleClass="admin-activity-rejected"/>
+
+                                                <VBox spacing="3.0"
+                                                      HBox.hgrow="ALWAYS">
+
+                                                    <children>
+
+                                                        <Label text="Campaign Donasi Kendaraan Pribadi ditolak"
+                                                               styleClass="activity-title"/>
+
+                                                        <Label text="Kemarin, 16.45 WIB"
+                                                               styleClass="activity-time"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <Label text="Admin"
+                                                       styleClass="activity-status"/>
+
+                                            </children>
+                                        </HBox>
+
+                                    </children>
+                                </VBox>
+
+                            </children>
+                        </VBox>
+
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+
+    </children>
+</HBox>
