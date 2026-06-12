@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefWidth="1200.0"
+      prefHeight="720.0"
+      styleClass="history-page-root">
+
+    <stylesheets>
+        <URL value="@../css/style.css"/>
+    </stylesheets>
+
+    <children>
+
+        <!-- SIDEBAR -->
+        <VBox minWidth="240.0"
+              prefWidth="240.0"
+              maxWidth="240.0"
+              prefHeight="720.0"
+              HBox.hgrow="NEVER"
+              spacing="10.0"
+              styleClass="sidebar">
+
+            <padding>
+                <Insets top="30.0"
+                        right="24.0"
+                        bottom="24.0"
+                        left="24.0"/>
+            </padding>
+
+            <children>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0">
+
+                    <children>
+
+                        <Label text="C"
+                               alignment="CENTER"
+                               styleClass="sidebar-logo"/>
+
+                        <VBox spacing="1.0">
+
+                            <children>
+
+                                <Label text="CrowdCare"
+                                       styleClass="sidebar-title"/>
+
+                                <Label text="Crowdfunding"
+                                       styleClass="sidebar-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <Region prefHeight="28.0"/>
+
+                <Label text="MENU UTAMA"
+                       styleClass="menu-caption"/>
+
+                <Button text="Dashboard"
+                        onAction="#openDashboard"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Campaign"
+                        onAction="#openCampaigns"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Buat Campaign"
+                        onAction="#openCreateCampaign"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Riwayat Donasi"
+                        onAction="#openDonationHistory"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button-active"/>
+
+                <Region prefHeight="18.0"/>
+
+                <Label text="AKUN"
+                       styleClass="menu-caption"/>
+
+                <Button text="Profil Saya"
+                        onAction="#showProfile"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Pengaturan"
+                        onAction="#showSettings"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Separator styleClass="sidebar-separator"/>
+
+                <Button text="Keluar"
+                        onAction="#logout"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="logout-button"/>
+
+            </children>
+        </VBox>
+
+        <!-- KONTEN UTAMA -->
+        <VBox minWidth="0.0"
+              prefHeight="720.0"
+              HBox.hgrow="ALWAYS"
+              styleClass="history-page-main">
+
+            <children>
+
+                <!-- HEADER -->
+                <HBox prefHeight="82.0"
+                      alignment="CENTER_LEFT"
+                      styleClass="dashboard-header">
+
+                    <padding>
+                        <Insets top="18.0"
+                                right="30.0"
+                                bottom="18.0"
+                                left="30.0"/>
+                    </padding>
+
+                    <children>
+
+                        <VBox spacing="3.0">
+
+                            <children>
+
+                                <Label text="Riwayat Donasi"
+                                       styleClass="dashboard-title"/>
+
+                                <Label text="Lihat seluruh aktivitas donasi yang pernah dilakukan."
+                                       styleClass="dashboard-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <Button text="Unduh Laporan"
+                                onAction="#handleDownloadReport"
+                                prefHeight="40.0"
+                                styleClass="history-download-button"/>
+
+                    </children>
+                </HBox>
+
+                <!-- AREA SCROLL -->
+                <ScrollPane fitToWidth="true"
+                            hbarPolicy="NEVER"
+                            vbarPolicy="AS_NEEDED"
+                            VBox.vgrow="ALWAYS"
+                            styleClass="dashboard-scroll">
+
+                    <content>
+
+                        <VBox spacing="22.0"
+                              styleClass="history-content">
+
+                            <padding>
+                                <Insets top="28.0"
+                                        right="30.0"
+                                        bottom="38.0"
+                                        left="30.0"/>
+                            </padding>
+
+                            <children>
+
+                                <!-- RINGKASAN -->
+                                <HBox spacing="16.0">
+
+                                    <children>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="history-stat-card">
+
+                                            <children>
+
+                                                <Label text="Total Donasi"
+                                                       styleClass="history-stat-label"/>
+
+                                                <Label text="Rp2.450.000"
+                                                       styleClass="history-stat-value"/>
+
+                                                <Label text="Dari 8 transaksi"
+                                                       styleClass="history-stat-description"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="history-stat-card">
+
+                                            <children>
+
+                                                <Label text="Campaign Didukung"
+                                                       styleClass="history-stat-label"/>
+
+                                                <Label text="6"
+                                                       styleClass="history-stat-value"/>
+
+                                                <Label text="2 campaign sudah selesai"
+                                                       styleClass="history-stat-description"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="history-stat-card">
+
+                                            <children>
+
+                                                <Label text="Donasi Terbesar"
+                                                       styleClass="history-stat-label"/>
+
+                                                <Label text="Rp750.000"
+                                                       styleClass="history-stat-value"/>
+
+                                                <Label text="Pada Mei 2026"
+                                                       styleClass="history-stat-description"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox spacing="8.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="history-stat-card">
+
+                                            <children>
+
+                                                <Label text="Donasi Bulan Ini"
+                                                       styleClass="history-stat-label"/>
+
+                                                <Label text="Rp450.000"
+                                                       styleClass="history-stat-value"/>
+
+                                                <Label text="+12% dari bulan lalu"
+                                                       styleClass="history-stat-positive"/>
+
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </HBox>
+
+                                <!-- FILTER -->
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="12.0"
+                                      styleClass="history-filter-card">
+
+                                    <children>
+
+                                        <TextField fx:id="historySearchField"
+                                                   promptText="Cari nama campaign..."
+                                                   prefHeight="42.0"
+                                                   HBox.hgrow="ALWAYS"
+                                                   styleClass="history-search"/>
+
+                                        <ComboBox fx:id="historyStatusFilter"
+                                                  promptText="Semua Status"
+                                                  prefWidth="150.0"
+                                                  prefHeight="42.0"
+                                                  styleClass="history-filter-input"/>
+
+                                        <DatePicker fx:id="historyDateFilter"
+                                                    promptText="Pilih tanggal"
+                                                    prefWidth="165.0"
+                                                    prefHeight="42.0"
+                                                    styleClass="history-filter-input"/>
+
+                                        <Button text="Terapkan"
+                                                onAction="#handleFilter"
+                                                prefHeight="42.0"
+                                                styleClass="history-filter-button"/>
+
+                                        <Button text="Reset"
+                                                onAction="#handleReset"
+                                                prefHeight="42.0"
+                                                styleClass="history-reset-button"/>
+
+                                        <Label fx:id="historyResultLabel"
+                                               text="5 transaksi ditemukan"
+                                               minWidth="125.0"
+                                               styleClass="history-result-label"/>
+
+                                    </children>
+                                </HBox>
+
+                                <!-- TABEL RIWAYAT -->
+                                <VBox spacing="0.0"
+                                      styleClass="history-table-card">
+
+                                    <children>
+
+                                        <!-- HEADER TABEL -->
+                                        <HBox alignment="CENTER_LEFT"
+                                              spacing="12.0"
+                                              styleClass="history-table-header">
+
+                                            <children>
+
+                                                <Label text="CAMPAIGN"
+                                                       prefWidth="330.0"
+                                                       styleClass="history-column-title"/>
+
+                                                <Label text="TANGGAL"
+                                                       prefWidth="145.0"
+                                                       styleClass="history-column-title"/>
+
+                                                <Label text="NOMINAL"
+                                                       prefWidth="145.0"
+                                                       styleClass="history-column-title"/>
+
+                                                <Label text="STATUS"
+                                                       prefWidth="105.0"
+                                                       styleClass="history-column-title"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label text="AKSI"
+                                                       prefWidth="75.0"
+                                                       styleClass="history-column-title"/>
+
+                                            </children>
+                                        </HBox>
+
+                                        <!-- TRANSAKSI 1 -->
+                                        <VBox fx:id="historyRow1"
+                                              spacing="0.0">
+
+                                            <children>
+
+                                                <HBox alignment="CENTER_LEFT"
+                                                      spacing="12.0"
+                                                      styleClass="history-transaction-row">
+
+                                                    <children>
+
+                                                        <HBox prefWidth="330.0"
+                                                              alignment="CENTER_LEFT"
+                                                              spacing="12.0">
+
+                                                            <children>
+
+                                                                <StackPane prefWidth="46.0"
+                                                                           prefHeight="46.0"
+                                                                           styleClass="history-icon-blue">
+
+                                                                    <children>
+
+                                                                        <Label text="P"
+                                                                               styleClass="history-icon-text"/>
+
+                                                                    </children>
+                                                                </StackPane>
+
+                                                                <VBox spacing="4.0">
+
+                                                                    <children>
+
+                                                                        <Label text="Bantu Pendidikan Anak Desa"
+                                                                               styleClass="history-campaign-name"/>
+
+                                                                        <Label text="Pendidikan"
+                                                                               styleClass="history-campaign-category"/>
+
+                                                                    </children>
+                                                                </VBox>
+
+                                                            </children>
+                                                        </HBox>
+
+                                                        <VBox prefWidth="145.0"
+                                                              spacing="3.0">
+
+                                                            <children>
+
+                                                                <Label text="11 Juni 2026"
+                                                                       styleClass="history-date"/>
+
+                                                                <Label text="09.15 WIB"
+                                                                       styleClass="history-time"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <Label text="Rp100.000"
+                                                               prefWidth="145.0"
+                                                               styleClass="history-amount"/>
+
+                                                        <Label text="Berhasil"
+                                                               prefWidth="105.0"
+                                                               styleClass="history-status-success"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Button text="Detail"
+                                                                onAction="#openCampaignDetail"
+                                                                prefWidth="75.0"
+                                                                styleClass="history-detail-button"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Separator/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <!-- TRANSAKSI 2 -->
+                                        <VBox fx:id="historyRow2"
+                                              spacing="0.0">
+
+                                            <children>
+
+                                                <HBox alignment="CENTER_LEFT"
+                                                      spacing="12.0"
+                                                      styleClass="history-transaction-row">
+
+                                                    <children>
+
+                                                        <HBox prefWidth="330.0"
+                                                              alignment="CENTER_LEFT"
+                                                              spacing="12.0">
+
+                                                            <children>
+
+                                                                <StackPane prefWidth="46.0"
+                                                                           prefHeight="46.0"
+                                                                           styleClass="history-icon-green">
+
+                                                                    <children>
+
+                                                                        <Label text="K"
+                                                                               styleClass="history-icon-text"/>
+
+                                                                    </children>
+                                                                </StackPane>
+
+                                                                <VBox spacing="4.0">
+
+                                                                    <children>
+
+                                                                        <Label text="Bantuan Operasi untuk Raka"
+                                                                               styleClass="history-campaign-name"/>
+
+                                                                        <Label text="Kesehatan"
+                                                                               styleClass="history-campaign-category"/>
+
+                                                                    </children>
+                                                                </VBox>
+
+                                                            </children>
+                                                        </HBox>
+
+                                                        <VBox prefWidth="145.0"
+                                                              spacing="3.0">
+
+                                                            <children>
+
+                                                                <Label text="8 Juni 2026"
+                                                                       styleClass="history-date"/>
+
+                                                                <Label text="14.30 WIB"
+                                                                       styleClass="history-time"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <Label text="Rp250.000"
+                                                               prefWidth="145.0"
+                                                               styleClass="history-amount"/>
+
+                                                        <Label text="Berhasil"
+                                                               prefWidth="105.0"
+                                                               styleClass="history-status-success"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Button text="Detail"
+                                                                onAction="#openCampaignDetail"
+                                                                prefWidth="75.0"
+                                                                styleClass="history-detail-button"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Separator/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <!-- TRANSAKSI 3 -->
+                                        <VBox fx:id="historyRow3"
+                                              spacing="0.0">
+
+                                            <children>
+
+                                                <HBox alignment="CENTER_LEFT"
+                                                      spacing="12.0"
+                                                      styleClass="history-transaction-row">
+
+                                                    <children>
+
+                                                        <HBox prefWidth="330.0"
+                                                              alignment="CENTER_LEFT"
+                                                              spacing="12.0">
+
+                                                            <children>
+
+                                                                <StackPane prefWidth="46.0"
+                                                                           prefHeight="46.0"
+                                                                           styleClass="history-icon-orange">
+
+                                                                    <children>
+
+                                                                        <Label text="S"
+                                                                               styleClass="history-icon-text"/>
+
+                                                                    </children>
+                                                                </StackPane>
+
+                                                                <VBox spacing="4.0">
+
+                                                                    <children>
+
+                                                                        <Label text="Renovasi Rumah Ibadah"
+                                                                               styleClass="history-campaign-name"/>
+
+                                                                        <Label text="Sosial"
+                                                                               styleClass="history-campaign-category"/>
+
+                                                                    </children>
+                                                                </VBox>
+
+                                                            </children>
+                                                        </HBox>
+
+                                                        <VBox prefWidth="145.0"
+                                                              spacing="3.0">
+
+                                                            <children>
+
+                                                                <Label text="2 Juni 2026"
+                                                                       styleClass="history-date"/>
+
+                                                                <Label text="18.45 WIB"
+                                                                       styleClass="history-time"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <Label text="Rp100.000"
+                                                               prefWidth="145.0"
+                                                               styleClass="history-amount"/>
+
+                                                        <Label text="Berhasil"
+                                                               prefWidth="105.0"
+                                                               styleClass="history-status-success"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Button text="Detail"
+                                                                onAction="#openCampaignDetail"
+                                                                prefWidth="75.0"
+                                                                styleClass="history-detail-button"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Separator/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <!-- TRANSAKSI 4 -->
+                                        <VBox fx:id="historyRow4"
+                                              spacing="0.0">
+
+                                            <children>
+
+                                                <HBox alignment="CENTER_LEFT"
+                                                      spacing="12.0"
+                                                      styleClass="history-transaction-row">
+
+                                                    <children>
+
+                                                        <HBox prefWidth="330.0"
+                                                              alignment="CENTER_LEFT"
+                                                              spacing="12.0">
+
+                                                            <children>
+
+                                                                <StackPane prefWidth="46.0"
+                                                                           prefHeight="46.0"
+                                                                           styleClass="history-icon-purple">
+
+                                                                    <children>
+
+                                                                        <Label text="B"
+                                                                               styleClass="history-icon-text"/>
+
+                                                                    </children>
+                                                                </StackPane>
+
+                                                                <VBox spacing="4.0">
+
+                                                                    <children>
+
+                                                                        <Label text="Bantuan Korban Banjir"
+                                                                               styleClass="history-campaign-name"/>
+
+                                                                        <Label text="Bencana"
+                                                                               styleClass="history-campaign-category"/>
+
+                                                                    </children>
+                                                                </VBox>
+
+                                                            </children>
+                                                        </HBox>
+
+                                                        <VBox prefWidth="145.0"
+                                                              spacing="3.0">
+
+                                                            <children>
+
+                                                                <Label text="27 Mei 2026"
+                                                                       styleClass="history-date"/>
+
+                                                                <Label text="11.20 WIB"
+                                                                       styleClass="history-time"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <Label text="Rp750.000"
+                                                               prefWidth="145.0"
+                                                               styleClass="history-amount"/>
+
+                                                        <Label text="Berhasil"
+                                                               prefWidth="105.0"
+                                                               styleClass="history-status-success"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Button text="Detail"
+                                                                onAction="#openCampaignDetail"
+                                                                prefWidth="75.0"
+                                                                styleClass="history-detail-button"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Separator/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <!-- TRANSAKSI 5 -->
+                                        <VBox fx:id="historyRow5"
+                                              spacing="0.0">
+
+                                            <children>
+
+                                                <HBox alignment="CENTER_LEFT"
+                                                      spacing="12.0"
+                                                      styleClass="history-transaction-row">
+
+                                                    <children>
+
+                                                        <HBox prefWidth="330.0"
+                                                              alignment="CENTER_LEFT"
+                                                              spacing="12.0">
+
+                                                            <children>
+
+                                                                <StackPane prefWidth="46.0"
+                                                                           prefHeight="46.0"
+                                                                           styleClass="history-icon-red">
+
+                                                                    <children>
+
+                                                                        <Label text="I"
+                                                                               styleClass="history-icon-text"/>
+
+                                                                    </children>
+                                                                </StackPane>
+
+                                                                <VBox spacing="4.0">
+
+                                                                    <children>
+
+                                                                        <Label text="Pengobatan Ibu Sari"
+                                                                               styleClass="history-campaign-name"/>
+
+                                                                        <Label text="Kesehatan"
+                                                                               styleClass="history-campaign-category"/>
+
+                                                                    </children>
+                                                                </VBox>
+
+                                                            </children>
+                                                        </HBox>
+
+                                                        <VBox prefWidth="145.0"
+                                                              spacing="3.0">
+
+                                                            <children>
+
+                                                                <Label text="19 Mei 2026"
+                                                                       styleClass="history-date"/>
+
+                                                                <Label text="08.50 WIB"
+                                                                       styleClass="history-time"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <Label text="Rp300.000"
+                                                               prefWidth="145.0"
+                                                               styleClass="history-amount"/>
+
+                                                        <Label text="Diproses"
+                                                               prefWidth="105.0"
+                                                               styleClass="history-status-pending"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Button text="Detail"
+                                                                onAction="#openCampaignDetail"
+                                                                prefWidth="75.0"
+                                                                styleClass="history-detail-button"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </VBox>
+
+                                <!-- HASIL KOSONG -->
+                                <VBox fx:id="historyEmptyState"
+                                      visible="false"
+                                      managed="false"
+                                      alignment="CENTER"
+                                      spacing="8.0"
+                                      prefHeight="170.0"
+                                      styleClass="history-empty-state">
+
+                                    <children>
+
+                                        <Label text="Riwayat donasi tidak ditemukan"
+                                               styleClass="history-empty-title"/>
+
+                                        <Label text="Coba ubah nama campaign, status, atau tanggal pencarian."
+                                               wrapText="true"
+                                               styleClass="history-empty-description"/>
+
+                                    </children>
+                                </VBox>
+
+                                <!-- PAGINATION -->
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="7.0"
+                                      styleClass="history-pagination">
+
+                                    <children>
+
+                                        <Label text="Menampilkan 5 dari 8 transaksi"
+                                               styleClass="history-pagination-text"/>
+
+                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                        <Button text="‹"
+                                                styleClass="pagination-button"/>
+
+                                        <Button text="1"
+                                                styleClass="pagination-button-active"/>
+
+                                        <Button text="2"
+                                                styleClass="pagination-button"/>
+
+                                        <Button text="›"
+                                                styleClass="pagination-button"/>
+
+                                    </children>
+                                </HBox>
+
+                            </children>
+                        </VBox>
+
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+
+    </children>
+</HBox>
