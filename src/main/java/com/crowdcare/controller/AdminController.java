@@ -1,5 +1,7 @@
 package com.crowdcare.controller;
 
+import com.crowdcare.model.User;
+import com.crowdcare.session.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,11 +62,35 @@ public class AdminController {
         processCampaign(event, false);
     }
 
+    /*
+     * POLYMORPHISM:
+     * currentUser bertipe User, tetapi object aslinya
+     * dapat berupa Admin, Donor, atau Fundraiser.
+     *
+     * Method canApproveCampaign() memberikan hasil
+     * berbeda sesuai subclass pengguna.
+     */
     private void processCampaign(
             ActionEvent event,
             boolean approved
     ) {
-        Button clickedButton = (Button) event.getSource();
+        User currentUser = UserSession
+                .getInstance()
+                .getCurrentUser();
+
+        if (currentUser == null
+                || !currentUser.canApproveCampaign()) {
+
+            showAlert(
+                    Alert.AlertType.WARNING,
+                    "Akses Ditolak",
+                    "Hanya Admin yang dapat memproses campaign."
+            );
+            return;
+        }
+
+        Button clickedButton =
+                (Button) event.getSource();
 
         if (!(clickedButton.getParent() instanceof HBox row)) {
             showAlert(
@@ -95,7 +121,10 @@ public class AdminController {
             return;
         }
 
-        String action = approved ? "menyetujui" : "menolak";
+        String actionText = approved
+                ? "menyetujui"
+                : "menolak";
+
         String resultStatus = approved
                 ? "DISETUJUI"
                 : "DITOLAK";
@@ -112,7 +141,7 @@ public class AdminController {
 
         confirmation.setHeaderText(
                 "Apakah Anda yakin ingin "
-                        + action
+                        + actionText
                         + " campaign ini?"
         );
 
@@ -144,6 +173,7 @@ public class AdminController {
             row.getStyleClass().add(
                     "admin-campaign-row-approved"
             );
+
         } else {
             statusLabel.getStyleClass().add(
                     "admin-status-rejected"
@@ -154,7 +184,7 @@ public class AdminController {
             );
         }
 
-        // Menghapus tombol Setujui dan Tolak dari baris.
+        // Menghapus tombol Tolak dan Setujui.
         row.getChildren().removeIf(
                 node -> node instanceof Button
         );
@@ -229,6 +259,8 @@ public class AdminController {
 
     @FXML
     private void handleLogout(ActionEvent event) {
+        UserSession.getInstance().logout();
+
         try {
             URL loginUrl = getClass().getResource(
                     "/view/login.fxml"
@@ -326,6 +358,7 @@ public class AdminController {
             String message
     ) {
         Alert alert = new Alert(type);
+
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

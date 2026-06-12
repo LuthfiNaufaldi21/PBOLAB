@@ -12,11 +12,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import com.crowdcare.model.User;
+import com.crowdcare.service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
 
 public class RegisterController {
+    private final UserService userService =
+            UserService.getInstance();
 
     @FXML
     private TextField nameField;
@@ -46,11 +50,20 @@ public class RegisterController {
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        String name = nameField.getText().trim();
-        String email = emailField.getText().trim();
-        String role = roleComboBox.getValue();
-        String password = passwordField.getText();
-        String confirmPassword = confirmPasswordField.getText();
+        String name =
+                nameField.getText().trim();
+
+        String email =
+                emailField.getText().trim();
+
+        String role =
+                roleComboBox.getValue();
+
+        String password =
+                passwordField.getText();
+
+        String confirmPassword =
+                confirmPasswordField.getText();
 
         if (name.isEmpty()
                 || email.isEmpty()
@@ -102,13 +115,40 @@ public class RegisterController {
             return;
         }
 
-        showAlert(
-                Alert.AlertType.INFORMATION,
-                "Pendaftaran Berhasil",
-                "Akun " + name + " berhasil dibuat sebagai " + role + "."
-        );
+        try {
+            /*
+             * Hasil register bertipe User, tetapi object
+             * sebenarnya dapat berupa Donor atau Fundraiser.
+             *
+             * Ini merupakan POLYMORPHISM.
+             */
+            User registeredUser =
+                    userService.register(
+                            name,
+                            email,
+                            password,
+                            role
+                    );
 
-        openLogin(event);
+            showAlert(
+                    Alert.AlertType.INFORMATION,
+                    "Pendaftaran Berhasil",
+                    "Akun "
+                            + registeredUser.getFullName()
+                            + " berhasil dibuat sebagai "
+                            + registeredUser.getRoleName()
+                            + "."
+            );
+
+            openLogin(event);
+
+        } catch (IllegalArgumentException exception) {
+            showAlert(
+                    Alert.AlertType.WARNING,
+                    "Pendaftaran Gagal",
+                    exception.getMessage()
+            );
+        }
     }
 
     @FXML

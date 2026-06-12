@@ -1,4 +1,5 @@
 package com.crowdcare.controller;
+import com.crowdcare.session.UserSession;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -1289,6 +1290,8 @@ public class NavigationController {
     private void logout(
             ActionEvent event
     ) {
+        UserSession.getInstance().logout();
+
         try {
             URL loginUrl =
                     getClass().getResource(

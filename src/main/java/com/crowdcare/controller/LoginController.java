@@ -17,11 +17,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import com.crowdcare.model.User;
+import com.crowdcare.service.UserService;
+import com.crowdcare.session.UserSession;
 
+import java.util.Optional;
 import java.io.IOException;
 import java.net.URL;
 
 public class LoginController {
+
+    private final UserService userService =
+            UserService.getInstance();
 
     @FXML
     private VBox slide1;
@@ -242,72 +249,108 @@ public class LoginController {
 
     @FXML
     private void handleLogin(ActionEvent event) {
-        String email = emailField.getText().trim();
-        String password = passwordField.getText();
+        String username =
+                emailField.getText().trim();
 
-        if (email.isEmpty() || password.isEmpty()) {
+        String password =
+                passwordField.getText();
+
+        if (username.isEmpty()
+                || password.isEmpty()) {
+
             showAlert(
                     Alert.AlertType.WARNING,
                     "Data Belum Lengkap",
-                    "Email dan kata sandi harus diisi."
+                    "Username dan kata sandi harus diisi."
             );
             return;
         }
 
-        boolean adminLogin = email.equalsIgnoreCase("admin");
+        Optional<User> authenticationResult =
+                userService.authenticate(
+                        username,
+                        password
+                );
 
-        if (adminLogin && !password.equals("admin")) {
+        if (authenticationResult.isEmpty()) {
             showAlert(
                     Alert.AlertType.WARNING,
-                    "Login Admin Gagal",
-                    "Kata sandi administrator tidak sesuai."
+                    "Login Gagal",
+                    "Username atau kata sandi tidak sesuai."
             );
             return;
         }
 
+        /*
+         * Variabel bertipe User dapat berisi object Admin,
+         * Donor, atau Fundraiser.
+         *
+         * Ini merupakan POLYMORPHISM.
+         */
+        User authenticatedUser =
+                authenticationResult.get();
+
+        UserSession.getInstance()
+                .login(authenticatedUser);
+
         try {
-            String fxmlPath;
-            String windowTitle;
+            String fxmlPath =
+                    authenticatedUser.getDashboardFxml();
+
+            String windowTitle =
+                    authenticatedUser.getWindowTitle();
+
             Object controller;
 
-            if (adminLogin) {
-                fxmlPath = "/view/admin-home.fxml";
-                windowTitle = "CrowdCare - Dashboard Admin";
+            if (authenticatedUser
+                    .canApproveCampaign()) {
+
                 controller = new AdminController();
+
             } else {
-                fxmlPath = "/view/dashboard.fxml";
-                windowTitle = "CrowdCare - Dashboard";
-                controller = new NavigationController();
+                controller =
+                        new NavigationController();
             }
 
-            URL pageUrl = getClass().getResource(fxmlPath);
+            URL pageUrl =
+                    getClass().getResource(fxmlPath);
 
             if (pageUrl == null) {
                 throw new IOException(
-                        "File tidak ditemukan: " + fxmlPath
+                        "File tidak ditemukan: "
+                                + fxmlPath
                 );
             }
 
-            FXMLLoader loader = new FXMLLoader(pageUrl);
+            FXMLLoader loader =
+                    new FXMLLoader(pageUrl);
+
             loader.setController(controller);
 
             Parent root = loader.load();
 
-            Stage stage = (Stage) ((Node) event.getSource())
-                    .getScene()
-                    .getWindow();
+            Stage stage =
+                    (Stage) ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
 
             if (timeline != null) {
                 timeline.stop();
             }
 
             stage.setTitle(windowTitle);
-            stage.setScene(new Scene(root, 1200, 720));
+
+            stage.setScene(
+                    new Scene(root, 1200, 720)
+            );
+
             stage.setResizable(false);
             stage.centerOnScreen();
 
         } catch (IOException exception) {
             exception.printStackTrace();
+
+            UserSession.getInstance().logout();
 
             showAlert(
                     Alert.AlertType.ERROR,
