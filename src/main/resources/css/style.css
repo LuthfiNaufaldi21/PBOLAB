@@ -1,0 +1,2673 @@
+.page-root {
+    -fx-background-color: #f1f5f9;
+    -fx-font-family: "Segoe UI";
+}
+
+/* PANEL KIRI */
+
+.brand-panel {
+    -fx-background-color: #1e293b;
+}
+
+.brand-logo {
+    -fx-pref-width: 55px;
+    -fx-pref-height: 55px;
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 16px;
+    -fx-text-fill: white;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.brand-title {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.brand-description {
+    -fx-font-size: 17px;
+    -fx-text-fill: #cbd5e1;
+    -fx-line-spacing: 5px;
+}
+
+.brand-footer {
+    -fx-font-size: 13px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* PANEL KANAN */
+
+.form-panel {
+    -fx-background-color: #f8fafc;
+    -fx-padding: 60px;
+}
+
+.form-card {
+    -fx-background-color: white;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.12),
+        20,
+        0.15,
+        0,
+        6
+    );
+}
+
+.form-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.form-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+}
+
+.input-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.form-input {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 9px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 9px;
+    -fx-border-width: 1px;
+    -fx-padding: 0 14px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #0f172a;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.form-input:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+    -fx-border-width: 1.5px;
+}
+
+.remember-checkbox {
+    -fx-font-size: 12px;
+    -fx-text-fill: #475569;
+}
+
+.forgot-link,
+.register-link {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+
+.forgot-link:hover,
+.register-link:hover {
+    -fx-text-fill: #1d4ed8;
+    -fx-underline: true;
+}
+
+.login-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 9px;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-margin: 8px 0 0 0;
+}
+
+.login-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.login-button:pressed {
+    -fx-background-color: #1e40af;
+}
+
+.register-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.dashboard-root {
+    -fx-background-color: #f1f5f9;
+    -fx-font-family: "Segoe UI";
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    -fx-background-color: #172033;
+}
+
+.sidebar-brand {
+    -fx-padding: 0 0 4px 0;
+}
+
+.sidebar-logo {
+    -fx-pref-width: 42px;
+    -fx-pref-height: 42px;
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 12px;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.sidebar-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+.menu-caption {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+    -fx-padding: 0 0 5px 5px;
+}
+
+.nav-button,
+.nav-button-active,
+.logout-button {
+    -fx-background-radius: 9px;
+    -fx-padding: 0 16px;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+}
+
+.nav-button:hover {
+    -fx-background-color: #253149;
+    -fx-text-fill: white;
+}
+
+.nav-button-active {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.logout-button {
+    -fx-background-color: rgba(239, 68, 68, 0.10);
+    -fx-text-fill: #f87171;
+}
+
+.logout-button:hover {
+    -fx-background-color: rgba(239, 68, 68, 0.20);
+}
+
+.sidebar-separator .line {
+    -fx-border-color: #334155;
+    -fx-border-width: 1px 0 0 0;
+}
+
+/* HEADER */
+
+.dashboard-main {
+    -fx-background-color: #f1f5f9;
+}
+
+.dashboard-header {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.dashboard-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.dashboard-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.profile-name {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.profile-role {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.profile-avatar {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 22px;
+}
+
+.avatar-text {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+/* SCROLL DAN KONTEN */
+
+.dashboard-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.dashboard-scroll > .viewport {
+    -fx-background-color: #f1f5f9;
+}
+
+.dashboard-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.welcome-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+}
+
+/* STATISTIK */
+
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 13px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 13px;
+    -fx-padding: 19px;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.05),
+        10,
+        0.1,
+        0,
+        3
+    );
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.stat-positive {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #16a34a;
+}
+
+.stat-info {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+/* BAGIAN KONTEN */
+
+.content-section,
+.activity-section {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 20px;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.secondary-button {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #dbeafe;
+}
+
+/* KARTU CAMPAIGN */
+
+.campaign-card {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 12px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12px;
+    -fx-padding: 13px;
+}
+
+.campaign-card:hover {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.08),
+        12,
+        0.1,
+        0,
+        4
+    );
+}
+
+.campaign-image-blue {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #2563eb,
+        #60a5fa
+    );
+    -fx-background-radius: 9px;
+}
+
+.campaign-image-green {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #059669,
+        #34d399
+    );
+    -fx-background-radius: 9px;
+}
+
+.campaign-category {
+    -fx-background-color: rgba(255, 255, 255, 0.20);
+    -fx-background-radius: 7px;
+    -fx-padding: 6px 10px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.campaign-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.campaign-small-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #94a3b8;
+}
+
+.campaign-amount {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.campaign-progress,
+.summary-progress {
+    -fx-accent: #2563eb;
+}
+
+.campaign-progress > .track,
+.summary-progress > .track {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 10px;
+}
+
+.campaign-progress > .bar,
+.summary-progress > .bar {
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0;
+}
+
+.campaign-percentage {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.campaign-days {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+
+/* RINGKASAN DONASI */
+
+.donation-summary {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 21px;
+}
+
+.donation-total {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.donation-target {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.summary-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.small-avatar {
+    -fx-background-color: #dcfce7;
+    -fx-background-radius: 18px;
+}
+
+.small-avatar-text {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #15803d;
+}
+
+.donor-name {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.donor-time {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.donor-amount {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #16a34a;
+}
+
+.primary-dashboard-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 9px;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.primary-dashboard-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+/* AKTIVITAS */
+
+.activity-row {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 9px;
+    -fx-padding: 13px 15px;
+}
+
+.activity-badge-green,
+.activity-badge-blue,
+.activity-badge-gray {
+    -fx-background-radius: 6px;
+    -fx-padding: 5px 8px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+}
+
+.activity-badge-green {
+    -fx-background-color: #dcfce7;
+    -fx-text-fill: #15803d;
+}
+
+.activity-badge-blue {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1d4ed8;
+}
+
+.activity-badge-gray {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #475569;
+}
+
+.activity-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.activity-time {
+    -fx-font-size: 10px;
+    -fx-text-fill: #94a3b8;
+}
+
+.activity-amount {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #16a34a;
+}
+
+.activity-status {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.campaign-page-root,
+.campaign-page-main,
+.campaign-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.create-campaign-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 9px;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 18px;
+    -fx-cursor: hand;
+}
+
+.create-campaign-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.campaign-filter-card {
+    -fx-background-color: white;
+    -fx-background-radius: 13px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 13px;
+    -fx-padding: 16px;
+}
+
+.campaign-search {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-padding: 0 14px;
+    -fx-font-size: 12px;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.campaign-search:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+
+.filter-button,
+.filter-button-active {
+    -fx-background-radius: 8px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 14px;
+    -fx-cursor: hand;
+}
+
+.filter-button {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #64748b;
+}
+
+.filter-button:hover {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #334155;
+}
+
+.filter-button-active {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.campaign-count {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.campaign-list-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 14px;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.06),
+        10,
+        0.1,
+        0,
+        3
+    );
+}
+
+.campaign-list-card:hover {
+    -fx-border-color: #bfdbfe;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(37, 99, 235, 0.14),
+        15,
+        0.12,
+        0,
+        5
+    );
+}
+
+.campaign-cover-blue {
+    -fx-background-color: linear-gradient(to bottom right, #2563eb, #60a5fa);
+    -fx-background-radius: 10px;
+}
+
+.campaign-cover-green {
+    -fx-background-color: linear-gradient(to bottom right, #059669, #34d399);
+    -fx-background-radius: 10px;
+}
+
+.campaign-cover-orange {
+    -fx-background-color: linear-gradient(to bottom right, #ea580c, #fb923c);
+    -fx-background-radius: 10px;
+}
+
+.campaign-cover-purple {
+    -fx-background-color: linear-gradient(to bottom right, #7c3aed, #a78bfa);
+    -fx-background-radius: 10px;
+}
+
+.campaign-cover-red {
+    -fx-background-color: linear-gradient(to bottom right, #dc2626, #f87171);
+    -fx-background-radius: 10px;
+}
+
+.campaign-cover-cyan {
+    -fx-background-color: linear-gradient(to bottom right, #0891b2, #22d3ee);
+    -fx-background-radius: 10px;
+}
+
+.campaign-list-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.campaign-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+    -fx-line-spacing: 2px;
+}
+
+.campaign-list-amount {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.campaign-detail-button {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.campaign-detail-button:hover {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.story-section {
+    -fx-padding: 25px 0 0 0;
+}
+
+.story-heading {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.story-highlight {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-background-radius: 7px;
+    -fx-padding: 4px 8px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #bfdbfe;
+}
+
+.story-card-blue,
+.story-card-green,
+.story-card-orange {
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0, 0, 0, 0.20),
+        15,
+        0.12,
+        0,
+        5
+    );
+}
+
+.story-card-blue {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #2563eb,
+        #3b82f6
+    );
+}
+
+.story-card-green {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #059669,
+        #10b981
+    );
+}
+
+.story-card-orange {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #ea580c,
+        #f97316
+    );
+}
+
+.story-category {
+    -fx-background-color: rgba(255, 255, 255, 0.20);
+    -fx-background-radius: 6px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.story-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.story-description {
+    -fx-font-size: 11px;
+    -fx-text-fill: rgba(255, 255, 255, 0.85);
+    -fx-line-spacing: 2px;
+}
+
+.story-amount {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.story-progress {
+    -fx-accent: white;
+}
+
+.story-progress > .track {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-background-radius: 10px;
+}
+
+.story-progress > .bar {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0;
+}
+
+.story-meta {
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(255, 255, 255, 0.85);
+}
+
+.story-dot,
+.story-dot-active {
+    -fx-pref-width: 25px;
+    -fx-min-width: 25px;
+    -fx-max-width: 25px;
+
+    -fx-pref-height: 4px;
+    -fx-min-height: 4px;
+    -fx-max-height: 4px;
+
+    -fx-padding: 0;
+    -fx-background-radius: 4px;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-cursor: hand;
+}
+
+.story-dot {
+    -fx-background-color: rgba(255, 255, 255, 0.28);
+}
+
+.story-dot:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.60);
+}
+
+.story-dot-active {
+    -fx-background-color: white;
+}
+
+.story-nav-button {
+    -fx-pref-width: 26px;
+    -fx-pref-height: 26px;
+
+    -fx-min-width: 26px;
+    -fx-min-height: 26px;
+
+    -fx-max-width: 26px;
+    -fx-max-height: 26px;
+
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-background-radius: 13px;
+
+    -fx-border-color: rgba(255, 255, 255, 0.18);
+    -fx-border-radius: 13px;
+
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+
+    -fx-padding: 0 0 2px 0;
+    -fx-cursor: hand;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.story-nav-button:hover {
+    -fx-background-color: #2563eb;
+    -fx-border-color: rgba(255, 255, 255, 0.50);
+    -fx-text-fill: white;
+}
+
+.story-nav-button:pressed {
+    -fx-background-color: #1d4ed8;
+}
+
+/* ==================================================
+   BUAT CAMPAIGN
+   ================================================== */
+
+.create-page-root,
+.create-page-main,
+.create-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.draft-status {
+    -fx-background-color: #fef3c7;
+    -fx-background-radius: 7px;
+    -fx-padding: 6px 11px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #b45309;
+}
+
+.campaign-form-card,
+.campaign-preview-section {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 24px;
+}
+
+.form-section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.form-section-description {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.create-input-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.create-input,
+.create-textarea,
+.create-combobox,
+.create-date-picker {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-font-size: 12px;
+    -fx-text-fill: #0f172a;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.create-input {
+    -fx-padding: 0 13px;
+}
+
+.create-textarea {
+    -fx-padding: 8px;
+}
+
+.create-textarea .content {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+}
+
+.create-input:focused,
+.create-textarea:focused,
+.create-combobox:focused,
+.create-date-picker:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+
+.input-helper {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.upload-area {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 10px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 10px;
+    -fx-border-style: segments(6, 5);
+}
+
+.upload-icon {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.upload-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.upload-description {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.upload-button {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.upload-button:hover {
+    -fx-background-color: #dbeafe;
+}
+
+.save-draft-button {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-text-fill: #475569;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 18px;
+    -fx-cursor: hand;
+}
+
+.save-draft-button:hover {
+    -fx-background-color: #f1f5f9;
+}
+
+.submit-campaign-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 18px;
+    -fx-cursor: hand;
+}
+
+.submit-campaign-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+/* PREVIEW */
+
+.preview-live-label {
+    -fx-background-color: #dcfce7;
+    -fx-background-radius: 6px;
+    -fx-padding: 4px 7px;
+    -fx-font-size: 8px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #15803d;
+}
+
+.preview-campaign-card {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 12px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12px;
+    -fx-padding: 14px;
+}
+
+.preview-image {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #cbd5e1,
+        #e2e8f0
+    );
+    -fx-background-radius: 9px;
+}
+
+.preview-image-text {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+}
+
+.preview-category {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 6px;
+    -fx-padding: 4px 7px;
+    -fx-font-size: 8px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.preview-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.preview-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+    -fx-line-spacing: 2px;
+}
+
+.preview-amount {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.preview-donate-button {
+    -fx-background-color: #94a3b8;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.create-info-box {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 10px;
+    -fx-padding: 14px;
+}
+
+.info-box-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d4ed8;
+}
+
+.info-box-text {
+    -fx-font-size: 9px;
+    -fx-text-fill: #475569;
+}
+
+/* ==================================================
+   DETAIL CAMPAIGN
+   ================================================== */
+
+.detail-page-root,
+.detail-page-main,
+.detail-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.detail-back-button {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #475569;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 15px;
+    -fx-cursor: hand;
+}
+
+.detail-back-button:hover {
+    -fx-background-color: #e2e8f0;
+}
+
+.detail-cover {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #2563eb,
+        #60a5fa
+    );
+    -fx-background-radius: 15px;
+}
+
+.detail-cover-category {
+    -fx-background-color: rgba(255, 255, 255, 0.18);
+    -fx-background-radius: 8px;
+    -fx-padding: 7px 12px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.detail-main-card,
+.detail-donation-card,
+.detail-section-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 22px;
+}
+
+.detail-category {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 6px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.detail-title {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.detail-short-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+    -fx-line-spacing: 3px;
+}
+
+.detail-owner-avatar {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 22px;
+}
+
+.detail-owner-avatar-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.detail-owner-caption {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.detail-owner-name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.verified-label {
+    -fx-background-color: #dcfce7;
+    -fx-background-radius: 7px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #15803d;
+}
+
+/* KARTU DONASI */
+
+.detail-card-caption {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.detail-total-amount {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.detail-target-text {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.detail-progress {
+    -fx-accent: #2563eb;
+}
+
+.detail-progress > .track {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 10px;
+}
+
+.detail-progress > .bar {
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0;
+}
+
+.detail-stat-value {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.detail-stat-label {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.detail-donation-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.donation-option-button {
+    -fx-max-width: Infinity;
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-text-fill: #475569;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.donation-option-button:hover {
+    -fx-background-color: #eff6ff;
+    -fx-border-color: #2563eb;
+    -fx-text-fill: #2563eb;
+}
+
+.detail-donate-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 9px;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.detail-donate-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.detail-share-button {
+    -fx-background-color: white;
+    -fx-background-radius: 9px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 9px;
+    -fx-text-fill: #475569;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.detail-share-button:hover {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #94a3b8;
+}
+
+.detail-disclaimer {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* CERITA DAN UPDATE */
+
+.detail-section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.detail-paragraph {
+    -fx-font-size: 11px;
+    -fx-text-fill: #475569;
+    -fx-line-spacing: 4px;
+}
+
+.detail-allocation-box {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 10px;
+    -fx-padding: 14px;
+}
+
+.allocation-value {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.allocation-label {
+    -fx-font-size: 9px;
+    -fx-text-fill: #64748b;
+}
+
+.update-item {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 9px;
+    -fx-padding: 13px;
+}
+
+.update-date {
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.update-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.update-description {
+    -fx-font-size: 9px;
+    -fx-text-fill: #64748b;
+    -fx-line-spacing: 2px;
+}
+
+/* ==================================================
+   RIWAYAT DONASI
+   ================================================== */
+
+.history-page-root,
+.history-page-main,
+.history-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.history-download-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 17px;
+    -fx-cursor: hand;
+}
+
+.history-download-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+/* RINGKASAN */
+
+.history-stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 13px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 13px;
+    -fx-padding: 19px;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.05),
+        10,
+        0.1,
+        0,
+        3
+    );
+}
+
+.history-stat-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.history-stat-value {
+    -fx-font-size: 23px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.history-stat-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+
+.history-stat-positive {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #16a34a;
+}
+
+/* FILTER */
+
+.history-filter-card {
+    -fx-background-color: white;
+    -fx-background-radius: 13px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 13px;
+    -fx-padding: 16px;
+}
+
+.history-search,
+.history-filter-input {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-font-size: 11px;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.history-search {
+    -fx-padding: 0 13px;
+}
+
+.history-search:focused,
+.history-filter-input:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+
+.history-filter-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16px;
+    -fx-cursor: hand;
+}
+
+.history-filter-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.history-reset-button {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16px;
+    -fx-cursor: hand;
+}
+
+.history-reset-button:hover {
+    -fx-background-color: #e2e8f0;
+}
+
+/* TABEL */
+
+.history-table-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+}
+
+.history-table-header {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 14px 14px 0 0;
+    -fx-padding: 15px 18px;
+}
+
+.history-column-title {
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #94a3b8;
+}
+
+.history-transaction-row {
+    -fx-padding: 15px 18px;
+    -fx-background-color: white;
+}
+
+.history-transaction-row:hover {
+    -fx-background-color: #f8fafc;
+}
+
+.history-icon-blue,
+.history-icon-green,
+.history-icon-orange,
+.history-icon-purple,
+.history-icon-red {
+    -fx-background-radius: 10px;
+}
+
+.history-icon-blue {
+    -fx-background-color: #dbeafe;
+}
+
+.history-icon-green {
+    -fx-background-color: #dcfce7;
+}
+
+.history-icon-orange {
+    -fx-background-color: #ffedd5;
+}
+
+.history-icon-purple {
+    -fx-background-color: #ede9fe;
+}
+
+.history-icon-red {
+    -fx-background-color: #fee2e2;
+}
+
+.history-icon-text {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.history-campaign-name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.history-campaign-category {
+    -fx-font-size: 9px;
+    -fx-text-fill: #64748b;
+}
+
+.history-date {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.history-time {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.history-amount {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.history-status-success,
+.history-status-pending {
+    -fx-background-radius: 7px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+}
+
+.history-status-success {
+    -fx-background-color: #dcfce7;
+    -fx-text-fill: #15803d;
+}
+
+.history-status-pending {
+    -fx-background-color: #fef3c7;
+    -fx-text-fill: #b45309;
+}
+
+.history-detail-button {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.history-detail-button:hover {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+/* PAGINATION */
+
+.history-pagination {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12px;
+    -fx-padding: 12px 15px;
+    -fx-spacing: 7px;
+}
+
+.history-pagination-text {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+
+.pagination-button,
+.pagination-button-active {
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-background-radius: 7px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.pagination-button {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #64748b;
+}
+
+.pagination-button:hover {
+    -fx-background-color: #e2e8f0;
+}
+
+.pagination-button-active {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+/* ==================================================
+   REGISTER
+   ================================================== */
+
+.register-form-panel {
+    -fx-background-color: #f8fafc;
+    -fx-padding: 45px;
+}
+
+.register-card {
+    -fx-background-color: white;
+    -fx-background-radius: 18px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 18px;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(15, 23, 42, 0.12),
+        20,
+        0.15,
+        0,
+        6
+    );
+}
+
+.register-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.register-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+}
+
+.register-combobox {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 9px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 9px;
+    -fx-font-size: 13px;
+}
+
+.register-combobox:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+
+.register-terms {
+    -fx-font-size: 11px;
+    -fx-text-fill: #475569;
+    -fx-padding: 4px 0;
+}
+
+.register-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 9px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.register-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.register-benefit-box {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-radius: 14px;
+    -fx-padding: 20px;
+}
+
+.benefit-icon {
+    -fx-pref-width: 28px;
+    -fx-pref-height: 28px;
+    -fx-background-color: rgba(37, 99, 235, 0.35);
+    -fx-background-radius: 14px;
+    -fx-alignment: center;
+    -fx-text-fill: #bfdbfe;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.benefit-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.benefit-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* ==================================================
+   PROFIL SAYA
+   ================================================== */
+
+.profile-page-root,
+.profile-page-main,
+.profile-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.profile-role-badge {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 7px;
+    -fx-padding: 6px 11px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.profile-overview-card,
+.profile-form-card,
+.profile-info-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 22px;
+}
+
+.profile-large-avatar {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 50px;
+}
+
+.profile-large-avatar-text {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.profile-display-name {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.profile-display-email {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.profile-verified-badge {
+    -fx-background-color: #dcfce7;
+    -fx-background-radius: 7px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #15803d;
+}
+
+.profile-joined-badge {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 7px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 9px;
+    -fx-text-fill: #64748b;
+}
+
+.profile-photo-button {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16px;
+    -fx-cursor: hand;
+}
+
+.profile-photo-button:hover {
+    -fx-background-color: #dbeafe;
+}
+
+/* STATISTIK */
+
+.profile-stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 13px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 13px;
+    -fx-padding: 18px;
+}
+
+.profile-stat-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+
+.profile-stat-value {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.profile-stat-description {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* FORM */
+
+.profile-section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.profile-section-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+
+.profile-input-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.profile-input,
+.profile-textarea {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-font-size: 11px;
+    -fx-text-fill: #0f172a;
+}
+
+.profile-input {
+    -fx-padding: 0 13px;
+}
+
+.profile-textarea {
+    -fx-padding: 8px;
+}
+
+.profile-textarea .content {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+}
+
+.profile-input:focused,
+.profile-textarea:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+
+.profile-save-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 18px;
+    -fx-cursor: hand;
+}
+
+.profile-save-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+/* INFORMASI AKUN */
+
+.profile-info-caption {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.profile-info-value {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.profile-active-label {
+    -fx-background-color: #dcfce7;
+    -fx-background-radius: 6px;
+    -fx-padding: 4px 8px;
+    -fx-font-size: 8px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #15803d;
+}
+
+.profile-tip-box {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 9px;
+    -fx-padding: 13px;
+}
+
+.profile-tip-title {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d4ed8;
+}
+
+.profile-tip-text {
+    -fx-font-size: 9px;
+    -fx-text-fill: #475569;
+    -fx-line-spacing: 2px;
+}
+
+/* ==================================================
+   PENGATURAN
+   ================================================== */
+
+.settings-page-root,
+.settings-page-main,
+.settings-content {
+    -fx-background-color: #f1f5f9;
+}
+
+.settings-save-header-button,
+.settings-save-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 18px;
+    -fx-cursor: hand;
+}
+
+.settings-save-header-button:hover,
+.settings-save-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.settings-account-card,
+.settings-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 22px;
+}
+
+.settings-avatar {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 31px;
+}
+
+.settings-avatar-text {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.settings-account-name {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.settings-account-email {
+    -fx-font-size: 11px;
+    -fx-text-fill: #64748b;
+}
+
+.settings-account-status {
+    -fx-background-color: #dcfce7;
+    -fx-background-radius: 7px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 8px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #15803d;
+}
+
+.settings-section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.settings-section-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+
+.settings-item-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.settings-item-description {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+}
+
+.settings-combobox,
+.settings-input {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-font-size: 11px;
+}
+
+.settings-combobox:focused,
+.settings-input:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+
+.settings-input {
+    -fx-padding: 0 13px;
+}
+
+.settings-checkbox,
+.settings-notification-check {
+    -fx-font-size: 10px;
+    -fx-text-fill: #475569;
+}
+
+.settings-info-box {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 9px;
+    -fx-padding: 13px;
+}
+
+.settings-info-title {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d4ed8;
+}
+
+.settings-info-text {
+    -fx-font-size: 9px;
+    -fx-text-fill: #475569;
+    -fx-line-spacing: 2px;
+}
+
+.settings-input-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.settings-password-button {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 17px;
+    -fx-cursor: hand;
+}
+
+.settings-password-button:hover {
+    -fx-background-color: #dbeafe;
+}
+
+.settings-danger-card {
+    -fx-background-color: #fff7f7;
+    -fx-background-radius: 14px;
+    -fx-border-color: #fecaca;
+    -fx-border-radius: 14px;
+    -fx-padding: 22px;
+}
+
+.settings-danger-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #b91c1c;
+}
+
+.settings-danger-description {
+    -fx-font-size: 10px;
+    -fx-text-fill: #7f1d1d;
+    -fx-line-spacing: 2px;
+}
+
+.settings-delete-button {
+    -fx-background-color: #fee2e2;
+    -fx-background-radius: 8px;
+    -fx-border-color: #fca5a5;
+    -fx-border-radius: 8px;
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.settings-delete-button:hover {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+}
+
+.settings-cancel-button {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-text-fill: #475569;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 18px;
+    -fx-cursor: hand;
+}
+
+.settings-cancel-button:hover {
+    -fx-background-color: #f1f5f9;
+}
+
+ /* ==================================================
+    ADMIN DASHBOARD DAN APPROVAL
+    ================================================== */
+
+ .admin-page-root,
+ .admin-page-main,
+ .admin-content {
+     -fx-background-color: #f1f5f9;
+ }
+
+ .admin-avatar {
+     -fx-background-color: #fee2e2;
+     -fx-background-radius: 22px;
+ }
+
+ .admin-avatar-text {
+     -fx-font-size: 12px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #dc2626;
+ }
+
+ /* STATISTIK ADMIN */
+
+ .admin-stat-card {
+     -fx-background-color: white;
+     -fx-background-radius: 13px;
+     -fx-border-color: #e2e8f0;
+     -fx-border-radius: 13px;
+     -fx-padding: 19px;
+     -fx-effect: dropshadow(
+         gaussian,
+         rgba(15, 23, 42, 0.05),
+         10,
+         0.1,
+         0,
+         3
+     );
+ }
+
+ .admin-stat-label {
+     -fx-font-size: 11px;
+     -fx-text-fill: #64748b;
+ }
+
+ .admin-stat-value {
+     -fx-font-size: 24px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #0f172a;
+ }
+
+ .admin-stat-warning {
+     -fx-font-size: 10px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #d97706;
+ }
+
+ .admin-stat-positive {
+     -fx-font-size: 10px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #16a34a;
+ }
+
+ .admin-stat-description {
+     -fx-font-size: 10px;
+     -fx-text-fill: #64748b;
+ }
+
+ /* APPROVAL */
+
+ .admin-approval-section,
+ .admin-activity-section {
+     -fx-background-color: white;
+     -fx-background-radius: 14px;
+     -fx-border-color: #e2e8f0;
+     -fx-border-radius: 14px;
+     -fx-padding: 22px;
+ }
+
+ .admin-section-title {
+     -fx-font-size: 16px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #0f172a;
+ }
+
+ .admin-section-description {
+     -fx-font-size: 10px;
+     -fx-text-fill: #64748b;
+ }
+
+ .admin-pending-badge {
+     -fx-background-color: #fef3c7;
+     -fx-background-radius: 7px;
+     -fx-padding: 6px 10px;
+     -fx-font-size: 9px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #b45309;
+ }
+
+ .admin-campaign-row {
+     -fx-background-color: white;
+     -fx-background-radius: 10px;
+     -fx-padding: 12px;
+ }
+
+ .admin-campaign-row:hover {
+     -fx-background-color: #f8fafc;
+ }
+
+ .admin-cover-blue,
+ .admin-cover-green,
+ .admin-cover-orange,
+ .admin-cover-purple {
+     -fx-background-radius: 10px;
+ }
+
+ .admin-cover-blue {
+     -fx-background-color: linear-gradient(to bottom right, #2563eb, #60a5fa);
+ }
+
+ .admin-cover-green {
+     -fx-background-color: linear-gradient(to bottom right, #059669, #34d399);
+ }
+
+ .admin-cover-orange {
+     -fx-background-color: linear-gradient(to bottom right, #ea580c, #fb923c);
+ }
+
+ .admin-cover-purple {
+     -fx-background-color: linear-gradient(to bottom right, #7c3aed, #a78bfa);
+ }
+
+ .admin-cover-text {
+     -fx-font-size: 22px;
+     -fx-font-weight: bold;
+     -fx-text-fill: white;
+ }
+
+ .admin-campaign-title {
+     -fx-font-size: 13px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #1e293b;
+ }
+
+ .admin-campaign-meta {
+     -fx-font-size: 10px;
+     -fx-text-fill: #64748b;
+ }
+
+ .admin-campaign-target {
+     -fx-font-size: 9px;
+     -fx-text-fill: #94a3b8;
+ }
+
+ .admin-status-pending {
+     -fx-background-color: #fef3c7;
+     -fx-background-radius: 7px;
+     -fx-padding: 5px 9px;
+     -fx-font-size: 8px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #b45309;
+ }
+
+ .admin-approve-button {
+     -fx-background-color: #16a34a;
+     -fx-background-radius: 8px;
+     -fx-text-fill: white;
+     -fx-font-size: 10px;
+     -fx-font-weight: bold;
+     -fx-padding: 0 15px;
+     -fx-cursor: hand;
+ }
+
+ .admin-approve-button:hover {
+     -fx-background-color: #15803d;
+ }
+
+ .admin-reject-button {
+     -fx-background-color: #fee2e2;
+     -fx-background-radius: 8px;
+     -fx-border-color: #fecaca;
+     -fx-border-radius: 8px;
+     -fx-text-fill: #dc2626;
+     -fx-font-size: 10px;
+     -fx-font-weight: bold;
+     -fx-padding: 0 15px;
+     -fx-cursor: hand;
+ }
+
+ .admin-reject-button:hover {
+     -fx-background-color: #dc2626;
+     -fx-text-fill: white;
+ }
+
+ /* AKTIVITAS ADMIN */
+
+ .admin-activity-row {
+     -fx-background-color: #f8fafc;
+     -fx-background-radius: 9px;
+     -fx-padding: 13px 15px;
+ }
+
+ .admin-activity-approved,
+ .admin-activity-rejected {
+     -fx-background-radius: 6px;
+     -fx-padding: 5px 8px;
+     -fx-font-size: 8px;
+     -fx-font-weight: bold;
+ }
+
+ .admin-activity-approved {
+     -fx-background-color: #dcfce7;
+     -fx-text-fill: #15803d;
+ }
+
+ .admin-activity-rejected {
+     -fx-background-color: #fee2e2;
+     -fx-text-fill: #dc2626;
+ }
+
+ /* ==================================================
+    DASHBOARD ADMIN HOME
+    ================================================== */
+
+ .admin-home-row {
+     -fx-background-color: #f8fafc;
+     -fx-background-radius: 10px;
+     -fx-padding: 11px 13px;
+ }
+
+ .admin-home-row:hover {
+     -fx-background-color: #eff6ff;
+ }
+
+ .admin-cover-text-small {
+     -fx-font-size: 16px;
+     -fx-font-weight: bold;
+     -fx-text-fill: white;
+ }
+
+ .admin-system-card {
+     -fx-background-color: white;
+     -fx-background-radius: 14px;
+     -fx-border-color: #e2e8f0;
+     -fx-border-radius: 14px;
+     -fx-padding: 22px;
+ }
+
+ .admin-system-label {
+     -fx-font-size: 11px;
+     -fx-text-fill: #64748b;
+ }
+
+ .admin-system-normal {
+     -fx-background-color: #dcfce7;
+     -fx-background-radius: 6px;
+     -fx-padding: 4px 7px;
+     -fx-font-size: 8px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #15803d;
+ }
+
+ .admin-system-value {
+     -fx-font-size: 11px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #334155;
+ }
+
+ .admin-system-progress {
+     -fx-accent: #2563eb;
+ }
+
+ .admin-system-progress > .track {
+     -fx-background-color: #e2e8f0;
+     -fx-background-radius: 10px;
+ }
+
+ .admin-system-progress > .bar {
+     -fx-background-radius: 10px;
+     -fx-background-insets: 0;
+ }
+
+ .admin-online-value {
+     -fx-font-size: 22px;
+     -fx-font-weight: bold;
+     -fx-text-fill: #0f172a;
+ }
+
+
+ /* STATUS HASIL APPROVAL */
+
+ .admin-status-approved,
+ .admin-status-rejected {
+     -fx-background-radius: 7px;
+     -fx-padding: 5px 9px;
+     -fx-font-size: 8px;
+     -fx-font-weight: bold;
+ }
+
+ .admin-status-approved {
+     -fx-background-color: #dcfce7;
+     -fx-text-fill: #15803d;
+ }
+
+ .admin-status-rejected {
+     -fx-background-color: #fee2e2;
+     -fx-text-fill: #dc2626;
+ }
+
+ .admin-campaign-row-approved {
+     -fx-background-color: #f0fdf4;
+     -fx-border-color: #bbf7d0;
+     -fx-border-radius: 10px;
+ }
+
+ .admin-campaign-row-rejected {
+     -fx-background-color: #fff7f7;
+     -fx-border-color: #fecaca;
+     -fx-border-radius: 10px;
+ }
+.upload-description {
+    -fx-font-size: 9px;
+    -fx-text-fill: #94a3b8;
+    -fx-text-alignment: center;
+}
+
+.preview-image {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #cbd5e1,
+        #e2e8f0
+    );
+    -fx-background-radius: 9px;
+    -fx-alignment: center;
+    -fx-overflow: hidden;
+}
+
+.preview-image-text {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+}
+
+/* PILIHAN NOMINAL DONASI */
+
+.donation-option-selected {
+    -fx-background-color: #2563eb;
+    -fx-border-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.donation-option-selected:hover {
+    -fx-background-color: #1d4ed8;
+    -fx-text-fill: white;
+}
+
+.detail-custom-amount {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-padding: 0 13px;
+    -fx-font-size: 11px;
+    -fx-text-fill: #0f172a;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.detail-custom-amount:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+/* ==================================================
+   SEARCH DAN FILTER CAMPAIGN
+   ================================================== */
+
+.campaign-search-field,
+.campaign-filter-combobox {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-font-size: 11px;
+    -fx-text-fill: #0f172a;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.campaign-search-field {
+    -fx-padding: 0 13px;
+}
+
+.campaign-search-field:focused,
+.campaign-filter-combobox:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+}
+
+.campaign-reset-filter {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 15px;
+    -fx-cursor: hand;
+}
+
+.campaign-reset-filter:hover {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #334155;
+}
+
+.campaign-result-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+    -fx-alignment: center-right;
+}
+
+.campaign-empty-state {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 30px;
+}
+
+.campaign-empty-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.campaign-empty-description {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* ==================================================
+   FILTER RIWAYAT DONASI
+   ================================================== */
+
+.history-result-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+    -fx-alignment: center-right;
+}
+
+.history-empty-state {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 14px;
+    -fx-padding: 30px;
+}
+
+.history-empty-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.history-empty-description {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+    -fx-text-alignment: center;
+}
