@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefWidth="1200.0"
+      prefHeight="720.0"
+      styleClass="detail-page-root">
+
+    <stylesheets>
+        <URL value="@../css/style.css"/>
+    </stylesheets>
+
+    <children>
+
+        <!-- SIDEBAR -->
+        <VBox minWidth="240.0"
+              prefWidth="240.0"
+              maxWidth="240.0"
+              prefHeight="720.0"
+              HBox.hgrow="NEVER"
+              spacing="10.0"
+              styleClass="sidebar">
+
+            <padding>
+                <Insets top="30.0"
+                        right="24.0"
+                        bottom="24.0"
+                        left="24.0"/>
+            </padding>
+
+            <children>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0">
+
+                    <children>
+
+                        <Label text="C"
+                               alignment="CENTER"
+                               styleClass="sidebar-logo"/>
+
+                        <VBox spacing="1.0">
+
+                            <children>
+
+                                <Label text="CrowdCare"
+                                       styleClass="sidebar-title"/>
+
+                                <Label text="Crowdfunding"
+                                       styleClass="sidebar-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <Region prefHeight="28.0"/>
+
+                <Label text="MENU UTAMA"
+                       styleClass="menu-caption"/>
+
+                <Button text="Dashboard"
+                        onAction="#openDashboard"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Campaign"
+                        onAction="#openCampaigns"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button-active"/>
+
+                <Button text="Buat Campaign"
+                        onAction="#openCreateCampaign"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Riwayat Donasi"
+                        onAction="#openDonationHistory"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Region prefHeight="18.0"/>
+
+                <Label text="AKUN"
+                       styleClass="menu-caption"/>
+
+                <Button text="Profil Saya"
+                        onAction="#showProfile"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Pengaturan"
+                        onAction="#showSettings"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Button text="Keluar"
+                        onAction="#logout"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="logout-button"/>
+
+            </children>
+        </VBox>
+
+        <!-- KONTEN UTAMA -->
+        <VBox minWidth="0.0"
+              prefHeight="720.0"
+              HBox.hgrow="ALWAYS"
+              styleClass="detail-page-main">
+
+            <children>
+
+                <!-- HEADER -->
+                <HBox prefHeight="82.0"
+                      alignment="CENTER_LEFT"
+                      styleClass="dashboard-header">
+
+                    <padding>
+                        <Insets top="18.0"
+                                right="30.0"
+                                bottom="18.0"
+                                left="30.0"/>
+                    </padding>
+
+                    <children>
+
+                        <VBox spacing="3.0">
+
+                            <children>
+
+                                <Label text="Detail Campaign"
+                                       styleClass="dashboard-title"/>
+
+                                <Label text="Informasi lengkap mengenai campaign."
+                                       styleClass="dashboard-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <Button text="← Kembali"
+                                onAction="#openCampaigns"
+                                prefHeight="38.0"
+                                styleClass="detail-back-button"/>
+
+                    </children>
+                </HBox>
+
+                <!-- AREA SCROLL -->
+                <ScrollPane fitToWidth="true"
+                            hbarPolicy="NEVER"
+                            vbarPolicy="AS_NEEDED"
+                            VBox.vgrow="ALWAYS"
+                            styleClass="dashboard-scroll">
+
+                    <content>
+
+                        <VBox spacing="22.0"
+                              styleClass="detail-content">
+
+                            <padding>
+                                <Insets top="28.0"
+                                        right="30.0"
+                                        bottom="38.0"
+                                        left="30.0"/>
+                            </padding>
+
+                            <children>
+
+                                <!-- BAGIAN ATAS -->
+                                <HBox spacing="22.0"
+                                      alignment="TOP_LEFT">
+
+                                    <children>
+
+                                        <!-- INFORMASI CAMPAIGN -->
+                                        <VBox spacing="18.0"
+                                              HBox.hgrow="ALWAYS">
+
+                                            <children>
+
+                                                <!-- GAMBAR -->
+                                                <StackPane prefHeight="280.0"
+                                                           styleClass="detail-cover">
+
+                                                    <children>
+
+                                                        <Label text="PENDIDIKAN"
+                                                               styleClass="detail-cover-category"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <!-- JUDUL -->
+                                                <VBox spacing="9.0"
+                                                      styleClass="detail-main-card">
+
+                                                    <children>
+
+                                                        <Label text="PENDIDIKAN"
+                                                               styleClass="detail-category"/>
+
+                                                        <Label text="Bantu Pendidikan Anak Desa"
+                                                               wrapText="true"
+                                                               styleClass="detail-title"/>
+
+                                                        <Label text="Membantu menyediakan perlengkapan sekolah dan fasilitas belajar yang layak bagi anak-anak di desa terpencil."
+                                                               wrapText="true"
+                                                               styleClass="detail-short-description"/>
+
+                                                        <Separator/>
+
+                                                        <!-- PEMBUAT CAMPAIGN -->
+                                                        <HBox alignment="CENTER_LEFT"
+                                                              spacing="12.0">
+
+                                                            <children>
+
+                                                                <StackPane prefWidth="44.0"
+                                                                           prefHeight="44.0"
+                                                                           styleClass="detail-owner-avatar">
+
+                                                                    <children>
+
+                                                                        <Label text="BS"
+                                                                               styleClass="detail-owner-avatar-text"/>
+
+                                                                    </children>
+                                                                </StackPane>
+
+                                                                <VBox spacing="3.0">
+
+                                                                    <children>
+
+                                                                        <Label text="Dibuat oleh"
+                                                                               styleClass="detail-owner-caption"/>
+
+                                                                        <Label text="Budi Santoso"
+                                                                               styleClass="detail-owner-name"/>
+
+                                                                    </children>
+                                                                </VBox>
+
+                                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                                <Label text="Terverifikasi"
+                                                                       styleClass="verified-label"/>
+
+                                                            </children>
+                                                        </HBox>
+
+                                                    </children>
+                                                </VBox>
+
+                                            </children>
+                                        </VBox>
+
+                                        <!-- KARTU DONASI -->
+                                        <VBox prefWidth="310.0"
+                                              spacing="15.0"
+                                              styleClass="detail-donation-card">
+
+                                            <children>
+
+                                                <Label text="Dana Terkumpul"
+                                                       styleClass="detail-card-caption"/>
+
+                                                <Label text="Rp7.200.000"
+                                                       styleClass="detail-total-amount"/>
+
+                                                <Label text="dari target Rp10.000.000"
+                                                       styleClass="detail-target-text"/>
+
+                                                <ProgressBar progress="0.72"
+                                                             prefWidth="260.0"
+                                                             styleClass="detail-progress"/>
+
+                                                <HBox alignment="CENTER_LEFT">
+
+                                                    <children>
+
+                                                        <VBox spacing="3.0">
+
+                                                            <children>
+
+                                                                <Label text="72%"
+                                                                       styleClass="detail-stat-value"/>
+
+                                                                <Label text="Tercapai"
+                                                                       styleClass="detail-stat-label"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <VBox spacing="3.0"
+                                                              alignment="CENTER">
+
+                                                            <children>
+
+                                                                <Label text="128"
+                                                                       styleClass="detail-stat-value"/>
+
+                                                                <Label text="Donatur"
+                                                                       styleClass="detail-stat-label"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <VBox spacing="3.0"
+                                                              alignment="CENTER_RIGHT">
+
+                                                            <children>
+
+                                                                <Label text="12"
+                                                                       styleClass="detail-stat-value"/>
+
+                                                                <Label text="Hari Lagi"
+                                                                       styleClass="detail-stat-label"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Separator/>
+
+                                                <Label text="Pilih nominal donasi"
+                                                       styleClass="detail-donation-label"/>
+
+                                                <HBox spacing="8.0">
+
+                                                    <children>
+
+                                                        <Button text="Rp25.000"
+                                                                userData="25000"
+                                                                onAction="#handleSelectDonationAmount"
+                                                                maxWidth="Infinity"
+                                                                HBox.hgrow="ALWAYS"
+                                                                styleClass="donation-option-button"/>
+
+                                                        <Button text="Rp50.000"
+                                                                userData="50000"
+                                                                onAction="#handleSelectDonationAmount"
+                                                                maxWidth="Infinity"
+                                                                HBox.hgrow="ALWAYS"
+                                                                styleClass="donation-option-button"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="8.0">
+
+                                                    <children>
+
+                                                        <Button text="Rp100.000"
+                                                                userData="100000"
+                                                                onAction="#handleSelectDonationAmount"
+                                                                maxWidth="Infinity"
+                                                                HBox.hgrow="ALWAYS"
+                                                                styleClass="donation-option-button"/>
+
+                                                        <Button text="Lainnya"
+                                                                onAction="#handleCustomDonation"
+                                                                maxWidth="Infinity"
+                                                                HBox.hgrow="ALWAYS"
+                                                                styleClass="donation-option-button"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <TextField fx:id="customDonationField"
+                                                           promptText="Masukkan nominal donasi"
+                                                           prefWidth="260.0"
+                                                           prefHeight="42.0"
+                                                           visible="false"
+                                                           managed="false"
+                                                           styleClass="detail-custom-amount"/>
+
+                                                <Button text="Donasi Sekarang"
+                                                        onAction="#handleDonation"
+                                                        prefWidth="260.0"
+                                                        prefHeight="46.0"
+                                                        styleClass="detail-donate-button"/>
+
+                                                <Button text="Bagikan Campaign"
+                                                        onAction="#handleShare"
+                                                        prefWidth="260.0"
+                                                        prefHeight="40.0"
+                                                        styleClass="detail-share-button"/>
+
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </HBox>
+
+                                <!-- CERITA CAMPAIGN DAN UPDATE -->
+                                <HBox spacing="22.0"
+                                      alignment="TOP_LEFT"
+                                      fillHeight="false">
+
+                                    <children>
+
+                                        <!-- CERITA -->
+                                        <VBox minWidth="0.0"
+                                              spacing="15.0"
+                                              HBox.hgrow="ALWAYS"
+                                              styleClass="detail-section-card">
+
+                                            <children>
+
+                                                <Label text="Cerita Campaign"
+                                                       styleClass="detail-section-title"/>
+
+                                                <Separator/>
+
+                                                <Label text="Anak-anak di Desa Harapan memiliki semangat belajar yang tinggi. Namun, keterbatasan fasilitas dan perlengkapan sekolah membuat kegiatan belajar mereka belum dapat berjalan dengan maksimal."
+                                                       wrapText="true"
+                                                       styleClass="detail-paragraph"/>
+
+                                                <Label text="Sebagian besar siswa masih menggunakan buku dan alat tulis secara bergantian. Ruang belajar yang tersedia juga membutuhkan meja, kursi, serta beberapa perbaikan agar lebih nyaman digunakan."
+                                                       wrapText="true"
+                                                       styleClass="detail-paragraph"/>
+
+                                                <Label text="Dana yang terkumpul akan digunakan untuk membeli buku, alat tulis, seragam, meja belajar, dan memperbaiki fasilitas sekolah. Dukungan Anda akan sangat berarti bagi masa depan mereka."
+                                                       wrapText="true"
+                                                       styleClass="detail-paragraph"/>
+
+                                                <HBox spacing="12.0"
+                                                      styleClass="detail-allocation-box">
+
+                                                    <children>
+
+                                                        <VBox spacing="5.0"
+                                                              HBox.hgrow="ALWAYS">
+
+                                                            <children>
+
+                                                                <Label text="Rp4.000.000"
+                                                                       styleClass="allocation-value"/>
+
+                                                                <Label text="Perlengkapan sekolah"
+                                                                       styleClass="allocation-label"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <VBox spacing="5.0"
+                                                              HBox.hgrow="ALWAYS">
+
+                                                            <children>
+
+                                                                <Label text="Rp3.500.000"
+                                                                       styleClass="allocation-value"/>
+
+                                                                <Label text="Meja dan kursi"
+                                                                       styleClass="allocation-label"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                        <VBox spacing="5.0"
+                                                              HBox.hgrow="ALWAYS">
+
+                                                            <children>
+
+                                                                <Label text="Rp2.500.000"
+                                                                       styleClass="allocation-value"/>
+
+                                                                <Label text="Perbaikan fasilitas"
+                                                                       styleClass="allocation-label"/>
+
+                                                            </children>
+                                                        </VBox>
+
+                                                    </children>
+                                                </HBox>
+
+                                            </children>
+                                        </VBox>
+
+                                        <!-- UPDATE CAMPAIGN -->
+                                        <VBox minWidth="310.0"
+                                              prefWidth="310.0"
+                                              maxWidth="310.0"
+                                              spacing="14.0"
+                                              HBox.hgrow="NEVER"
+                                              styleClass="detail-section-card">
+
+                                            <children>
+
+                                                <Label text="Update Campaign"
+                                                       styleClass="detail-section-title"/>
+
+                                                <Separator/>
+
+                                                <VBox spacing="7.0"
+                                                      styleClass="update-item">
+
+                                                    <children>
+
+                                                        <Label text="10 Juni 2026"
+                                                               styleClass="update-date"/>
+
+                                                        <Label text="Dana mencapai 72%"
+                                                               styleClass="update-title"/>
+
+                                                        <Label text="Terima kasih kepada seluruh donatur yang telah membantu campaign ini."
+                                                               wrapText="true"
+                                                               styleClass="update-description"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <VBox spacing="7.0"
+                                                      styleClass="update-item">
+
+                                                    <children>
+
+                                                        <Label text="5 Juni 2026"
+                                                               styleClass="update-date"/>
+
+                                                        <Label text="Pembelian buku dimulai"
+                                                               styleClass="update-title"/>
+
+                                                        <Label text="Sebagian dana telah digunakan untuk membeli buku dan alat tulis."
+                                                               wrapText="true"
+                                                               styleClass="update-description"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                                <VBox spacing="7.0"
+                                                      styleClass="update-item">
+
+                                                    <children>
+
+                                                        <Label text="1 Juni 2026"
+                                                               styleClass="update-date"/>
+
+                                                        <Label text="Campaign dipublikasikan"
+                                                               styleClass="update-title"/>
+
+                                                        <Label text="Campaign telah disetujui dan mulai menerima donasi."
+                                                               wrapText="true"
+                                                               styleClass="update-description"/>
+
+                                                    </children>
+                                                </VBox>
+
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </HBox>
+
+                            </children>
+                        </VBox>
+
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+
+    </children>
+</HBox>
