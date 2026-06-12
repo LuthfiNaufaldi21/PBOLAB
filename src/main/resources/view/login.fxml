@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefWidth="1000.0"
+      prefHeight="650.0"
+      styleClass="page-root">
+
+    <stylesheets>
+        <URL value="@../css/style.css"/>
+    </stylesheets>
+
+    <children>
+
+        <!-- =========================
+             PANEL KIRI
+             ========================= -->
+        <VBox prefWidth="450.0"
+              prefHeight="650.0"
+              alignment="CENTER_LEFT"
+              spacing="18.0"
+              styleClass="brand-panel">
+
+            <padding>
+                <Insets top="45.0"
+                        right="60.0"
+                        bottom="35.0"
+                        left="60.0"/>
+            </padding>
+
+            <children>
+
+                <!-- LOGO -->
+                <Label text="C"
+                       alignment="CENTER"
+                       styleClass="brand-logo"/>
+
+                <!-- NAMA APLIKASI -->
+                <Label text="CrowdCare"
+                       styleClass="brand-title"/>
+
+                <Label text="Bersama membantu, bersama memberi harapan."
+                       wrapText="true"
+                       prefWidth="320.0"
+                       styleClass="brand-description"/>
+
+                <!-- =========================
+                     CAMPAIGN STORY
+                     ========================= -->
+                <VBox spacing="12.0"
+                      prefWidth="320.0"
+                      styleClass="story-section">
+
+                    <children>
+
+                        <!-- JUDUL STORY -->
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <Label text="Campaign Sedang Berjalan"
+                                       styleClass="story-heading"/>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <Label text="Highlight"
+                                       styleClass="story-highlight"/>
+
+                            </children>
+                        </HBox>
+
+                        <!-- TEMPAT SEMUA SLIDE -->
+                        <StackPane prefWidth="320.0"
+                                   prefHeight="215.0">
+
+                            <children>
+
+                                <!-- =========================
+                                     SLIDE 1
+                                     ========================= -->
+                                <VBox fx:id="slide1"
+                                      prefWidth="320.0"
+                                      prefHeight="215.0"
+                                      spacing="11.0"
+                                      styleClass="story-card-blue">
+
+                                    <padding>
+                                        <Insets top="20.0"
+                                                right="20.0"
+                                                bottom="20.0"
+                                                left="20.0"/>
+                                    </padding>
+
+                                    <children>
+
+                                        <Label text="PENDIDIKAN"
+                                               styleClass="story-category"/>
+
+                                        <Label text="Bantu Pendidikan Anak Desa"
+                                               wrapText="true"
+                                               styleClass="story-title"/>
+
+                                        <Label text="Bantu anak-anak mendapatkan perlengkapan sekolah yang layak."
+                                               wrapText="true"
+                                               styleClass="story-description"/>
+
+                                        <Region VBox.vgrow="ALWAYS"/>
+
+                                        <Label text="Rp7.200.000 dari Rp10.000.000"
+                                               styleClass="story-amount"/>
+
+                                        <ProgressBar progress="0.72"
+                                                     prefWidth="280.0"
+                                                     styleClass="story-progress"/>
+
+                                        <HBox alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <Label text="72% tercapai"
+                                                       styleClass="story-meta"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label text="12 hari lagi"
+                                                       styleClass="story-meta"/>
+
+                                            </children>
+                                        </HBox>
+
+                                    </children>
+                                </VBox>
+
+                                <!-- =========================
+                                     SLIDE 2
+                                     ========================= -->
+                                <VBox fx:id="slide2"
+                                      visible="false"
+                                      managed="false"
+                                      opacity="0.0"
+                                      prefWidth="320.0"
+                                      prefHeight="215.0"
+                                      spacing="11.0"
+                                      styleClass="story-card-green">
+
+                                    <padding>
+                                        <Insets top="20.0"
+                                                right="20.0"
+                                                bottom="20.0"
+                                                left="20.0"/>
+                                    </padding>
+
+                                    <children>
+
+                                        <Label text="KESEHATAN"
+                                               styleClass="story-category"/>
+
+                                        <Label text="Bantuan Operasi untuk Raka"
+                                               wrapText="true"
+                                               styleClass="story-title"/>
+
+                                        <Label text="Mari membantu biaya operasi dan perawatan kesehatan Raka."
+                                               wrapText="true"
+                                               styleClass="story-description"/>
+
+                                        <Region VBox.vgrow="ALWAYS"/>
+
+                                        <Label text="Rp12.600.000 dari Rp20.000.000"
+                                               styleClass="story-amount"/>
+
+                                        <ProgressBar progress="0.63"
+                                                     prefWidth="280.0"
+                                                     styleClass="story-progress"/>
+
+                                        <HBox alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <Label text="63% tercapai"
+                                                       styleClass="story-meta"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label text="20 hari lagi"
+                                                       styleClass="story-meta"/>
+
+                                            </children>
+                                        </HBox>
+
+                                    </children>
+                                </VBox>
+
+                                <!-- =========================
+                                     SLIDE 3
+                                     ========================= -->
+                                <VBox fx:id="slide3"
+                                      visible="false"
+                                      managed="false"
+                                      opacity="0.0"
+                                      prefWidth="320.0"
+                                      prefHeight="215.0"
+                                      spacing="11.0"
+                                      styleClass="story-card-orange">
+
+                                    <padding>
+                                        <Insets top="20.0"
+                                                right="20.0"
+                                                bottom="20.0"
+                                                left="20.0"/>
+                                    </padding>
+
+                                    <children>
+
+                                        <Label text="SOSIAL"
+                                               styleClass="story-category"/>
+
+                                        <Label text="Renovasi Rumah Ibadah"
+                                               wrapText="true"
+                                               styleClass="story-title"/>
+
+                                        <Label text="Bantu memperbaiki rumah ibadah yang mengalami kerusakan."
+                                               wrapText="true"
+                                               styleClass="story-description"/>
+
+                                        <Region VBox.vgrow="ALWAYS"/>
+
+                                        <Label text="Rp8.500.000 dari Rp10.000.000"
+                                               styleClass="story-amount"/>
+
+                                        <ProgressBar progress="0.85"
+                                                     prefWidth="280.0"
+                                                     styleClass="story-progress"/>
+
+                                        <HBox alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <Label text="85% tercapai"
+                                                       styleClass="story-meta"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label text="7 hari lagi"
+                                                       styleClass="story-meta"/>
+
+                                            </children>
+                                        </HBox>
+
+                                    </children>
+                                </VBox>
+
+
+                            </children>
+                        </StackPane>
+
+                        <!-- NAVIGASI CAMPAIGN STORY -->
+                        <HBox prefWidth="320.0"
+                              alignment="CENTER"
+                              spacing="10.0">
+
+                            <children>
+
+                                <Button text="‹"
+                                        onAction="#handlePreviousSlide"
+                                        focusTraversable="false"
+                                        styleClass="story-nav-button"/>
+
+                                <Button fx:id="dot1"
+                                        onAction="#handleSlide1"
+                                        focusTraversable="false"
+                                        styleClass="story-dot-active"/>
+
+                                <Button fx:id="dot2"
+                                        onAction="#handleSlide2"
+                                        focusTraversable="false"
+                                        styleClass="story-dot"/>
+
+                                <Button fx:id="dot3"
+                                        onAction="#handleSlide3"
+                                        focusTraversable="false"
+                                        styleClass="story-dot"/>
+
+                                <Button text="›"
+                                        onAction="#handleNextSlide"
+                                        focusTraversable="false"
+                                        styleClass="story-nav-button"/>
+
+                            </children>
+                        </HBox>
+
+                    </children>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Label text="Platform crowdfunding untuk membantu sesama."
+                       wrapText="true"
+                       prefWidth="320.0"
+                       styleClass="brand-footer"/>
+
+            </children>
+        </VBox>
+
+        <!-- =========================
+             PANEL KANAN
+             ========================= -->
+        <StackPane prefWidth="550.0"
+                   prefHeight="650.0"
+                   HBox.hgrow="ALWAYS"
+                   styleClass="form-panel">
+
+            <children>
+
+                <!-- KARTU LOGIN -->
+                <VBox maxWidth="370.0"
+                      prefWidth="370.0"
+                      alignment="CENTER_LEFT"
+                      spacing="12.0"
+                      styleClass="form-card">
+
+                    <padding>
+                        <Insets top="38.0"
+                                right="38.0"
+                                bottom="38.0"
+                                left="38.0"/>
+                    </padding>
+
+                    <children>
+
+                        <Label text="Selamat Datang"
+                               styleClass="form-title"/>
+
+                        <Label text="Masuk untuk melanjutkan ke CrowdCare"
+                               styleClass="form-subtitle"/>
+
+                        <Region prefHeight="10.0"/>
+
+                        <!-- EMAIL -->
+                        <Label text="Email atau Username"
+                               styleClass="input-label"/>
+
+                        <TextField fx:id="emailField"
+                                   promptText="Masukkan email atau username"
+                                   prefWidth="294.0"
+                                   prefHeight="46.0"
+                                   maxWidth="294.0"
+                                   styleClass="form-input"/>
+
+                        <!-- PASSWORD -->
+                        <Label text="Kata Sandi"
+                               styleClass="input-label"/>
+
+                        <PasswordField fx:id="passwordField"
+                                       promptText="Masukkan kata sandi"
+                                       prefWidth="294.0"
+                                       prefHeight="46.0"
+                                       maxWidth="294.0"
+                                       onAction="#handleLogin"
+                                       styleClass="form-input"/>
+
+                        <!-- INGAT SAYA DAN LUPA PASSWORD -->
+                        <HBox prefWidth="294.0"
+                              alignment="CENTER_LEFT"
+                              spacing="10.0">
+
+                            <children>
+
+                                <CheckBox text="Ingat saya"
+                                          styleClass="remember-checkbox"/>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <Hyperlink text="Lupa kata sandi?"
+                                           onAction="#handleForgotPassword"
+                                           styleClass="forgot-link"/>
+
+                            </children>
+                        </HBox>
+
+                        <!-- TOMBOL MASUK -->
+                        <Button fx:id="loginButton"
+                                text="Masuk"
+                                onAction="#handleLogin"
+                                defaultButton="true"
+                                prefWidth="294.0"
+                                prefHeight="46.0"
+                                maxWidth="294.0"
+                                styleClass="login-button"/>
+
+                        <!-- DAFTAR -->
+                        <HBox alignment="CENTER"
+                              prefWidth="294.0"
+                              spacing="5.0">
+
+                            <children>
+
+                                <Label text="Belum memiliki akun?"
+                                       styleClass="register-text"/>
+
+                                <Hyperlink text="Daftar"
+                                           onAction="#handleRegister"
+                                           styleClass="register-link"/>
+
+                            </children>
+                        </HBox>
+
+
+                    </children>
+                </VBox>
+
+
+            </children>
+        </StackPane>
+
+    </children>
+</HBox>
