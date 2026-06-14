@@ -7,6 +7,7 @@ import com.crowdcare.repository.CampaignRepository;
 import com.crowdcare.repository.DonationRepository;
 import com.crowdcare.repository.UserRepository;
 import com.crowdcare.service.CampaignService;
+import com.crowdcare.service.DatabaseUserService;
 import com.crowdcare.session.UserSession;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -17,12 +18,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.springframework.context.ApplicationContext;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +83,25 @@ public class AdminController {
     @FXML private Label lblFundraiserCount;
     @FXML private VBox campaignDanaList;
 
+    // ========================
+    // fx:id — admin-settings.fxml
+    // ========================
+    @FXML private ImageView adminAvatarImage;
+    @FXML private Label adminSettingsAvatar;
+    @FXML private Label adminSettingsName;
+    @FXML private Label adminSettingsRole;
+    @FXML private TextField adminNameField;
+    @FXML private TextField adminEmailField;
+    @FXML private TextField adminPhoneField;
+
+    // ========================
+    // fx:id — admin-manage-users.fxml
+    // ========================
+    @FXML private Label manageTotalUsers;
+    @FXML private Label manageDonorCount;
+    @FXML private Label manageFundraiserCount;
+    @FXML private VBox manageUserListContainer;
+
     // Spring context
     private static ApplicationContext springContext;
 
@@ -95,6 +122,8 @@ public class AdminController {
         loadPendingCampaigns();
         loadUserPage();
         loadReportPage();
+        initializeSettingsPage();
+        loadManageUsersPage();
     }
 
     // ========================
@@ -483,12 +512,135 @@ public class AdminController {
         loadPendingCampaigns();
         loadUserPage();
         loadReportPage();
+        loadManageUsersPage();
         showAlert(Alert.AlertType.INFORMATION, "Data Diperbarui", "Data berhasil dimuat ulang dari database.");
     }
 
     @FXML
-    private void handleAdminSettings() {
-        showAlert(Alert.AlertType.INFORMATION, "Pengaturan Admin", "Fitur pengaturan administrator sedang dalam pengembangan.");
+    private void handleAdminSettings(ActionEvent event) {
+        openAdminPage(event, "/view/admin-settings.fxml", "CrowdCare - Pengaturan Admin");
+    }
+
+    @FXML
+    private void handleManageUsers(ActionEvent event) {
+        openAdminPage(event, "/view/admin-manage-users.fxml", "CrowdCare - Kelola Akun");
+    }
+
+    private void initializeSettingsPage() {
+        User currentUser = UserSession.getInstance().getCurrentUser();
+        if (currentUser == null) return;
+        if (springContext == null) return;
+
+        UserEntity entity = springContext.getBean(DatabaseUserService.class).findEntityById(currentUser.getId());
+        if (entity == null) return;
+
+        loadAdminAvatar(currentUser.getId());
+        if (adminSettingsName != null)
+            adminSettingsName.setText(currentUser.getFullName());
+        if (adminSettingsRole != null)
+            adminSettingsRole.setText(currentUser.getRoleName());
+        if (adminNameField != null)
+            adminNameField.setText(currentUser.getFullName());
+        if (adminEmailField != null)
+            adminEmailField.setText(entity.getEmail() != null ? entity.getEmail() : "");
+        if (adminPhoneField != null)
+            adminPhoneField.setText(entity.getPhone() != null ? entity.getPhone() : "");
+    }
+
+    private void loadAdminAvatar(String userId) {
+        if (springContext == null) return;
+        UserEntity entity = springContext.getBean(DatabaseUserService.class).findEntityById(userId);
+        if (entity == null) return;
+
+        byte[] avatar = entity.getAvatar();
+        if (avatar != null && avatar.length > 0 && adminAvatarImage != null) {
+            try {
+                Image img = new Image(new java.io.ByteArrayInputStream(avatar));
+                adminAvatarImage.setImage(img);
+                adminAvatarImage.setVisible(true);
+                adminAvatarImage.setManaged(true);
+                double w = adminAvatarImage.getFitWidth();
+                double h = adminAvatarImage.getFitHeight();
+                double r = Math.min(w > 0 ? w : 36, h > 0 ? h : 36) / 2.0;
+                Circle clip = new Circle(r);
+                clip.centerXProperty().bind(adminAvatarImage.fitWidthProperty().divide(2));
+                clip.centerYProperty().bind(adminAvatarImage.fitHeightProperty().divide(2));
+                clip.radiusProperty().bind(
+                        javafx.beans.binding.Bindings.min(
+                                adminAvatarImage.fitWidthProperty().divide(2),
+                                adminAvatarImage.fitHeightProperty().divide(2)));
+                adminAvatarImage.setClip(clip);
+                if (adminSettingsAvatar != null) {
+                    adminSettingsAvatar.setVisible(false);
+                    adminSettingsAvatar.setManaged(false);
+                }
+                return;
+            } catch (Exception ignored) {}
+        }
+        if (adminAvatarImage != null) {
+            adminAvatarImage.setVisible(false);
+            adminAvatarImage.setManaged(false);
+        }
+        if (adminSettingsAvatar != null) {
+            adminSettingsAvatar.setVisible(true);
+            adminSettingsAvatar.setManaged(true);
+            User u = UserSession.getInstance().getCurrentUser();
+            adminSettingsAvatar.setText(u != null ? u.getUsername().substring(0, 1).toUpperCase() : "A");
+        }
+    }
+
+    @FXML
+    private void handleAdminChangePhoto() {
+        User currentUser = UserSession.getInstance().getCurrentUser();
+        if (currentUser == null || springContext == null) return;
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Pilih Foto Profil");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Gambar", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        // Cari window dari stage
+        Window win = null;
+        if (adminSettingsAvatar != null && adminSettingsAvatar.getScene() != null) {
+            win = adminSettingsAvatar.getScene().getWindow();
+        }
+        File file = (win != null) ? chooser.showOpenDialog(win) : chooser.showOpenDialog(null);
+        if (file == null) return;
+
+        try {
+            byte[] imageBytes = Files.readAllBytes(file.toPath());
+            DatabaseUserService dbService = springContext.getBean(DatabaseUserService.class);
+            dbService.updateAvatar(currentUser.getId(), imageBytes);
+            loadAdminAvatar(currentUser.getId());
+            showAlert(Alert.AlertType.INFORMATION, "Foto Profil", "Foto profil berhasil diperbarui.");
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR, "Gagal", "Gagal membaca file gambar: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleAdminSaveProfile() {
+        User currentUser = UserSession.getInstance().getCurrentUser();
+        if (currentUser == null || springContext == null) return;
+
+        String name = adminNameField != null ? adminNameField.getText() : currentUser.getFullName();
+        String email = adminEmailField != null ? adminEmailField.getText() : "";
+        String phone = adminPhoneField != null ? adminPhoneField.getText() : "";
+
+        try {
+            DatabaseUserService dbService = springContext.getBean(DatabaseUserService.class);
+            UserEntity updated = dbService.updateUser(currentUser.getId(), name, email, phone, null, null);
+            UserSession.getInstance().login(dbService.toModel(updated));
+
+            if (adminSettingsName != null)
+                adminSettingsName.setText(updated.getFullName());
+
+            showAlert(Alert.AlertType.INFORMATION, "Profil Disimpan",
+                    "Perubahan profil berhasil disimpan.");
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Gagal Menyimpan", e.getMessage());
+        }
     }
 
     @FXML
@@ -531,6 +683,218 @@ public class AdminController {
         } catch (IOException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Gagal Membuka Halaman", e.getMessage());
+        }
+    }
+
+    // ========================
+    // Manage Users Page (Lihat & Hapus)
+    // ========================
+    private void loadManageUsersPage() {
+        if (manageUserListContainer == null || springContext == null) return;
+
+        try {
+            UserRepository userRepo = springContext.getBean(UserRepository.class);
+            List<UserEntity> allUsers = userRepo.findAll();
+
+            Platform.runLater(() -> {
+                manageUserListContainer.getChildren().clear();
+
+                List<UserEntity> filtered = allUsers.stream()
+                        .filter(u -> !"ADMIN".equals(u.getRole()))
+                        .collect(java.util.stream.Collectors.toList());
+
+                long donorCount = filtered.stream().filter(u -> "DONOR".equals(u.getRole())).count();
+                long fundraiserCount = filtered.stream().filter(u -> "FUNDRAISER".equals(u.getRole())).count();
+
+                if (manageTotalUsers != null)
+                    manageTotalUsers.setText(String.valueOf(filtered.size()));
+                if (manageDonorCount != null)
+                    manageDonorCount.setText(String.valueOf(donorCount));
+                if (manageFundraiserCount != null)
+                    manageFundraiserCount.setText(String.valueOf(fundraiserCount));
+
+                if (filtered.isEmpty()) {
+                    Label empty = new Label("Tidak ada akun donatur atau penggalang dana.");
+                    empty.getStyleClass().add("admin-campaign-meta");
+                    empty.setPadding(new javafx.geometry.Insets(16));
+                    manageUserListContainer.getChildren().add(empty);
+                    return;
+                }
+
+                for (UserEntity u : filtered) {
+                    manageUserListContainer.getChildren().add(buildManageUserRow(u));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private HBox buildManageUserRow(UserEntity user) {
+        HBox row = new HBox();
+        row.getStyleClass().add("user-row");
+        row.setAlignment(Pos.CENTER_LEFT);
+        row.setPadding(new javafx.geometry.Insets(12, 16, 12, 16));
+
+        // Avatar
+        StackPane avatar = new StackPane();
+        avatar.setMinWidth(38); avatar.setPrefWidth(38); avatar.setMaxWidth(38);
+        avatar.setPrefHeight(38);
+        avatar.getStyleClass().add("admin-cover-blue");
+        avatar.setStyle("-fx-background-radius: 50%;");
+        String initials = user.getFullName().length() >= 2
+                ? user.getFullName().substring(0, 2).toUpperCase()
+                : user.getFullName().toUpperCase();
+        Label avatarLabel = new Label(initials);
+        avatarLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: white;");
+        avatar.getChildren().add(avatarLabel);
+
+        // Nama + username
+        VBox nameBox = new VBox(2);
+        nameBox.setMinWidth(220); nameBox.setPrefWidth(220); nameBox.setMaxWidth(220);
+        Label nameLabel = new Label(user.getFullName());
+        nameLabel.getStyleClass().add("user-name-label");
+        Label usernameLabel = new Label("@" + user.getUsername());
+        usernameLabel.getStyleClass().add("user-username-label");
+        nameBox.getChildren().addAll(nameLabel, usernameLabel);
+        HBox.setMargin(nameBox, new javafx.geometry.Insets(0, 0, 0, 12));
+
+        // Kontak (email/phone)
+        VBox contactBox = new VBox(2);
+        contactBox.setMinWidth(200); contactBox.setPrefWidth(200); contactBox.setMaxWidth(200);
+        String email = (user.getEmail() != null && !user.getEmail().isBlank()) ? user.getEmail() : "-";
+        String phone = (user.getPhone() != null && !user.getPhone().isBlank()) ? user.getPhone() : "-";
+        Label emailLabel = new Label(email);
+        emailLabel.getStyleClass().add("user-username-label");
+        Label phoneLabel = new Label(phone);
+        phoneLabel.getStyleClass().add("user-username-label");
+        phoneLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: #94a3b8;");
+        contactBox.getChildren().addAll(emailLabel, phoneLabel);
+
+        // Role badge
+        Label roleBadge = new Label(user.getRole());
+        String badgeClass = switch (user.getRole()) {
+            case "DONOR" -> "user-role-badge-donor";
+            case "FUNDRAISER" -> "user-role-badge-fundraiser";
+            default -> "user-role-badge-donor";
+        };
+        roleBadge.getStyleClass().add(badgeClass);
+        roleBadge.setMinWidth(110); roleBadge.setPrefWidth(110);
+
+        // Tanggal daftar
+        VBox dateBox = new VBox(2);
+        dateBox.setMinWidth(130); dateBox.setPrefWidth(130); dateBox.setMaxWidth(130);
+        String dateStr = user.getCreatedAt() != null
+                ? user.getCreatedAt().toLocalDate().toString()
+                : "-";
+        Label dateLabel = new Label(dateStr);
+        dateLabel.getStyleClass().add("user-username-label");
+        Label lastLoginLabel = new Label(user.getLastLogin() != null
+                ? "Login: " + user.getLastLogin().toLocalDate().toString()
+                : "Belum pernah login");
+        lastLoginLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: #94a3b8;");
+        dateBox.getChildren().addAll(dateLabel, lastLoginLabel);
+
+        // Action buttons
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        Button viewBtn = new Button("Lihat");
+        viewBtn.getStyleClass().add("manage-view-button");
+        viewBtn.setPrefHeight(32);
+        viewBtn.setOnAction(e -> handleViewUserDetail(user));
+
+        Button deleteBtn = new Button("Hapus");
+        deleteBtn.getStyleClass().add("manage-delete-button");
+        deleteBtn.setPrefHeight(32);
+        deleteBtn.setOnAction(e -> handleDeleteUserAction(user));
+
+        HBox actionBox = new HBox(8);
+        actionBox.setAlignment(Pos.CENTER_RIGHT);
+        actionBox.getChildren().addAll(viewBtn, deleteBtn);
+
+        row.getChildren().addAll(avatar, nameBox, contactBox, roleBadge, dateBox, spacer, actionBox);
+        return row;
+    }
+
+    private void handleViewUserDetail(UserEntity user) {
+        if (springContext == null) return;
+
+        Alert detail = new Alert(Alert.AlertType.INFORMATION);
+        detail.setTitle("Detail Akun");
+        detail.setHeaderText(user.getFullName() + " (@" + user.getUsername() + ")");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID Akun      : ").append(user.getId()).append("\n");
+        sb.append("Role         : ").append(user.getRole()).append("\n");
+        sb.append("Email        : ").append(user.getEmail() != null ? user.getEmail() : "-").append("\n");
+        sb.append("Telepon      : ").append(user.getPhone() != null ? user.getPhone() : "-").append("\n");
+        sb.append("Alamat       : ").append(user.getAddress() != null ? user.getAddress() : "-").append("\n");
+        sb.append("Bio          : ").append(user.getBio() != null ? user.getBio() : "-").append("\n");
+        sb.append("Terdaftar    : ").append(user.getCreatedAt() != null ? user.getCreatedAt().toString() : "-").append("\n");
+        sb.append("Login Terakhir: ").append(user.getLastLogin() != null ? user.getLastLogin().toString() : "Belum pernah login");
+
+        detail.setContentText(sb.toString());
+        detail.getDialogPane().setMinWidth(400);
+        detail.showAndWait();
+    }
+
+    private void handleDeleteUserAction(UserEntity user) {
+        if (springContext == null) return;
+
+        String roleName = "DONOR".equals(user.getRole()) ? "Donatur" : "Penggalang Dana";
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Hapus Akun");
+        confirm.setHeaderText("Hapus akun " + user.getFullName() + "?");
+        confirm.setContentText("Akun ini adalah seorang " + roleName + ".\n"
+                + "Semua data terkait akun ini akan dihapus secara permanen.\n\n"
+                + "Apakah Anda yakin ingin melanjutkan?");
+
+        ButtonType btnHapus = new ButtonType("Ya, Hapus Akun", ButtonBar.ButtonData.OK_DONE);
+        ButtonType btnBatal = new ButtonType("Batal", ButtonBar.ButtonData.CANCEL_CLOSE);
+        confirm.getButtonTypes().setAll(btnHapus, btnBatal);
+
+        java.util.Optional<ButtonType> result = confirm.showAndWait();
+        if (result.isEmpty() || result.get() != btnHapus) return;
+
+        try {
+            DatabaseUserService dbService = springContext.getBean(DatabaseUserService.class);
+            CampaignRepository campaignRepo = springContext.getBean(CampaignRepository.class);
+            DonationRepository donationRepo = springContext.getBean(DonationRepository.class);
+
+            // Hapus semua donasi yang terkait dengan user (sebagai donor)
+            List<com.crowdcare.entity.DonationEntity> donationsByUser = donationRepo.findByDonorOrderByDonatedAtDesc(user);
+            for (com.crowdcare.entity.DonationEntity d : donationsByUser) {
+                donationRepo.delete(d);
+            }
+
+            // Jika fundraiser, hapus campaign berikut donasi di dalamnya
+            if ("FUNDRAISER".equals(user.getRole())) {
+                List<CampaignEntity> campaigns = campaignRepo.findByCreator(user);
+                for (CampaignEntity c : campaigns) {
+                    // Hapus donasi ke campaign ini
+                    List<com.crowdcare.entity.DonationEntity> campaignDonations = donationRepo.findByCampaignOrderByDonatedAtDesc(c);
+                    for (com.crowdcare.entity.DonationEntity d : campaignDonations) {
+                        donationRepo.delete(d);
+                    }
+                    campaignRepo.delete(c);
+                }
+            }
+
+            dbService.deleteUser(user.getId());
+            loadManageUsersPage();
+            loadDashboardStats();
+
+            Alert success = new Alert(Alert.AlertType.INFORMATION);
+            success.setTitle("Akun Dihapus");
+            success.setHeaderText(null);
+            success.setContentText("Akun " + user.getFullName() + " (" + roleName + ") berhasil dihapus.");
+            success.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Gagal Menghapus",
+                    "Terjadi kesalahan saat menghapus akun: " + e.getMessage());
         }
     }
 

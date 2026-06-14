@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import com.crowdcare.CrowdCareApplication;
 import com.crowdcare.model.User;
 import com.crowdcare.services.UserService;
 import com.crowdcare.session.UserSession;
@@ -140,6 +141,11 @@ public class LoginController {
 
         User authenticatedUser = authenticationResult.get();
         UserSession.getInstance().login(authenticatedUser);
+
+        try {
+            CrowdCareApplication.getContext().getBean(com.crowdcare.service.DatabaseUserService.class)
+                    .updateLastLogin(authenticatedUser.getId());
+        } catch (Exception ignored) {}
 
         try {
             String fxmlPath = authenticatedUser.getDashboardFxml();

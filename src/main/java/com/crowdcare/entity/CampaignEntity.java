@@ -45,6 +45,13 @@ public class CampaignEntity {
     @Column(name = "category", nullable = false)
     private String category;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "image_mime_type")
+    private String imageMimeType;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id", nullable = false)
     private UserEntity creator;
@@ -102,4 +109,10 @@ public class CampaignEntity {
 
     public UserEntity getCreator() { return creator; }
     public void setCreator(UserEntity creator) { this.creator = creator; }
+
+    public byte[] getImage() { return image; }
+    public void setImage(byte[] image) { this.image = image; }
+
+    public String getImageMimeType() { return imageMimeType; }
+    public void setImageMimeType(String imageMimeType) { this.imageMimeType = imageMimeType; }
 }

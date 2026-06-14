@@ -77,6 +77,9 @@
                             </children>
                         </VBox>
                         <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Muat Ulang" onAction="#handleRefresh"
+                                prefHeight="36.0" styleClass="secondary-button"/>
+                        <Region prefWidth="12.0"/>
                         <VBox alignment="CENTER_RIGHT" spacing="2.0">
                             <children>
                                 <Label fx:id="headerNameLabel" text="Nama Penggalang" styleClass="profile-name"/>
@@ -112,28 +115,28 @@
                                         <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
                                             <children>
                                                 <Label text="Campaign Anda Buat" styleClass="stat-label"/>
-                                                <Label text="3 Program" styleClass="stat-value"/>
+                                                <Label fx:id="fundraiserCampaignCountLabel" text="0 Program" styleClass="stat-value"/>
                                                 <Label text="+1 diajukan bulan ini" styleClass="stat-positive"/>
                                             </children>
                                         </VBox>
                                         <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
                                             <children>
                                                 <Label text="Total Dana Terkumpul" styleClass="stat-label"/>
-                                                <Label text="Rp19.800.000" styleClass="stat-value"/>
+                                                <Label fx:id="fundraiserTotalCollectedLabel" text="Rp0" styleClass="stat-value"/>
                                                 <Label text="Dari total target program" styleClass="stat-positive"/>
                                             </children>
                                         </VBox>
                                         <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
                                             <children>
                                                 <Label text="Status Verifikasi Admin" styleClass="stat-label"/>
-                                                <Label text="Aktif / Disetujui" styleClass="stat-value"/>
+                                                <Label fx:id="fundraiserStatusLabel" text="0 aktif" styleClass="stat-value"/>
                                                 <Label text="Tidak ada penangguhan" styleClass="stat-info"/>
                                             </children>
                                         </VBox>
                                         <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
                                             <children>
                                                 <Label text="Donatur Berpartisipasi" styleClass="stat-label"/>
-                                                <Label text="94 Donatur" styleClass="stat-value"/>
+                                                <Label fx:id="fundraiserDonorCountLabel" text="0 Transaksi" styleClass="stat-value"/>
                                                 <Label text="Mendukung program Anda" styleClass="stat-positive"/>
                                             </children>
                                         </VBox>
@@ -152,7 +155,7 @@
                                                         <Region HBox.hgrow="ALWAYS"/>
                                                     </children>
                                                 </HBox>
-                                                <HBox spacing="16.0">
+                                                <HBox fx:id="fundraiserCampaignBox" spacing="16.0">
                                                     <children>
                                                         <VBox prefWidth="285.0" spacing="11.0" HBox.hgrow="ALWAYS" styleClass="campaign-card">
                                                             <children>
@@ -184,7 +187,7 @@
                                             <children>
                                                 <Label text="Tindakan Cepat" styleClass="section-title"/>
                                                 <Label text="Butuh Dana Tambahan?" styleClass="donation-target"/>
-                                                <Label text="Ajukan program penggalangan baru untuk diverifikasi admin." wrapText="true" styleClass="campaign-small-label"/>
+                                                <Label fx:id="fundraiserQuickStatusLabel" text="Ajukan program penggalangan baru untuk diverifikasi admin." wrapText="true" styleClass="campaign-small-label"/>
                                                 <Separator/>
                                                 <Button text="Buat Penggalangan Baru" onAction="#openCreateCampaign" prefWidth="220.0" prefHeight="42.0" styleClass="primary-dashboard-button"/>
                                             </children>

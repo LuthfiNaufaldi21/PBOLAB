@@ -9,6 +9,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
@@ -215,10 +216,12 @@
                                                    styleClass="settings-avatar">
 
                                             <children>
-
-                                                <Label text="AR"
+                                                <ImageView fx:id="settingsAvatarImage" fitWidth="62.0"
+                                                           fitHeight="62.0" preserveRatio="true"
+                                                           visible="false" managed="false"
+                                                           styleClass="settings-avatar-image"/>
+                                                <Label fx:id="settingsAvatarText" text="AR"
                                                        styleClass="settings-avatar-text"/>
-
                                             </children>
                                         </StackPane>
 
@@ -227,10 +230,10 @@
 
                                             <children>
 
-                                                <Label text="Argha"
+                                                <Label fx:id="settingsAccountNameLabel" text="Argha"
                                                        styleClass="settings-account-name"/>
 
-                                                <Label text="argha@example.com"
+                                                <Label fx:id="settingsAccountEmailLabel" text="argha@example.com"
                                                        styleClass="settings-account-email"/>
 
                                             </children>
@@ -290,10 +293,10 @@
                                                             </children>
                                                         </VBox>
 
-                                                        <ComboBox promptText="Bahasa Indonesia"
-                                                                  prefWidth="190.0"
-                                                                  prefHeight="42.0"
-                                                                  styleClass="settings-combobox"/>
+                                                        <ComboBox fx:id="settingsLanguageCombo" promptText="Bahasa Indonesia"
+                                                                   prefWidth="190.0"
+                                                                   prefHeight="42.0"
+                                                                   styleClass="settings-combobox"/>
 
                                                     </children>
                                                 </HBox>
@@ -318,8 +321,8 @@
                                                             </children>
                                                         </VBox>
 
-                                                        <CheckBox text="Aktifkan"
-                                                                  styleClass="settings-checkbox"/>
+                                                        <CheckBox fx:id="settingsDarkModeCheck" text="Aktifkan"
+                                                                   styleClass="settings-checkbox"/>
 
                                                     </children>
                                                 </HBox>
@@ -344,9 +347,9 @@
                                                             </children>
                                                         </VBox>
 
-                                                        <CheckBox text="Aktif"
-                                                                  selected="true"
-                                                                  styleClass="settings-checkbox"/>
+                                                        <CheckBox fx:id="settingsAnimationCheck" text="Aktif"
+                                                                   selected="true"
+                                                                   styleClass="settings-checkbox"/>
 
                                                     </children>
                                                 </HBox>
@@ -379,22 +382,22 @@
 
                                                 <Separator/>
 
-                                                <CheckBox text="Notifikasi campaign baru"
+                                                <CheckBox fx:id="settingsNotifNewCampaign" text="Notifikasi campaign baru"
                                                           selected="true"
                                                           styleClass="settings-notification-check"/>
 
-                                                <CheckBox text="Perkembangan campaign"
+                                                <CheckBox fx:id="settingsNotifProgress" text="Perkembangan campaign"
                                                           selected="true"
                                                           styleClass="settings-notification-check"/>
 
-                                                <CheckBox text="Status donasi"
+                                                <CheckBox fx:id="settingsNotifDonasi" text="Status donasi"
                                                           selected="true"
                                                           styleClass="settings-notification-check"/>
 
-                                                <CheckBox text="Email promosi"
+                                                <CheckBox fx:id="settingsNotifPromo" text="Email promosi"
                                                           styleClass="settings-notification-check"/>
 
-                                                <CheckBox text="Pengingat campaign"
+                                                <CheckBox fx:id="settingsNotifReminder" text="Pengingat campaign"
                                                           selected="true"
                                                           styleClass="settings-notification-check"/>
 
@@ -452,9 +455,9 @@
                                                         <Label text="Kata Sandi Saat Ini"
                                                                styleClass="settings-input-label"/>
 
-                                                        <PasswordField promptText="Masukkan kata sandi saat ini"
-                                                                       prefHeight="44.0"
-                                                                       styleClass="settings-input"/>
+                                                        <PasswordField fx:id="settingsOldPasswordField" promptText="Masukkan kata sandi saat ini"
+                                                                        prefHeight="44.0"
+                                                                        styleClass="settings-input"/>
 
                                                     </children>
                                                 </VBox>
@@ -467,9 +470,9 @@
                                                         <Label text="Kata Sandi Baru"
                                                                styleClass="settings-input-label"/>
 
-                                                        <PasswordField promptText="Minimal 6 karakter"
-                                                                       prefHeight="44.0"
-                                                                       styleClass="settings-input"/>
+                                                        <PasswordField fx:id="settingsNewPasswordField" promptText="Minimal 6 karakter"
+                                                                        prefHeight="44.0"
+                                                                        styleClass="settings-input"/>
 
                                                     </children>
                                                 </VBox>
@@ -482,9 +485,9 @@
                                                         <Label text="Konfirmasi Kata Sandi"
                                                                styleClass="settings-input-label"/>
 
-                                                        <PasswordField promptText="Ulangi kata sandi baru"
-                                                                       prefHeight="44.0"
-                                                                       styleClass="settings-input"/>
+                                                        <PasswordField fx:id="settingsConfirmPasswordField" promptText="Ulangi kata sandi baru"
+                                                                        prefHeight="44.0"
+                                                                        styleClass="settings-input"/>
 
                                                     </children>
                                                 </VBox>
@@ -526,15 +529,15 @@
 
                                                 <Separator/>
 
-                                                <CheckBox text="Tampilkan nama pada daftar donatur"
+                                                <CheckBox fx:id="settingsPrivacyShowName" text="Tampilkan nama pada daftar donatur"
                                                           selected="true"
                                                           styleClass="settings-notification-check"/>
 
-                                                <CheckBox text="Izinkan pengguna melihat profil saya"
+                                                <CheckBox fx:id="settingsPrivacyShowProfile" text="Izinkan pengguna melihat profil saya"
                                                           selected="true"
                                                           styleClass="settings-notification-check"/>
 
-                                                <CheckBox text="Sembunyikan jumlah donasi"
+                                                <CheckBox fx:id="settingsPrivacyHideAmount" text="Sembunyikan jumlah donasi"
                                                           styleClass="settings-notification-check"/>
 
                                             </children>
