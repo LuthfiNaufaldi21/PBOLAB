@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- TEMA EDIT KHUSUS FUNDRAISER - MENGGUNAKAN BASIS KODE TIM YANG SAMA -->
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<!-- Tag layouting dipastikan terstruktur rapi -->
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefWidth="1200.0"
+      prefHeight="720.0"
+      styleClass="dashboard-root">
+
+    <stylesheets>
+        <URL value="@../css/style.css"/>
+    </stylesheets>
+
+    <children>
+        <!-- SIDEBAR -->
+        <VBox minWidth="240.0" prefWidth="240.0" maxWidth="240.0" prefHeight="720.0" HBox.hgrow="NEVER" spacing="10.0" styleClass="sidebar">
+            <padding>
+                <Insets top="30.0" right="24.0" bottom="24.0" left="24.0"/>
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="sidebar-brand">
+                    <children>
+                        <Label text="C" alignment="CENTER" styleClass="sidebar-logo"/>
+                        <VBox spacing="1.0">
+                            <children>
+                                <Label text="CrowdCare" styleClass="sidebar-title"/>
+                                <Label text="Fundraising" styleClass="sidebar-subtitle"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <Region prefHeight="28.0"/>
+                <Label text="MENU UTAMA" styleClass="menu-caption"/>
+                <Button text="Dashboard" onAction="#openDashboard" prefWidth="192.0" prefHeight="44.0" alignment="CENTER_LEFT" styleClass="nav-button-active"/>
+                <Button text="Campaign" onAction="#openCampaigns" prefWidth="192.0" prefHeight="44.0" alignment="CENTER_LEFT" styleClass="nav-button"/>
+
+                <!-- ID dipertahankan agar controller adaptif bisa membaca penyesuaian hak akses -->
+                <Button fx:id="btnCreateCampaign" text="Buat Campaign" onAction="#openCreateCampaign" prefWidth="192.0" prefHeight="44.0" alignment="CENTER_LEFT" styleClass="nav-button"/>
+                <Button fx:id="btnDonationHistory" text="Riwayat Donasi" onAction="#openDonationHistory" prefWidth="192.0" prefHeight="44.0" alignment="CENTER_LEFT" styleClass="nav-button"/>
+
+                <Region prefHeight="18.0"/>
+                <Label text="AKUN" styleClass="menu-caption"/>
+                <Button text="Profil Saya" onAction="#showProfile" prefWidth="192.0" prefHeight="44.0" alignment="CENTER_LEFT" styleClass="nav-button"/>
+                <Button text="Pengaturan" onAction="#showSettings" prefWidth="192.0" prefHeight="44.0" alignment="CENTER_LEFT" styleClass="nav-button"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Separator styleClass="sidebar-separator"/>
+                <Button text="Keluar" onAction="#logout" prefWidth="192.0" prefHeight="44.0" alignment="CENTER_LEFT" styleClass="logout-button"/>
+            </children>
+        </VBox>
+
+        <!-- KONTEN UTAMA -->
+        <VBox prefHeight="720.0" HBox.hgrow="ALWAYS" styleClass="dashboard-main">
+            <children>
+                <!-- HEADER -->
+                <HBox prefHeight="82.0" alignment="CENTER_LEFT" spacing="15.0" styleClass="dashboard-header">
+                    <padding>
+                        <Insets top="18.0" right="30.0" bottom="18.0" left="30.0"/>
+                    </padding>
+                    <children>
+                        <VBox spacing="3.0">
+                            <children>
+                                <Label text="Dashboard Penggalang Dana" styleClass="dashboard-title"/>
+                                <Label text="Kelola program bantuan dan pantau dana masuk." styleClass="dashboard-subtitle"/>
+                            </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <VBox alignment="CENTER_RIGHT" spacing="2.0">
+                            <children>
+                                <Label fx:id="headerNameLabel" text="Nama Penggalang" styleClass="profile-name"/>
+                                <Label fx:id="headerRoleLabel" text="Penggalang Dana" styleClass="profile-role"/>
+                            </children>
+                        </VBox>
+                        <StackPane prefWidth="44.0" prefHeight="44.0" styleClass="profile-avatar">
+                            <children>
+                                <Label fx:id="avatarText" text="PD" styleClass="avatar-text"/>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+
+                <!-- ISI DASHBOARD -->
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS" styleClass="dashboard-scroll">
+                    <content>
+                        <VBox spacing="24.0" styleClass="dashboard-content">
+                            <padding>
+                                <Insets top="28.0" right="28.0" bottom="35.0" left="28.0"/>
+                            </padding>
+                            <children>
+                                <VBox spacing="4.0">
+                                    <children>
+                                        <Label fx:id="welcomeTitleLabel" text="Selamat datang, Penggalang Dana!" styleClass="welcome-title"/>
+                                        <Label text="Pantau total dana terkumpul untuk seluruh program buatan Anda." styleClass="welcome-subtitle"/>
+                                    </children>
+                                </VBox>
+
+                                <!-- KARTU STATISTIK KHUSUS FUNDRAISER -->
+                                <HBox spacing="16.0">
+                                    <children>
+                                        <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                                            <children>
+                                                <Label text="Campaign Anda Buat" styleClass="stat-label"/>
+                                                <Label text="3 Program" styleClass="stat-value"/>
+                                                <Label text="+1 diajukan bulan ini" styleClass="stat-positive"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                                            <children>
+                                                <Label text="Total Dana Terkumpul" styleClass="stat-label"/>
+                                                <Label text="Rp19.800.000" styleClass="stat-value"/>
+                                                <Label text="Dari total target program" styleClass="stat-positive"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                                            <children>
+                                                <Label text="Status Verifikasi Admin" styleClass="stat-label"/>
+                                                <Label text="Aktif / Disetujui" styleClass="stat-value"/>
+                                                <Label text="Tidak ada penangguhan" styleClass="stat-info"/>
+                                            </children>
+                                        </VBox>
+                                        <VBox prefWidth="210.0" spacing="8.0" HBox.hgrow="ALWAYS" styleClass="stat-card">
+                                            <children>
+                                                <Label text="Donatur Berpartisipasi" styleClass="stat-label"/>
+                                                <Label text="94 Donatur" styleClass="stat-value"/>
+                                                <Label text="Mendukung program Anda" styleClass="stat-positive"/>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <!-- MONITORING UTAMA -->
+                                <HBox spacing="20.0" alignment="TOP_LEFT">
+                                    <children>
+                                        <!-- PROGRAM YANG SEDANG JALAN -->
+                                        <VBox spacing="16.0" HBox.hgrow="ALWAYS" styleClass="content-section">
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT">
+                                                    <children>
+                                                        <Label text="Monitoring Progress Campaign Anda" styleClass="section-title"/>
+                                                        <Region HBox.hgrow="ALWAYS"/>
+                                                    </children>
+                                                </HBox>
+                                                <HBox spacing="16.0">
+                                                    <children>
+                                                        <VBox prefWidth="285.0" spacing="11.0" HBox.hgrow="ALWAYS" styleClass="campaign-card">
+                                                            <children>
+                                                                <StackPane prefHeight="105.0" styleClass="campaign-image-blue"><children><Label text="PENDIDIKAN" styleClass="campaign-category"/></children></StackPane>
+                                                                <Label text="Bantu Pendidikan Anak Desa" wrapText="true" styleClass="campaign-title"/>
+                                                                <Label text="Progress Masuk" styleClass="campaign-small-label"/>
+                                                                <Label text="Rp7.200.000 dari Rp10.000.000" styleClass="campaign-amount"/>
+                                                                <ProgressBar progress="0.72" prefWidth="250.0" styleClass="campaign-progress"/>
+                                                                <HBox alignment="CENTER_LEFT"><children><Label text="72% target terpenuhi" styleClass="campaign-percentage"/><Region HBox.hgrow="ALWAYS"/><Label text="12 hari sisa" styleClass="campaign-days"/></children></HBox>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox prefWidth="285.0" spacing="11.0" HBox.hgrow="ALWAYS" styleClass="campaign-card">
+                                                            <children>
+                                                                <StackPane prefHeight="105.0" styleClass="campaign-image-green"><children><Label text="KESEHATAN" styleClass="campaign-category"/></children></StackPane>
+                                                                <Label text="Bantuan Operasi untuk Raka" wrapText="true" styleClass="campaign-title"/>
+                                                                <Label text="Progress Masuk" styleClass="campaign-small-label"/>
+                                                                <Label text="Rp12.600.000 dari Rp20.000.000" styleClass="campaign-amount"/>
+                                                                <ProgressBar progress="0.63" prefWidth="250.0" styleClass="campaign-progress"/>
+                                                                <HBox alignment="CENTER_LEFT"><children><Label text="63% target terpenuhi" styleClass="campaign-percentage"/><Region HBox.hgrow="ALWAYS"/><Label text="20 hari sisa" styleClass="campaign-days"/></children></HBox>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+
+                                        <!-- AKSES SINGKAT -->
+                                        <VBox prefWidth="270.0" spacing="14.0" styleClass="donation-summary">
+                                            <children>
+                                                <Label text="Tindakan Cepat" styleClass="section-title"/>
+                                                <Label text="Butuh Dana Tambahan?" styleClass="donation-target"/>
+                                                <Label text="Ajukan program penggalangan baru untuk diverifikasi admin." wrapText="true" styleClass="campaign-small-label"/>
+                                                <Separator/>
+                                                <Button text="Buat Penggalangan Baru" onAction="#openCreateCampaign" prefWidth="220.0" prefHeight="42.0" styleClass="primary-dashboard-button"/>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </children>
+</HBox>

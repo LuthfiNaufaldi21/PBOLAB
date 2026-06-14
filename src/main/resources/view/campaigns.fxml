@@ -26,7 +26,6 @@
 
     <children>
 
-        <!-- SIDEBAR -->
         <VBox minWidth="240.0"
               prefWidth="240.0"
               maxWidth="240.0"
@@ -88,14 +87,16 @@
                         alignment="CENTER_LEFT"
                         styleClass="nav-button-active"/>
 
-                <Button text="Buat Campaign"
+                <Button fx:id="btnCreateCampaign"
+                        text="Buat Campaign"
                         onAction="#openCreateCampaign"
                         prefWidth="192.0"
                         prefHeight="44.0"
                         alignment="CENTER_LEFT"
                         styleClass="nav-button"/>
 
-                <Button text="Riwayat Donasi"
+                <Button fx:id="btnDonationHistory"
+                        text="Riwayat Donasi"
                         onAction="#openDonationHistory"
                         prefWidth="192.0"
                         prefHeight="44.0"
@@ -133,7 +134,6 @@
             </children>
         </VBox>
 
-        <!-- KONTEN UTAMA -->
         <VBox minWidth="0.0"
               prefHeight="720.0"
               HBox.hgrow="ALWAYS"
@@ -141,7 +141,6 @@
 
             <children>
 
-                <!-- HEADER -->
                 <HBox prefHeight="82.0"
                       alignment="CENTER_LEFT"
                       styleClass="dashboard-header">
@@ -170,7 +169,8 @@
 
                         <Region HBox.hgrow="ALWAYS"/>
 
-                        <Button text="+ Buat Campaign"
+                        <Button fx:id="btnHeaderCreateCampaign"
+                                text="+ Buat Campaign"
                                 onAction="#openCreateCampaign"
                                 prefHeight="40.0"
                                 styleClass="create-campaign-button"/>
@@ -178,7 +178,6 @@
                     </children>
                 </HBox>
 
-                <!-- AREA SCROLL -->
                 <ScrollPane fitToWidth="true"
                             hbarPolicy="NEVER"
                             vbarPolicy="AS_NEEDED"
@@ -199,7 +198,6 @@
 
                             <children>
 
-                                <!-- PENCARIAN DAN FILTER -->
                                 <HBox alignment="CENTER_LEFT"
                                       spacing="12.0"
                                       styleClass="campaign-filter-card">
@@ -231,7 +229,6 @@
                                     </children>
                                 </HBox>
 
-                                <!-- GRID CAMPAIGN -->
                                 <TilePane fx:id="campaignGrid"
                                           prefColumns="3"
                                           hgap="18.0"
@@ -240,7 +237,6 @@
 
                                     <children>
 
-                                        <!-- CAMPAIGN 1 -->
                                         <VBox fx:id="campaignCard1"
                                               prefWidth="275.0"
                                               spacing="11.0"
@@ -298,7 +294,6 @@
                                             </children>
                                         </VBox>
 
-                                        <!-- CAMPAIGN 2 -->
                                         <VBox fx:id="campaignCard2"
                                               prefWidth="275.0"
                                               spacing="11.0"
@@ -356,7 +351,6 @@
                                             </children>
                                         </VBox>
 
-                                        <!-- CAMPAIGN 3 -->
                                         <VBox fx:id="campaignCard3"
                                               prefWidth="275.0"
                                               spacing="11.0"
@@ -414,7 +408,6 @@
                                             </children>
                                         </VBox>
 
-                                        <!-- CAMPAIGN 4 -->
                                         <VBox fx:id="campaignCard4"
                                               prefWidth="275.0"
                                               spacing="11.0"
@@ -472,7 +465,6 @@
                                             </children>
                                         </VBox>
 
-                                        <!-- CAMPAIGN 5 -->
                                         <VBox fx:id="campaignCard5"
                                               prefWidth="275.0"
                                               spacing="11.0"
@@ -530,7 +522,6 @@
                                             </children>
                                         </VBox>
 
-                                        <!-- CAMPAIGN 6 -->
                                         <VBox fx:id="campaignCard6"
                                               prefWidth="275.0"
                                               spacing="11.0"
@@ -591,7 +582,6 @@
                                     </children>
                                 </TilePane>
 
-                                <!-- PESAN JIKA HASIL KOSONG -->
                                 <VBox fx:id="campaignEmptyState"
                                       visible="false"
                                       managed="false"

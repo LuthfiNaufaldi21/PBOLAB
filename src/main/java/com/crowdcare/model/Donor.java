@@ -45,7 +45,7 @@ public class Donor extends User {
 
     @Override
     public String getDashboardFxml() {
-        return "/view/dashboard.fxml";
+        return "/view/dashboard-donor.fxml";
     }
 
     @Override
@@ -58,9 +58,13 @@ public class Donor extends User {
         return true;
     }
 
+    /*
+     * FIX: Donor tidak bisa membuat campaign.
+     * Hanya Fundraiser yang bisa membuat campaign.
+     */
     @Override
     public boolean canCreateCampaign() {
-        return true;
+        return false;
     }
 
     @Override

@@ -23,7 +23,6 @@
 
     <children>
 
-        <!-- SIDEBAR ADMIN -->
         <VBox minWidth="240.0"
               prefWidth="240.0"
               maxWidth="240.0"
@@ -132,7 +131,6 @@
             </children>
         </VBox>
 
-        <!-- KONTEN ADMIN -->
         <VBox minWidth="0.0"
               prefHeight="720.0"
               HBox.hgrow="ALWAYS"
@@ -140,7 +138,6 @@
 
             <children>
 
-                <!-- HEADER -->
                 <HBox prefHeight="82.0"
                       alignment="CENTER_LEFT"
                       styleClass="dashboard-header">
@@ -198,7 +195,6 @@
                     </children>
                 </HBox>
 
-                <!-- SCROLL -->
                 <ScrollPane fitToWidth="true"
                             hbarPolicy="NEVER"
                             vbarPolicy="AS_NEEDED"
@@ -219,12 +215,12 @@
 
                             <children>
 
-                                <!-- SAMBUTAN -->
                                 <VBox spacing="4.0">
 
                                     <children>
 
-                                        <Label text="Selamat datang, Admin!"
+                                        <Label fx:id="adminWelcomeTitle"
+                                               text="Selamat datang, Admin!"
                                                styleClass="welcome-title"/>
 
                                         <Label text="Berikut ringkasan aktivitas dan campaign yang memerlukan pemeriksaan."
@@ -233,7 +229,6 @@
                                     </children>
                                 </VBox>
 
-                                <!-- STATISTIK ADMIN -->
                                 <HBox spacing="16.0">
 
                                     <children>
@@ -313,7 +308,6 @@
                                     </children>
                                 </HBox>
 
-                                <!-- DAFTAR APPROVAL -->
                                 <VBox spacing="16.0"
                                       styleClass="admin-approval-section">
 
@@ -346,7 +340,6 @@
 
                                         <Separator/>
 
-                                        <!-- CAMPAIGN 1 -->
                                         <HBox alignment="CENTER_LEFT"
                                               spacing="16.0"
                                               styleClass="admin-campaign-row">
@@ -402,7 +395,6 @@
 
                                         <Separator/>
 
-                                        <!-- CAMPAIGN 2 -->
                                         <HBox alignment="CENTER_LEFT"
                                               spacing="16.0"
                                               styleClass="admin-campaign-row">
@@ -458,7 +450,6 @@
 
                                         <Separator/>
 
-                                        <!-- CAMPAIGN 3 -->
                                         <HBox alignment="CENTER_LEFT"
                                               spacing="16.0"
                                               styleClass="admin-campaign-row">
@@ -514,7 +505,6 @@
 
                                         <Separator/>
 
-                                        <!-- CAMPAIGN 4 -->
                                         <HBox alignment="CENTER_LEFT"
                                               spacing="16.0"
                                               styleClass="admin-campaign-row">
@@ -571,7 +561,6 @@
                                     </children>
                                 </VBox>
 
-                                <!-- AKTIVITAS ADMIN -->
                                 <VBox spacing="14.0"
                                       styleClass="admin-activity-section">
 

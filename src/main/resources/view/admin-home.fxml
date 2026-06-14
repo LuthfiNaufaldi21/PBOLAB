@@ -24,7 +24,6 @@
 
     <children>
 
-        <!-- SIDEBAR -->
         <VBox minWidth="240.0"
               prefWidth="240.0"
               maxWidth="240.0"
@@ -133,7 +132,6 @@
             </children>
         </VBox>
 
-        <!-- KONTEN -->
         <VBox minWidth="0.0"
               prefHeight="720.0"
               HBox.hgrow="ALWAYS"
@@ -141,7 +139,6 @@
 
             <children>
 
-                <!-- HEADER -->
                 <HBox prefHeight="82.0"
                       alignment="CENTER_LEFT"
                       styleClass="dashboard-header">
@@ -199,7 +196,6 @@
                     </children>
                 </HBox>
 
-                <!-- SCROLL -->
                 <ScrollPane fitToWidth="true"
                             hbarPolicy="NEVER"
                             vbarPolicy="AS_NEEDED"
@@ -220,12 +216,12 @@
 
                             <children>
 
-                                <!-- SAMBUTAN -->
                                 <VBox spacing="4.0">
 
                                     <children>
 
-                                        <Label text="Selamat datang kembali, Admin!"
+                                        <Label fx:id="adminWelcomeTitle"
+                                               text="Selamat datang kembali, Admin!"
                                                styleClass="welcome-title"/>
 
                                         <Label text="Berikut ringkasan kondisi platform hari ini."
@@ -234,7 +230,6 @@
                                     </children>
                                 </VBox>
 
-                                <!-- STATISTIK -->
                                 <HBox spacing="16.0">
 
                                     <children>
@@ -314,14 +309,12 @@
                                     </children>
                                 </HBox>
 
-                                <!-- BAGIAN TENGAH -->
                                 <HBox spacing="22.0"
                                       alignment="TOP_LEFT"
                                       fillHeight="false">
 
                                     <children>
 
-                                        <!-- APPROVAL RINGKAS -->
                                         <VBox minWidth="0.0"
                                               spacing="16.0"
                                               HBox.hgrow="ALWAYS"
@@ -479,7 +472,6 @@
                                             </children>
                                         </VBox>
 
-                                        <!-- STATUS SISTEM -->
                                         <VBox minWidth="300.0"
                                               prefWidth="300.0"
                                               maxWidth="300.0"
@@ -563,7 +555,6 @@
                                     </children>
                                 </HBox>
 
-                                <!-- AKTIVITAS -->
                                 <VBox spacing="14.0"
                                       styleClass="admin-activity-section">
 

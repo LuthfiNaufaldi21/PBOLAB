@@ -39,7 +39,7 @@ public class Fundraiser extends User {
 
     @Override
     public String getDashboardFxml() {
-        return "/view/dashboard.fxml";
+        return "/view/dashboard-fundraiser.fxml";
     }
 
     @Override
@@ -47,9 +47,13 @@ public class Fundraiser extends User {
         return "CrowdCare - Dashboard Penggalang Dana";
     }
 
+    /*
+     * FIX: Fundraiser tidak bisa berdonasi.
+     * Hanya Donor yang bisa berdonasi.
+     */
     @Override
     public boolean canDonate() {
-        return true;
+        return false;
     }
 
     @Override
