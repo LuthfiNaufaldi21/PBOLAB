@@ -137,6 +137,14 @@ public class DatabaseUserService {
     }
 
     @Transactional
+    public void removeAvatar(String id) {
+        userRepository.findById(id).ifPresent(entity -> {
+            entity.setAvatar(null);
+            userRepository.save(entity);
+        });
+    }
+
+    @Transactional
     public void deleteUser(String id) {
         userRepository.deleteById(id);
     }

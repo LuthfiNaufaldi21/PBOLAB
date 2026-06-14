@@ -27,6 +27,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -73,6 +74,8 @@ public class NavigationController {
 
     private static String selectedCampaignTitle = "Bantu Pendidikan Anak Desa";
 
+    private Stage primaryStage;
+
     private Long selectedCampaignId;
     private CampaignEntity selectedCampaign;
     private List<CampaignEntity> campaignList = new ArrayList<>();
@@ -100,6 +103,7 @@ public class NavigationController {
     /* Profile page */
     @FXML private ImageView profileAvatarImage;
     @FXML private Label profileAvatarText;
+    @FXML private Button btnRemovePhoto;
     @FXML private Label profileDisplayName;
     @FXML private Label profileDisplayEmail;
     @FXML private Label profileInfoIdLabel;
@@ -1073,40 +1077,52 @@ public class NavigationController {
         dialog.setTitle("Pilih Metode Pembayaran");
         dialog.setResizable(false);
 
-        Label titleLabel = new Label("Pilih Metode Pembayaran");
-        titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;");
-        Label subtitleLabel = new Label("Pilih salah satu metode pembayaran di bawah ini");
-        subtitleLabel.setStyle("-fx-font-size: 13px; -fx-text-fill: #6b7280;");
+        Label titleLabel = new Label("\uD83D\uDCB3 Pilih Metode Pembayaran");
+        titleLabel.getStyleClass().add("payment-dialog-title");
+        Label subtitleLabel = new Label("Pilih metode pembayaran favorit Anda untuk melanjutkan donasi");
+        subtitleLabel.getStyleClass().add("payment-dialog-subtitle");
         VBox header = new VBox(4, titleLabel, subtitleLabel);
-        header.setStyle("-fx-padding: 24 24 16 24; -fx-border-color: #e5e7eb; -fx-border-width: 0 0 1 0;");
+        header.getStyleClass().add("payment-dialog-header");
+        header.setAlignment(Pos.CENTER_LEFT);
 
         Label bankGroupLabel = new Label("Transfer Bank");
-        bankGroupLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #374151;");
-        HBox bankRow = new HBox(10);
+        bankGroupLabel.getStyleClass().add("payment-group-label");
+        HBox bankRow = new HBox(14);
+        bankRow.getStyleClass().add("payment-bank-row");
         for (PaymentMethod method : new PaymentMethod[]{PaymentMethod.BCA, PaymentMethod.MANDIRI, PaymentMethod.BNI}) {
             bankRow.getChildren().add(buildPaymentCard(method, result, dialog));
         }
 
         Label walletGroupLabel = new Label("E-Wallet dan QRIS");
-        walletGroupLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #374151; -fx-padding: 16 0 8 0;");
-        HBox walletRow = new HBox(10);
+        walletGroupLabel.getStyleClass().add("payment-group-label");
+        HBox walletRow = new HBox(14);
+        walletRow.getStyleClass().add("payment-wallet-row");
         for (PaymentMethod method : new PaymentMethod[]{PaymentMethod.GOPAY, PaymentMethod.OVO, PaymentMethod.DANA, PaymentMethod.QRIS}) {
             walletRow.getChildren().add(buildPaymentCard(method, result, dialog));
         }
 
-        VBox body = new VBox(bankGroupLabel, bankRow, walletGroupLabel, walletRow);
-        body.setStyle("-fx-padding: 20 24 4 24;");
+        VBox body = new VBox(10, bankGroupLabel, bankRow, walletGroupLabel, walletRow);
+        body.setStyle("-fx-padding: 20 28 10 28;");
+
+        ScrollPane scrollPane = new ScrollPane(body);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.getStyleClass().add("payment-scroll-pane");
 
         Button cancelButton = new Button("Batal");
-        cancelButton.setStyle("-fx-background-color: #f3f4f6; -fx-text-fill: #374151; -fx-font-weight: bold; -fx-padding: 10 24; -fx-background-radius: 8px; -fx-cursor: hand;");
+        cancelButton.getStyleClass().add("payment-cancel-button");
         cancelButton.setOnAction(e -> dialog.close());
 
         HBox footer = new HBox(cancelButton);
         footer.setAlignment(Pos.CENTER_RIGHT);
-        footer.setStyle("-fx-padding: 16 24 20 24; -fx-border-color: #e5e7eb; -fx-border-width: 1 0 0 0;");
+        footer.setStyle("-fx-padding: 14 28 20 28;");
 
-        VBox root = new VBox(header, body, footer);
-        dialog.setScene(new Scene(root, 650, 440));
+        VBox root = new VBox(header, scrollPane, footer);
+        root.getStyleClass().add("payment-dialog-root");
+        Scene scene = new Scene(root, 660, 470);
+        scene.getStylesheets().add(MainApplication.class.getResource("/css/style.css").toExternalForm());
+        dialog.setScene(scene);
         dialog.initModality(javafx.stage.Modality.APPLICATION_MODAL);
         Window owner = ownerWindow();
         if (owner != null) dialog.initOwner(owner);
@@ -1117,20 +1133,36 @@ public class NavigationController {
     }
 
     private VBox buildPaymentCard(PaymentMethod method, PaymentMethod[] result, Stage dialog) {
-        Label codeLabel = new Label(method.name());
-        codeLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2563eb;");
-        Label nameLabel = new Label(paymentShortName(method));
-        nameLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        Label subLabel = new Label(paymentGroup(method));
-        subLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: #9ca3af;");
+        String brandColor = paymentBrandColor(method);
 
-        VBox card = new VBox(6, codeLabel, nameLabel, subLabel);
+        Label iconLabel = new Label(paymentIcon(method));
+        iconLabel.getStyleClass().add("payment-card-icon");
+
+        StackPane iconBg = new StackPane(iconLabel);
+        iconBg.getStyleClass().add("payment-card-icon-bg");
+        iconBg.setStyle("-fx-background-color: " + brandColor + "15;");
+
+        Label codeLabel = new Label(method.name());
+        codeLabel.getStyleClass().add("payment-card-code");
+        codeLabel.setStyle("-fx-text-fill: " + brandColor + ";");
+
+        Label nameLabel = new Label(paymentShortName(method));
+        nameLabel.getStyleClass().add("payment-card-name");
+
+        VBox card = new VBox(6, iconBg, codeLabel, nameLabel);
         card.setAlignment(Pos.CENTER);
         card.setPrefWidth(140);
-        card.setPrefHeight(90);
-        card.setStyle(paymentCardStyle(false));
-        card.setOnMouseEntered(e -> card.setStyle(paymentCardStyle(true)));
-        card.setOnMouseExited(e -> card.setStyle(paymentCardStyle(false)));
+        card.setPrefHeight(110);
+        card.getStyleClass().add("payment-card");
+        card.setStyle("-fx-border-color: " + brandColor + "30;");
+        card.setOnMouseEntered(e -> {
+            card.setStyle("-fx-border-color: " + brandColor + "; -fx-border-width: 2px; -fx-background-color: " + brandColor + "08; -fx-effect: dropshadow(gaussian, " + brandColor + "30, 10, 0, 0, 4);");
+            iconBg.setStyle("-fx-background-color: " + brandColor + "25;");
+        });
+        card.setOnMouseExited(e -> {
+            card.setStyle("-fx-border-color: " + brandColor + "30; -fx-border-width: 1.5px; -fx-background-color: white; -fx-effect: null;");
+            iconBg.setStyle("-fx-background-color: " + brandColor + "15;");
+        });
         card.setOnMouseClicked(e -> {
             result[0] = method;
             dialog.close();
@@ -1138,25 +1170,39 @@ public class NavigationController {
         return card;
     }
 
-    private String paymentCardStyle(boolean hover) {
-        return hover
-                ? "-fx-background-color: #eff6ff; -fx-background-radius: 12px; -fx-border-color: #3b82f6; -fx-border-width: 2px; -fx-cursor: hand; -fx-padding: 12 8;"
-                : "-fx-background-color: #f9fafb; -fx-background-radius: 12px; -fx-border-color: #e5e7eb; -fx-border-width: 1.5px; -fx-cursor: hand; -fx-padding: 12 8;";
+    private String paymentIcon(PaymentMethod method) {
+        return switch (method) {
+            case BCA -> "\uD83C\uDFE6";
+            case MANDIRI -> "\uD83C\uDFE6";
+            case BNI -> "\uD83C\uDFE6";
+            case GOPAY -> "\uD83D\uDCB1";
+            case OVO -> "\uD83D\uDCB1";
+            case DANA -> "\uD83D\uDCB1";
+            case QRIS -> "\uD83D\uDCF1";
+        };
+    }
+
+    private String paymentBrandColor(PaymentMethod method) {
+        return switch (method) {
+            case BCA -> "#0066AE";
+            case MANDIRI -> "#D52B1E";
+            case BNI -> "#FF6C00";
+            case GOPAY -> "#00AA13";
+            case OVO -> "#572B80";
+            case DANA -> "#007CBA";
+            case QRIS -> "#6B21A8";
+        };
     }
 
     private String paymentShortName(PaymentMethod method) {
         return switch (method) {
-            case BCA, MANDIRI, BNI -> "Transfer Bank";
-            case GOPAY, OVO, DANA -> "E-Wallet";
-            case QRIS -> "Scan QRIS";
-        };
-    }
-
-    private String paymentGroup(PaymentMethod method) {
-        return switch (method) {
-            case BCA, MANDIRI, BNI -> "Bank";
-            case GOPAY, OVO, DANA -> "Dompet digital";
-            case QRIS -> "Kode QR";
+            case BCA -> "Bank BCA";
+            case MANDIRI -> "Bank Mandiri";
+            case BNI -> "Bank BNI";
+            case GOPAY -> "GoPay";
+            case OVO -> "OVO";
+            case DANA -> "DANA";
+            case QRIS -> "QRIS";
         };
     }
 
@@ -1419,9 +1465,12 @@ public class NavigationController {
 
         if (settingsLanguageCombo != null) {
             settingsLanguageCombo.getItems().setAll("Bahasa Indonesia", "English");
-            boolean hasValue = entity.getLanguage() != null
-                    && settingsLanguageCombo.getItems().contains(entity.getLanguage());
-            settingsLanguageCombo.setValue(hasValue ? entity.getLanguage() : "Bahasa Indonesia");
+            String savedLang = entity.getLanguage();
+            if (savedLang != null && settingsLanguageCombo.getItems().contains(savedLang)) {
+                settingsLanguageCombo.setValue(savedLang);
+            } else {
+                settingsLanguageCombo.setValue("Bahasa Indonesia");
+            }
         }
 
         if (settingsDarkModeCheck != null)
@@ -1512,9 +1561,7 @@ public class NavigationController {
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Gambar", "*.png", "*.jpg", "*.jpeg", "*.gif")
         );
-        Node anchor = sceneAnchor();
-        Window win = (anchor != null && anchor.getScene() != null) ? anchor.getScene().getWindow() : null;
-        File file = (win != null) ? chooser.showOpenDialog(win) : chooser.showOpenDialog(null);
+        File file = chooser.showOpenDialog(primaryStage);
         if (file == null) return;
 
         try {
@@ -1530,6 +1577,23 @@ public class NavigationController {
         } catch (IOException e) {
             showAlert(Alert.AlertType.ERROR, "Gagal", "Gagal membaca file gambar: " + e.getMessage());
         }
+    }
+
+    @FXML
+    private void handleRemovePhoto() {
+        User currentUser = currentUser();
+        if (currentUser == null) return;
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Hapus Foto Profil");
+        confirm.setHeaderText("Hapus foto profil?");
+        confirm.setContentText("Foto profil akan dihapus dan diganti dengan inisial.");
+        if (confirm.showAndWait().orElse(ButtonType.CANCEL) != ButtonType.OK) return;
+
+        databaseUserService().removeAvatar(currentUser.getId());
+        loadAvatar(currentUser.getId(), profileAvatarImage, profileAvatarText);
+        loadAvatar(currentUser.getId(), settingsAvatarImage, settingsAvatarText);
+        if (avatarText != null) loadAvatar(currentUser.getId(), null, avatarText);
     }
 
     @FXML
@@ -1698,6 +1762,14 @@ public class NavigationController {
 
     private void openPage(ActionEvent event, String fxmlPath, String title) {
         try {
+            if (primaryStage == null) {
+                Node sourceNode = (Node) event.getSource();
+                Scene currentScene = sourceNode.getScene();
+                if (currentScene != null) {
+                    primaryStage = (Stage) currentScene.getWindow();
+                }
+            }
+
             URL pageUrl = MainApplication.class.getResource(fxmlPath);
             if (pageUrl == null) throw new IOException("File tidak ditemukan: " + fxmlPath);
 
@@ -1705,11 +1777,30 @@ public class NavigationController {
             loader.setController(this);
             Parent root = loader.load();
 
-            Stage stage = getStage(event);
-            stage.setTitle(title);
-            stage.setScene(new Scene(root, 1200, 720));
-            stage.setResizable(false);
-            stage.centerOnScreen();
+            com.crowdcare.model.User currentUser = UserSession.getInstance().getCurrentUser();
+            if (currentUser != null) {
+                if (btnCreateCampaign != null) {
+                    btnCreateCampaign.setVisible(currentUser.canCreateCampaign());
+                    btnCreateCampaign.setManaged(currentUser.canCreateCampaign());
+                }
+                if (btnHeaderCreateCampaign != null) {
+                    btnHeaderCreateCampaign.setVisible(currentUser.canCreateCampaign());
+                    btnHeaderCreateCampaign.setManaged(currentUser.canCreateCampaign());
+                }
+                if (btnDonationHistory != null) {
+                    btnDonationHistory.setVisible(currentUser.canDonate());
+                    btnDonationHistory.setManaged(currentUser.canDonate());
+                }
+                if (donationActionCard != null) {
+                    donationActionCard.setVisible(currentUser.canDonate());
+                    donationActionCard.setManaged(currentUser.canDonate());
+                }
+            }
+
+            primaryStage.setTitle(title);
+            primaryStage.setScene(new Scene(root, 1200, 720));
+            primaryStage.setResizable(false);
+            primaryStage.centerOnScreen();
 
             Platform.runLater(this::applyRoleAccess);
         } catch (IOException exception) {
@@ -1802,40 +1893,86 @@ public class NavigationController {
         com.crowdcare.entity.UserEntity entity = databaseUserService().findEntityById(userId);
         if (entity == null) return;
 
+        boolean hasPhoto = false;
         byte[] avatar = entity.getAvatar();
         if (avatar != null && avatar.length > 0 && imageView != null) {
             try {
+                imageView.setClip(null);
+                imageView.setViewport(null);
+                if (imageView.fitWidthProperty().isBound()) imageView.fitWidthProperty().unbind();
+                if (imageView.fitHeightProperty().isBound()) imageView.fitHeightProperty().unbind();
+
+                javafx.scene.layout.StackPane parent = imageView.getParent() instanceof javafx.scene.layout.StackPane sp ? sp : null;
+                if (parent != null) {
+                    imageView.fitWidthProperty().bind(parent.widthProperty());
+                    imageView.fitHeightProperty().bind(parent.heightProperty());
+                }
+
                 Image img = new Image(new java.io.ByteArrayInputStream(avatar));
                 imageView.setImage(img);
+                imageView.setPreserveRatio(false);
+                imageView.setSmooth(true);
                 imageView.setVisible(true);
                 imageView.setManaged(true);
-                double r = Math.min(imageView.getFitWidth(), imageView.getFitHeight()) / 2.0;
-                if (r <= 0) r = 31;
-                Circle clip = new Circle(r);
-                clip.centerXProperty().bind(imageView.fitWidthProperty().divide(2));
-                clip.centerYProperty().bind(imageView.fitHeightProperty().divide(2));
-                clip.radiusProperty().bind(
-                        javafx.beans.binding.Bindings.min(
-                                imageView.fitWidthProperty().divide(2),
-                                imageView.fitHeightProperty().divide(2)));
+
+                javafx.beans.binding.DoubleBinding wb = javafx.beans.binding.Bindings.createDoubleBinding(
+                        () -> parent != null ? parent.getWidth() : imageView.getFitWidth(),
+                        parent != null ? parent.widthProperty() : imageView.fitWidthProperty());
+                javafx.beans.binding.DoubleBinding hb = javafx.beans.binding.Bindings.createDoubleBinding(
+                        () -> parent != null ? parent.getHeight() : imageView.getFitHeight(),
+                        parent != null ? parent.heightProperty() : imageView.fitHeightProperty());
+
+                javafx.beans.binding.DoubleBinding sizeBinding = javafx.beans.binding.Bindings.createDoubleBinding(
+                        () -> Math.min(wb.get(), hb.get()), wb, hb);
+
+                javafx.scene.shape.Circle clip = new javafx.scene.shape.Circle();
+                clip.centerXProperty().bind(wb.divide(2));
+                clip.centerYProperty().bind(hb.divide(2));
+                clip.radiusProperty().bind(sizeBinding.divide(2));
                 imageView.setClip(clip);
+
+                javafx.beans.value.ChangeListener<Number> viewportUpdater = (obs, old, cur) -> {
+                    double w = wb.get();
+                    double h = hb.get();
+                    if (w <= 0 || h <= 0) return;
+                    double iw = img.getWidth();
+                    double ih = img.getHeight();
+                    if (iw > 0 && ih > 0) {
+                        double scale = Math.max(w / iw, h / ih);
+                        double sw = iw * scale;
+                        double sh = ih * scale;
+                        imageView.setViewport(new javafx.geometry.Rectangle2D(
+                                (sw - w) / 2, (sh - h) / 2, w, h));
+                    }
+                };
+                wb.addListener(viewportUpdater);
+                hb.addListener(viewportUpdater);
+                viewportUpdater.changed(null, null, null);
+
                 if (initialsLabel != null) {
                     initialsLabel.setVisible(false);
                     initialsLabel.setManaged(false);
                 }
-                return;
+                hasPhoto = true;
             } catch (Exception ignored) {}
         }
 
-        if (imageView != null) {
-            imageView.setVisible(false);
-            imageView.setManaged(false);
+        if (!hasPhoto) {
+            if (imageView != null) {
+                imageView.setVisible(false);
+                imageView.setManaged(false);
+            }
+            if (initialsLabel != null) {
+                initialsLabel.setVisible(true);
+                initialsLabel.setManaged(true);
+                initialsLabel.setText(initials(UserSession.getInstance().getCurrentUser() != null
+                        ? UserSession.getInstance().getCurrentUser().getFullName() : "?"));
+            }
         }
-        if (initialsLabel != null) {
-            initialsLabel.setVisible(true);
-            initialsLabel.setManaged(true);
-            initialsLabel.setText(initials(UserSession.getInstance().getCurrentUser() != null
-                    ? UserSession.getInstance().getCurrentUser().getFullName() : "?"));
+
+        if (btnRemovePhoto != null) {
+            btnRemovePhoto.setVisible(hasPhoto);
+            btnRemovePhoto.setManaged(hasPhoto);
         }
     }
 
@@ -1991,10 +2128,16 @@ public class NavigationController {
     }
 
     private Stage getStage(ActionEvent event) {
-        return (Stage) ((Node) event.getSource()).getScene().getWindow();
+        if (primaryStage != null) return primaryStage;
+        Node node = (Node) event.getSource();
+        if (node.getScene() != null) {
+            primaryStage = (Stage) node.getScene().getWindow();
+        }
+        return primaryStage;
     }
 
     private Window ownerWindow() {
+        if (primaryStage != null) return primaryStage;
         Node anchor = sceneAnchor();
         return anchor == null || anchor.getScene() == null ? null : anchor.getScene().getWindow();
     }

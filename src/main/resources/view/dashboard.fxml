@@ -84,14 +84,14 @@
                         alignment="CENTER_LEFT"
                         styleClass="nav-button"/>
 
-                <Button text="Buat Campaign"
+                <Button fx:id="btnCreateCampaign" text="Buat Campaign"
                         onAction="#openCreateCampaign"
                         prefWidth="192.0"
                         prefHeight="44.0"
                         alignment="CENTER_LEFT"
                         styleClass="nav-button"/>
 
-                <Button text="Riwayat Donasi"
+                <Button fx:id="btnDonationHistory" text="Riwayat Donasi"
                         onAction="#openDonationHistory"
                         prefWidth="192.0"
                         prefHeight="44.0"

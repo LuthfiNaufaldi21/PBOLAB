@@ -1942,6 +1942,20 @@
     -fx-background-color: #dbeafe;
 }
 
+.profile-remove-photo-button {
+    -fx-background-color: #fef2f2;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16px;
+    -fx-cursor: hand;
+}
+
+.profile-remove-photo-button:hover {
+    -fx-background-color: #fee2e2;
+}
+
 /* STATISTIK */
 
 .profile-stat-card {
@@ -2625,6 +2639,149 @@
     -fx-background-color: #2563eb;
     -fx-border-color: #2563eb;
     -fx-text-fill: white;
+}
+
+/* ==================================================
+   PAYMENT METHOD DIALOG
+   ================================================== */
+.payment-dialog-root {
+    -fx-background-color: #f8fafc;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 0);
+}
+
+.payment-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.payment-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.payment-scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8;
+}
+
+.payment-scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 4px;
+}
+
+.payment-scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #94a3b8;
+}
+
+.payment-scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.payment-scroll-pane .increment-button,
+.payment-scroll-pane .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+}
+
+.payment-dialog-header {
+    -fx-background-color: linear-gradient(to right, #1e40af, #3b82f6);
+    -fx-padding: 28 28 22 28;
+}
+
+.payment-dialog-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.payment-dialog-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #bfdbfe;
+}
+
+.payment-group-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+    -fx-padding: 16 0 10 0;
+    -fx-background-color: #e0e7ff;
+    -fx-background-radius: 6px;
+    -fx-padding: 6 12;
+}
+
+.payment-bank-row, .payment-wallet-row {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 4, 0, 0, 2);
+}
+
+.payment-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 12 10 14 10;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 4, 0, 0, 2);
+}
+
+.payment-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);
+}
+
+.payment-card:pressed {
+    -fx-border-width: 2px;
+}
+
+.payment-card-icon-bg {
+    -fx-background-radius: 10px;
+    -fx-padding: 8 10;
+    -fx-alignment: center;
+    -fx-max-width: 60;
+}
+
+.payment-card-icon {
+    -fx-font-size: 24px;
+    -fx-alignment: center;
+}
+
+.payment-card-code {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+    -fx-padding: 6 0 0 0;
+}
+
+.payment-card-name {
+    -fx-font-size: 10px;
+    -fx-text-fill: #94a3b8;
+}
+
+.payment-cancel-button {
+    -fx-background-color: white;
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 10 28;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1.5px;
+}
+
+.payment-cancel-button:hover {
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #94a3b8;
 }
 
 .donation-option-selected:hover {
