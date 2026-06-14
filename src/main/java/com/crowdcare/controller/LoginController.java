@@ -147,6 +147,7 @@ public class LoginController {
 
             Object controller;
             if (authenticatedUser.canApproveCampaign()) {
+                AdminController.setSpringContext(com.crowdcare.CrowdCareApplication.getContext());
                 controller = new AdminController();
             } else {
                 controller = new NavigationController();

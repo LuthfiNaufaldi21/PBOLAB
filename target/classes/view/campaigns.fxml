@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefWidth="1200.0"
+      prefHeight="720.0"
+      styleClass="campaign-page-root">
+
+    <stylesheets>
+        <URL value="@../css/style.css"/>
+    </stylesheets>
+
+    <children>
+
+        <VBox minWidth="240.0"
+              prefWidth="240.0"
+              maxWidth="240.0"
+              prefHeight="720.0"
+              HBox.hgrow="NEVER"
+              spacing="10.0"
+              styleClass="sidebar">
+
+            <padding>
+                <Insets top="30.0"
+                        right="24.0"
+                        bottom="24.0"
+                        left="24.0"/>
+            </padding>
+
+            <children>
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="12.0">
+
+                    <children>
+
+                        <Label text="C"
+                               alignment="CENTER"
+                               styleClass="sidebar-logo"/>
+
+                        <VBox spacing="1.0">
+
+                            <children>
+
+                                <Label text="CrowdCare"
+                                       styleClass="sidebar-title"/>
+
+                                <Label text="Crowdfunding"
+                                       styleClass="sidebar-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <Region prefHeight="28.0"/>
+
+                <Label text="MENU UTAMA"
+                       styleClass="menu-caption"/>
+
+                <Button text="Dashboard"
+                        onAction="#openDashboard"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Campaign"
+                        onAction="#openCampaigns"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button-active"/>
+
+                <Button fx:id="btnCreateCampaign"
+                        text="Buat Campaign"
+                        onAction="#openCreateCampaign"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button fx:id="btnDonationHistory"
+                        text="Riwayat Donasi"
+                        onAction="#openDonationHistory"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Region prefHeight="18.0"/>
+
+                <Label text="AKUN"
+                       styleClass="menu-caption"/>
+
+                <Button text="Profil Saya"
+                        onAction="#showProfile"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Button text="Pengaturan"
+                        onAction="#showSettings"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="nav-button"/>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Button text="Keluar"
+                        onAction="#logout"
+                        prefWidth="192.0"
+                        prefHeight="44.0"
+                        alignment="CENTER_LEFT"
+                        styleClass="logout-button"/>
+
+            </children>
+        </VBox>
+
+        <VBox minWidth="0.0"
+              prefHeight="720.0"
+              HBox.hgrow="ALWAYS"
+              styleClass="campaign-page-main">
+
+            <children>
+
+                <HBox prefHeight="82.0"
+                      alignment="CENTER_LEFT"
+                      styleClass="dashboard-header">
+
+                    <padding>
+                        <Insets top="18.0"
+                                right="30.0"
+                                bottom="18.0"
+                                left="30.0"/>
+                    </padding>
+
+                    <children>
+
+                        <VBox spacing="3.0">
+
+                            <children>
+
+                                <Label text="Daftar Campaign"
+                                       styleClass="dashboard-title"/>
+
+                                <Label text="Temukan dan bantu campaign yang membutuhkan."
+                                       styleClass="dashboard-subtitle"/>
+
+                            </children>
+                        </VBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <Button fx:id="btnHeaderCreateCampaign"
+                                text="+ Buat Campaign"
+                                onAction="#openCreateCampaign"
+                                prefHeight="40.0"
+                                styleClass="create-campaign-button"/>
+
+                    </children>
+                </HBox>
+
+                <ScrollPane fitToWidth="true"
+                            hbarPolicy="NEVER"
+                            vbarPolicy="AS_NEEDED"
+                            VBox.vgrow="ALWAYS"
+                            styleClass="dashboard-scroll">
+
+                    <content>
+
+                        <VBox spacing="22.0"
+                              styleClass="campaign-content">
+
+                            <padding>
+                                <Insets top="28.0"
+                                        right="30.0"
+                                        bottom="35.0"
+                                        left="30.0"/>
+                            </padding>
+
+                            <children>
+
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="12.0"
+                                      styleClass="campaign-filter-card">
+
+                                    <children>
+
+                                        <TextField fx:id="campaignSearchField"
+                                                   promptText="Cari judul atau kategori campaign..."
+                                                   prefHeight="42.0"
+                                                   HBox.hgrow="ALWAYS"
+                                                   styleClass="campaign-search-field"/>
+
+                                        <ComboBox fx:id="campaignCategoryFilter"
+                                                  promptText="Semua Kategori"
+                                                  prefWidth="180.0"
+                                                  prefHeight="42.0"
+                                                  styleClass="campaign-filter-combobox"/>
+
+                                        <Button text="Reset"
+                                                onAction="#handleResetCampaignFilter"
+                                                prefHeight="42.0"
+                                                styleClass="campaign-reset-filter"/>
+
+                                        <Label fx:id="campaignResultLabel"
+                                               text="6 campaign ditemukan"
+                                               minWidth="125.0"
+                                               styleClass="campaign-result-label"/>
+
+                                    </children>
+                                </HBox>
+
+                                <TilePane fx:id="campaignGrid"
+                                          prefColumns="3"
+                                          hgap="18.0"
+                                          vgap="18.0"
+                                          tileAlignment="TOP_LEFT">
+
+                                    <children>
+
+                                        <VBox fx:id="campaignCard1"
+                                              prefWidth="275.0"
+                                              spacing="11.0"
+                                              styleClass="campaign-list-card">
+
+                                            <children>
+
+                                                <StackPane prefHeight="135.0"
+                                                           styleClass="campaign-cover-blue">
+
+                                                    <children>
+
+                                                        <Label text="PENDIDIKAN"
+                                                               styleClass="campaign-category"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <Label text="Bantu Pendidikan Anak Desa"
+                                                       wrapText="true"
+                                                       styleClass="campaign-list-title"/>
+
+                                                <Label text="Membantu menyediakan perlengkapan sekolah bagi anak-anak desa."
+                                                       wrapText="true"
+                                                       styleClass="campaign-description"/>
+
+                                                <Label text="Rp7.200.000 terkumpul"
+                                                       styleClass="campaign-list-amount"/>
+
+                                                <ProgressBar progress="0.72"
+                                                             prefWidth="245.0"
+                                                             styleClass="campaign-progress"/>
+
+                                                <HBox alignment="CENTER_LEFT">
+
+                                                    <children>
+
+                                                        <Label text="72%"
+                                                               styleClass="campaign-percentage"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Label text="12 hari lagi"
+                                                               styleClass="campaign-days"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Button text="Lihat Detail"
+                                                        onAction="#openCampaignDetail"
+                                                        prefWidth="245.0"
+                                                        prefHeight="38.0"
+                                                        styleClass="campaign-detail-button"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox fx:id="campaignCard2"
+                                              prefWidth="275.0"
+                                              spacing="11.0"
+                                              styleClass="campaign-list-card">
+
+                                            <children>
+
+                                                <StackPane prefHeight="135.0"
+                                                           styleClass="campaign-cover-green">
+
+                                                    <children>
+
+                                                        <Label text="KESEHATAN"
+                                                               styleClass="campaign-category"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <Label text="Bantuan Operasi untuk Raka"
+                                                       wrapText="true"
+                                                       styleClass="campaign-list-title"/>
+
+                                                <Label text="Penggalangan dana untuk biaya operasi dan perawatan Raka."
+                                                       wrapText="true"
+                                                       styleClass="campaign-description"/>
+
+                                                <Label text="Rp12.600.000 terkumpul"
+                                                       styleClass="campaign-list-amount"/>
+
+                                                <ProgressBar progress="0.63"
+                                                             prefWidth="245.0"
+                                                             styleClass="campaign-progress"/>
+
+                                                <HBox alignment="CENTER_LEFT">
+
+                                                    <children>
+
+                                                        <Label text="63%"
+                                                               styleClass="campaign-percentage"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Label text="20 hari lagi"
+                                                               styleClass="campaign-days"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Button text="Lihat Detail"
+                                                        onAction="#openCampaignDetail"
+                                                        prefWidth="245.0"
+                                                        prefHeight="38.0"
+                                                        styleClass="campaign-detail-button"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox fx:id="campaignCard3"
+                                              prefWidth="275.0"
+                                              spacing="11.0"
+                                              styleClass="campaign-list-card">
+
+                                            <children>
+
+                                                <StackPane prefHeight="135.0"
+                                                           styleClass="campaign-cover-orange">
+
+                                                    <children>
+
+                                                        <Label text="SOSIAL"
+                                                               styleClass="campaign-category"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <Label text="Renovasi Rumah Ibadah"
+                                                       wrapText="true"
+                                                       styleClass="campaign-list-title"/>
+
+                                                <Label text="Membantu renovasi rumah ibadah yang mengalami kerusakan."
+                                                       wrapText="true"
+                                                       styleClass="campaign-description"/>
+
+                                                <Label text="Rp8.500.000 terkumpul"
+                                                       styleClass="campaign-list-amount"/>
+
+                                                <ProgressBar progress="0.85"
+                                                             prefWidth="245.0"
+                                                             styleClass="campaign-progress"/>
+
+                                                <HBox alignment="CENTER_LEFT">
+
+                                                    <children>
+
+                                                        <Label text="85%"
+                                                               styleClass="campaign-percentage"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Label text="7 hari lagi"
+                                                               styleClass="campaign-days"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Button text="Lihat Detail"
+                                                        onAction="#openCampaignDetail"
+                                                        prefWidth="245.0"
+                                                        prefHeight="38.0"
+                                                        styleClass="campaign-detail-button"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox fx:id="campaignCard4"
+                                              prefWidth="275.0"
+                                              spacing="11.0"
+                                              styleClass="campaign-list-card">
+
+                                            <children>
+
+                                                <StackPane prefHeight="135.0"
+                                                           styleClass="campaign-cover-purple">
+
+                                                    <children>
+
+                                                        <Label text="BENCANA"
+                                                               styleClass="campaign-category"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <Label text="Bantuan Korban Banjir"
+                                                       wrapText="true"
+                                                       styleClass="campaign-list-title"/>
+
+                                                <Label text="Pengadaan makanan dan kebutuhan untuk korban banjir."
+                                                       wrapText="true"
+                                                       styleClass="campaign-description"/>
+
+                                                <Label text="Rp15.000.000 terkumpul"
+                                                       styleClass="campaign-list-amount"/>
+
+                                                <ProgressBar progress="0.75"
+                                                             prefWidth="245.0"
+                                                             styleClass="campaign-progress"/>
+
+                                                <HBox alignment="CENTER_LEFT">
+
+                                                    <children>
+
+                                                        <Label text="75%"
+                                                               styleClass="campaign-percentage"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Label text="15 hari lagi"
+                                                               styleClass="campaign-days"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Button text="Lihat Detail"
+                                                        onAction="#openCampaignDetail"
+                                                        prefWidth="245.0"
+                                                        prefHeight="38.0"
+                                                        styleClass="campaign-detail-button"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox fx:id="campaignCard5"
+                                              prefWidth="275.0"
+                                              spacing="11.0"
+                                              styleClass="campaign-list-card">
+
+                                            <children>
+
+                                                <StackPane prefHeight="135.0"
+                                                           styleClass="campaign-cover-red">
+
+                                                    <children>
+
+                                                        <Label text="KESEHATAN"
+                                                               styleClass="campaign-category"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <Label text="Pengobatan Ibu Sari"
+                                                       wrapText="true"
+                                                       styleClass="campaign-list-title"/>
+
+                                                <Label text="Membantu biaya pengobatan dan kebutuhan medis Ibu Sari."
+                                                       wrapText="true"
+                                                       styleClass="campaign-description"/>
+
+                                                <Label text="Rp4.800.000 terkumpul"
+                                                       styleClass="campaign-list-amount"/>
+
+                                                <ProgressBar progress="0.48"
+                                                             prefWidth="245.0"
+                                                             styleClass="campaign-progress"/>
+
+                                                <HBox alignment="CENTER_LEFT">
+
+                                                    <children>
+
+                                                        <Label text="48%"
+                                                               styleClass="campaign-percentage"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Label text="25 hari lagi"
+                                                               styleClass="campaign-days"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Button text="Lihat Detail"
+                                                        onAction="#openCampaignDetail"
+                                                        prefWidth="245.0"
+                                                        prefHeight="38.0"
+                                                        styleClass="campaign-detail-button"/>
+
+                                            </children>
+                                        </VBox>
+
+                                        <VBox fx:id="campaignCard6"
+                                              prefWidth="275.0"
+                                              spacing="11.0"
+                                              styleClass="campaign-list-card">
+
+                                            <children>
+
+                                                <StackPane prefHeight="135.0"
+                                                           styleClass="campaign-cover-cyan">
+
+                                                    <children>
+
+                                                        <Label text="LINGKUNGAN"
+                                                               styleClass="campaign-category"/>
+
+                                                    </children>
+                                                </StackPane>
+
+                                                <Label text="Gerakan Tanam Seribu Pohon"
+                                                       wrapText="true"
+                                                       styleClass="campaign-list-title"/>
+
+                                                <Label text="Program penghijauan melalui penanaman seribu pohon."
+                                                       wrapText="true"
+                                                       styleClass="campaign-description"/>
+
+                                                <Label text="Rp3.200.000 terkumpul"
+                                                       styleClass="campaign-list-amount"/>
+
+                                                <ProgressBar progress="0.40"
+                                                             prefWidth="245.0"
+                                                             styleClass="campaign-progress"/>
+
+                                                <HBox alignment="CENTER_LEFT">
+
+                                                    <children>
+
+                                                        <Label text="40%"
+                                                               styleClass="campaign-percentage"/>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Label text="30 hari lagi"
+                                                               styleClass="campaign-days"/>
+
+                                                    </children>
+                                                </HBox>
+
+                                                <Button text="Lihat Detail"
+                                                        onAction="#openCampaignDetail"
+                                                        prefWidth="245.0"
+                                                        prefHeight="38.0"
+                                                        styleClass="campaign-detail-button"/>
+
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </TilePane>
+
+                                <VBox fx:id="campaignEmptyState"
+                                      visible="false"
+                                      managed="false"
+                                      alignment="CENTER"
+                                      spacing="8.0"
+                                      prefHeight="180.0"
+                                      styleClass="campaign-empty-state">
+
+                                    <children>
+
+                                        <Label text="Campaign tidak ditemukan"
+                                               styleClass="campaign-empty-title"/>
+
+                                        <Label text="Coba gunakan kata kunci atau kategori yang berbeda."
+                                               wrapText="true"
+                                               styleClass="campaign-empty-description"/>
+
+                                    </children>
+                                </VBox>
+
+                            </children>
+                        </VBox>
+
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+
+    </children>
+</HBox>

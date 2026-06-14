@@ -1,0 +1,15 @@
+com\crowdcare\api\CampaignController.class
+com\crowdcare\service\DonationService.class
+com\crowdcare\CrowdCareApplication.class
+com\crowdcare\entity\UserEntity.class
+com\crowdcare\repository\UserRepository.class
+com\crowdcare\service\CampaignService.class
+com\crowdcare\repository\DonationRepository.class
+com\crowdcare\entity\DonationEntity.class
+com\crowdcare\config\SecurityConfig.class
+com\crowdcare\api\DonationController.class
+com\crowdcare\config\DataSeeder.class
+com\crowdcare\service\DatabaseUserService.class
+com\crowdcare\entity\CampaignEntity.class
+com\crowdcare\repository\CampaignRepository.class
+com\crowdcare\api\UserController.class
