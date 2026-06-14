@@ -13,7 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.crowdcare.model.User;
-import com.crowdcare.service.UserService;
+import com.crowdcare.services.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -79,11 +79,11 @@ public class RegisterController {
             return;
         }
 
-        if (!email.contains("@")) {
+        if (email.contains(" ") || email.length() < 3) {
             showAlert(
                     Alert.AlertType.WARNING,
-                    "Email Tidak Valid",
-                    "Masukkan alamat email yang benar."
+                    "Username Tidak Valid",
+                    "Username minimal 3 karakter dan tidak boleh mengandung spasi."
             );
             return;
         }

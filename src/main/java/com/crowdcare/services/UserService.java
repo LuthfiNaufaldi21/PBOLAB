@@ -1,4 +1,4 @@
-package com.crowdcare.service;
+package com.crowdcare.services;
 
 import com.crowdcare.model.Admin;
 import com.crowdcare.model.Donor;

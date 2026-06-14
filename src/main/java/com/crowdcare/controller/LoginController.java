@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import com.crowdcare.model.User;
-import com.crowdcare.service.UserService;
+import com.crowdcare.services.UserService;
 import com.crowdcare.session.UserSession;
 
 import java.util.Optional;
