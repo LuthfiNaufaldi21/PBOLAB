@@ -404,6 +404,21 @@
     -fx-background-radius: 9px;
 }
 
+.campaign-image-orange {
+    -fx-background-color: linear-gradient(to bottom right, #ea580c, #fb923c);
+    -fx-background-radius: 9px;
+}
+
+.campaign-image-purple {
+    -fx-background-color: linear-gradient(to bottom right, #7c3aed, #a78bfa);
+    -fx-background-radius: 9px;
+}
+
+.campaign-image-cyan {
+    -fx-background-color: linear-gradient(to bottom right, #0891b2, #22d3ee);
+    -fx-background-radius: 9px;
+}
+
 .campaign-category {
     -fx-background-color: rgba(255, 255, 255, 0.20);
     -fx-background-radius: 7px;
@@ -1261,6 +1276,30 @@
     -fx-text-fill: #15803d;
 }
 
+.campaign-status-approved,
+.campaign-status-pending,
+.campaign-status-rejected {
+    -fx-background-radius: 7px;
+    -fx-padding: 5px 9px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+}
+
+.campaign-status-approved {
+    -fx-background-color: #dcfce7;
+    -fx-text-fill: #15803d;
+}
+
+.campaign-status-pending {
+    -fx-background-color: #fef3c7;
+    -fx-text-fill: #b45309;
+}
+
+.campaign-status-rejected {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #dc2626;
+}
+
 /* KARTU DONASI */
 
 .detail-card-caption {
@@ -1560,6 +1599,12 @@
     -fx-text-fill: #94a3b8;
 }
 
+.history-header-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+}
+
 .history-transaction-row {
     -fx-padding: 15px 18px;
     -fx-background-color: white;
@@ -1607,6 +1652,23 @@
     -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-text-fill: #1e293b;
+}
+
+.history-title-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.history-muted-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #64748b;
+}
+
+.history-amount-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
 }
 
 .history-campaign-category {
@@ -2041,6 +2103,12 @@
     -fx-border-color: #e2e8f0;
     -fx-border-radius: 14px;
     -fx-padding: 22px;
+}
+
+.profile-avatar-image,
+.settings-avatar-image {
+    -fx-background-radius: 50%;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
 }
 
 .settings-avatar {
@@ -2807,4 +2875,162 @@
 .report-highlight-label {
     -fx-font-size: 12px;
     -fx-text-fill: #64748b;
+}
+
+/* ==========================================
+   ADMIN SETTINGS
+   ========================================== */
+.admin-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-padding: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 8, 0, 0, 2);
+}
+
+.admin-avatar {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 50%;
+}
+
+.admin-avatar-text {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.admin-account-name {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+.admin-account-role {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.admin-status-badge {
+    -fx-background-color: #dcfce7;
+    -fx-background-radius: 7px;
+    -fx-padding: 5px 12px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #166534;
+}
+
+.admin-info-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #475569;
+    -fx-line-spacing: 4px;
+}
+
+.admin-refresh-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.admin-refresh-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.admin-back-button {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #475569;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.admin-back-button:hover {
+    -fx-background-color: #e2e8f0;
+}
+
+/* ==========================================
+   ADMIN MANAGE USERS (Lihat & Hapus)
+   ========================================== */
+.manage-view-button {
+    -fx-background-color: #dbeafe;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #1d4ed8;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16px;
+    -fx-cursor: hand;
+}
+
+.manage-view-button:hover {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.manage-delete-button {
+    -fx-background-color: #fee2e2;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16px;
+    -fx-cursor: hand;
+}
+
+.manage-delete-button:hover {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+}
+
+/* ==========================================
+   ADMIN SETTINGS — EDIT PROFIL
+   ========================================== */
+.admin-photo-button {
+    -fx-background-color: #eff6ff;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.admin-photo-button:hover {
+    -fx-background-color: #dbeafe;
+}
+
+.admin-input-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.admin-input {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-padding: 0 12px;
+    -fx-font-size: 13px;
+    -fx-text-fill: #0f172a;
+}
+
+.admin-input:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2563eb;
+    -fx-border-width: 1.5px;
+}
+
+.admin-save-button {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 22px;
+    -fx-cursor: hand;
+}
+
+.admin-save-button:hover {
+    -fx-background-color: #1d4ed8;
 }

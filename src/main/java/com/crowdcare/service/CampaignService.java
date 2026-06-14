@@ -48,6 +48,37 @@ public class CampaignService {
         return campaignRepository.save(campaign);
     }
 
+    public CampaignEntity createCampaign(String title, String description, Long targetAmount,
+                                         LocalDate startDate, LocalDate endDate,
+                                         String category, String creatorId,
+                                         byte[] image, String imageMimeType) {
+
+        UserEntity creator = userRepository.findById(creatorId)
+                .orElseThrow(() -> new IllegalArgumentException("User tidak ditemukan."));
+
+        if (!"FUNDRAISER".equals(creator.getRole())) {
+            throw new IllegalArgumentException("Hanya Penggalang Dana yang bisa membuat campaign.");
+        }
+
+        if (targetAmount < 10000) {
+            throw new IllegalArgumentException("Target dana minimal Rp 10.000.");
+        }
+
+        if (endDate.isBefore(startDate)) {
+            throw new IllegalArgumentException("Tanggal selesai tidak boleh sebelum tanggal mulai.");
+        }
+
+        CampaignEntity campaign = new CampaignEntity(title, description, targetAmount,
+                startDate, endDate, category, creator);
+
+        if (image != null) {
+            campaign.setImage(image);
+            campaign.setImageMimeType(imageMimeType);
+        }
+
+        return campaignRepository.save(campaign);
+    }
+
     public CampaignEntity approveCampaign(Long campaignId) {
         CampaignEntity campaign = campaignRepository.findById(campaignId)
                 .orElseThrow(() -> new IllegalArgumentException("Campaign tidak ditemukan."));
@@ -88,6 +119,6 @@ public class CampaignService {
 
     @Transactional(readOnly = true)
     public Optional<CampaignEntity> getCampaignById(Long id) {
-        return campaignRepository.findById(id);
+        return campaignRepository.findWithCreatorById(id);
     }
 }

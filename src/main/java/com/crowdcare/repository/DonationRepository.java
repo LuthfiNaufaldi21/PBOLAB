@@ -3,6 +3,7 @@ package com.crowdcare.repository;
 import com.crowdcare.entity.CampaignEntity;
 import com.crowdcare.entity.DonationEntity;
 import com.crowdcare.entity.UserEntity;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,11 +22,13 @@ public interface DonationRepository extends JpaRepository<DonationEntity, Long> 
     /**
      * Riwayat donasi oleh donor tertentu
      */
+    @EntityGraph(attributePaths = {"campaign", "donor"})
     List<DonationEntity> findByDonorOrderByDonatedAtDesc(UserEntity donor);
 
     /**
      * Semua donasi untuk campaign tertentu
      */
+    @EntityGraph(attributePaths = {"campaign", "donor"})
     List<DonationEntity> findByCampaignOrderByDonatedAtDesc(CampaignEntity campaign);
 
     /**

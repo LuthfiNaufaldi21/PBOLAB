@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
@@ -216,7 +218,14 @@
 
                                                     <children>
 
-                                                        <Label text="PENDIDIKAN"
+                                                        <ImageView fx:id="detailCoverImage"
+                                                                   fitWidth="760.0"
+                                                                   fitHeight="280.0"
+                                                                   preserveRatio="false"
+                                                                   styleClass="detail-cover-image"/>
+
+                                                        <Label fx:id="detailCoverCategoryLabel"
+                                                               text="PENDIDIKAN"
                                                                styleClass="detail-cover-category"/>
 
                                                     </children>
@@ -228,14 +237,17 @@
 
                                                     <children>
 
-                                                        <Label text="PENDIDIKAN"
+                                                        <Label fx:id="detailCategoryLabel"
+                                                               text="PENDIDIKAN"
                                                                styleClass="detail-category"/>
 
-                                                        <Label text="Bantu Pendidikan Anak Desa"
+                                                        <Label fx:id="detailTitleLabel"
+                                                               text="Bantu Pendidikan Anak Desa"
                                                                wrapText="true"
                                                                styleClass="detail-title"/>
 
-                                                        <Label text="Membantu menyediakan perlengkapan sekolah dan fasilitas belajar yang layak bagi anak-anak di desa terpencil."
+                                                        <Label fx:id="detailDescriptionLabel"
+                                                               text="Membantu menyediakan perlengkapan sekolah dan fasilitas belajar yang layak bagi anak-anak di desa terpencil."
                                                                wrapText="true"
                                                                styleClass="detail-short-description"/>
 
@@ -253,7 +265,8 @@
 
                                                                     <children>
 
-                                                                        <Label text="BS"
+                                                                        <Label fx:id="detailOwnerInitialLabel"
+                                                                               text="BS"
                                                                                styleClass="detail-owner-avatar-text"/>
 
                                                                     </children>
@@ -266,7 +279,8 @@
                                                                         <Label text="Dibuat oleh"
                                                                                styleClass="detail-owner-caption"/>
 
-                                                                        <Label text="Budi Santoso"
+                                                                        <Label fx:id="detailOwnerNameLabel"
+                                                                               text="Budi Santoso"
                                                                                styleClass="detail-owner-name"/>
 
                                                                     </children>
@@ -274,7 +288,8 @@
 
                                                                 <Region HBox.hgrow="ALWAYS"/>
 
-                                                                <Label text="Terverifikasi"
+                                                                <Label fx:id="detailStatusLabel"
+                                                                       text="Disetujui"
                                                                        styleClass="verified-label"/>
 
                                                             </children>
@@ -287,7 +302,8 @@
                                         </VBox>
 
                                         <!-- KARTU DONASI -->
-                                        <VBox prefWidth="310.0"
+                                        <VBox fx:id="donationActionCard"
+                                              prefWidth="310.0"
                                               spacing="15.0"
                                               styleClass="detail-donation-card">
 
@@ -296,13 +312,16 @@
                                                 <Label text="Dana Terkumpul"
                                                        styleClass="detail-card-caption"/>
 
-                                                <Label text="Rp7.200.000"
+                                                <Label fx:id="detailTotalAmountLabel"
+                                                       text="Rp7.200.000"
                                                        styleClass="detail-total-amount"/>
 
-                                                <Label text="dari target Rp10.000.000"
+                                                <Label fx:id="detailTargetTextLabel"
+                                                       text="dari target Rp10.000.000"
                                                        styleClass="detail-target-text"/>
 
-                                                <ProgressBar progress="0.72"
+                                                <ProgressBar fx:id="detailProgressBar"
+                                                             progress="0.72"
                                                              prefWidth="260.0"
                                                              styleClass="detail-progress"/>
 
@@ -314,7 +333,8 @@
 
                                                             <children>
 
-                                                                <Label text="72%"
+                                                                <Label fx:id="detailPercentLabel"
+                                                                       text="72%"
                                                                        styleClass="detail-stat-value"/>
 
                                                                 <Label text="Tercapai"
@@ -330,7 +350,8 @@
 
                                                             <children>
 
-                                                                <Label text="128"
+                                                                <Label fx:id="detailDonorCountLabel"
+                                                                       text="128"
                                                                        styleClass="detail-stat-value"/>
 
                                                                 <Label text="Donatur"
@@ -346,7 +367,8 @@
 
                                                             <children>
 
-                                                                <Label text="12"
+                                                                <Label fx:id="detailDaysLabel"
+                                                                       text="12"
                                                                        styleClass="detail-stat-value"/>
 
                                                                 <Label text="Hari Lagi"
@@ -412,6 +434,13 @@
                                                            managed="false"
                                                            styleClass="detail-custom-amount"/>
 
+                                                <TextArea fx:id="donationMessageArea"
+                                                          promptText="Pesan dukungan (opsional)"
+                                                          prefWidth="260.0"
+                                                          prefHeight="72.0"
+                                                          wrapText="true"
+                                                          styleClass="detail-custom-amount"/>
+
                                                 <Button text="Donasi Sekarang"
                                                         onAction="#handleDonation"
                                                         prefWidth="260.0"
@@ -450,15 +479,18 @@
 
                                                 <Separator/>
 
-                                                <Label text="Anak-anak di Desa Harapan memiliki semangat belajar yang tinggi. Namun, keterbatasan fasilitas dan perlengkapan sekolah membuat kegiatan belajar mereka belum dapat berjalan dengan maksimal."
+                                                <Label fx:id="detailStoryParagraph1"
+                                                       text="Anak-anak di Desa Harapan memiliki semangat belajar yang tinggi. Namun, keterbatasan fasilitas dan perlengkapan sekolah membuat kegiatan belajar mereka belum dapat berjalan dengan maksimal."
                                                        wrapText="true"
                                                        styleClass="detail-paragraph"/>
 
-                                                <Label text="Sebagian besar siswa masih menggunakan buku dan alat tulis secara bergantian. Ruang belajar yang tersedia juga membutuhkan meja, kursi, serta beberapa perbaikan agar lebih nyaman digunakan."
+                                                <Label fx:id="detailStoryParagraph2"
+                                                       text="Sebagian besar siswa masih menggunakan buku dan alat tulis secara bergantian. Ruang belajar yang tersedia juga membutuhkan meja, kursi, serta beberapa perbaikan agar lebih nyaman digunakan."
                                                        wrapText="true"
                                                        styleClass="detail-paragraph"/>
 
-                                                <Label text="Dana yang terkumpul akan digunakan untuk membeli buku, alat tulis, seragam, meja belajar, dan memperbaiki fasilitas sekolah. Dukungan Anda akan sangat berarti bagi masa depan mereka."
+                                                <Label fx:id="detailStoryParagraph3"
+                                                       text="Dana yang terkumpul akan digunakan untuk membeli buku, alat tulis, seragam, meja belajar, dan memperbaiki fasilitas sekolah. Dukungan Anda akan sangat berarti bagi masa depan mereka."
                                                        wrapText="true"
                                                        styleClass="detail-paragraph"/>
 

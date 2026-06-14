@@ -11,7 +11,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <HBox xmlns="http://javafx.com/javafx"
@@ -25,7 +24,6 @@
     </stylesheets>
 
     <children>
-
         <VBox minWidth="240.0" prefWidth="240.0" maxWidth="240.0" prefHeight="720.0" HBox.hgrow="NEVER" spacing="10.0" styleClass="sidebar">
             <padding><Insets top="30.0" right="24.0" bottom="24.0" left="24.0"/></padding>
             <children>
@@ -84,21 +82,36 @@
                                         <DatePicker fx:id="historyDateFilter" promptText="Pilih tanggal" prefWidth="165.0" prefHeight="42.0" styleClass="history-filter-input"/>
                                         <Button text="Terapkan" onAction="#handleFilter" prefHeight="42.0" styleClass="history-filter-button"/>
                                         <Button text="Reset" onAction="#handleReset" prefHeight="42.0" styleClass="history-reset-button"/>
+                                        <Label fx:id="historyResultLabel" text="0 transaksi ditemukan" minWidth="140.0" styleClass="history-result-label"/>
                                     </children>
                                 </HBox>
 
                                 <VBox styleClass="history-table-card">
                                     <children>
-                                        <VBox fx:id="historyRow1" spacing="0.0">
-                                            <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="history-transaction-row">
-                                                <children>
-                                                    <Label text="Bantu Pendidikan Anak Desa" prefWidth="330.0"/>
-                                                    <Label text="11 Juni 2026" prefWidth="145.0"/>
-                                                    <Label text="Rp100.000" prefWidth="145.0"/>
-                                                    <Button text="Detail" onAction="#openCampaignDetail"/>
-                                                </children>
-                                            </HBox>
-                                        </VBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="history-table-header">
+                                            <children>
+                                                <Label text="Campaign" prefWidth="330.0" styleClass="history-header-label"/>
+                                                <Label text="Tanggal" prefWidth="155.0" styleClass="history-header-label"/>
+                                                <Label text="Nominal" prefWidth="135.0" styleClass="history-header-label"/>
+                                                <Label text="Status" prefWidth="90.0" styleClass="history-header-label"/>
+                                                <Label text="Aksi" styleClass="history-header-label"/>
+                                            </children>
+                                        </HBox>
+
+                                        <VBox fx:id="historyRowsContainer" spacing="0.0"/>
+                                    </children>
+                                </VBox>
+
+                                <VBox fx:id="historyEmptyState"
+                                      visible="false"
+                                      managed="false"
+                                      alignment="CENTER"
+                                      spacing="8.0"
+                                      prefHeight="180.0"
+                                      styleClass="history-empty-state">
+                                    <children>
+                                        <Label text="Riwayat donasi tidak ditemukan" styleClass="history-empty-title"/>
+                                        <Label text="Coba gunakan kata kunci atau tanggal yang berbeda." wrapText="true" styleClass="history-empty-description"/>
                                     </children>
                                 </VBox>
                             </children>

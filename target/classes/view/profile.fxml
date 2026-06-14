@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
@@ -171,7 +172,7 @@
 
                         <Region HBox.hgrow="ALWAYS"/>
 
-                        <Label text="DONATUR"
+                        <Label fx:id="profileRoleBadgeLabel" text="DONATUR"
                                styleClass="profile-role-badge"/>
 
                     </children>
@@ -200,34 +201,45 @@
 
                                 <!-- PROFILE OVERVIEW -->
                                 <HBox alignment="CENTER_LEFT"
-                                      spacing="22.0"
+                                      spacing="24.0"
                                       styleClass="profile-overview-card">
 
                                     <children>
 
-                                        <StackPane prefWidth="100.0"
-                                                   prefHeight="100.0"
-                                                   minWidth="100.0"
-                                                   minHeight="100.0"
-                                                   styleClass="profile-large-avatar">
-
+                                        <VBox alignment="CENTER" spacing="10.0">
                                             <children>
+                                                <StackPane prefWidth="100.0"
+                                                           prefHeight="100.0"
+                                                           minWidth="100.0"
+                                                           minHeight="100.0"
+                                                           styleClass="profile-large-avatar">
 
-                                                <Label text="AR"
-                                                       styleClass="profile-large-avatar-text"/>
+                                                    <children>
+                                                        <ImageView fx:id="profileAvatarImage" fitWidth="100.0"
+                                                                   fitHeight="100.0" preserveRatio="true"
+                                                                   visible="false" managed="false"
+                                                                   styleClass="profile-avatar-image"/>
+                                                        <Label fx:id="profileAvatarText" text="AR"
+                                                               styleClass="profile-large-avatar-text"/>
+                                                    </children>
+                                                </StackPane>
 
+                                                <Button text="Ubah Foto"
+                                                        onAction="#handleChangePhoto"
+                                                        prefHeight="34.0" maxWidth="140.0"
+                                                        styleClass="profile-photo-button"/>
                                             </children>
-                                        </StackPane>
+                                        </VBox>
 
                                         <VBox spacing="7.0"
                                               HBox.hgrow="ALWAYS">
 
                                             <children>
 
-                                                <Label text="Argha"
+                                                <Label fx:id="profileDisplayName" text="Argha"
                                                        styleClass="profile-display-name"/>
 
-                                                <Label text="argha@example.com"
+                                                <Label fx:id="profileDisplayEmail" text="argha@example.com"
                                                        styleClass="profile-display-email"/>
 
                                                 <HBox spacing="8.0">
@@ -246,11 +258,6 @@
                                             </children>
                                         </VBox>
 
-                                        <Button text="Ubah Foto"
-                                                onAction="#handleChangePhoto"
-                                                prefHeight="40.0"
-                                                styleClass="profile-photo-button"/>
-
                                     </children>
                                 </HBox>
 
@@ -268,10 +275,10 @@
                                                 <Label text="Total Donasi"
                                                        styleClass="profile-stat-label"/>
 
-                                                <Label text="Rp2.450.000"
+                                                <Label fx:id="profileTotalDonasi" text="Rp2.450.000"
                                                        styleClass="profile-stat-value"/>
 
-                                                <Label text="8 transaksi"
+                                                <Label fx:id="profileTotalTransaksi" text="8 transaksi"
                                                        styleClass="profile-stat-description"/>
 
                                             </children>
@@ -286,10 +293,10 @@
                                                 <Label text="Campaign Didukung"
                                                        styleClass="profile-stat-label"/>
 
-                                                <Label text="6"
+                                                <Label fx:id="profileCampaignSupported" text="6"
                                                        styleClass="profile-stat-value"/>
 
-                                                <Label text="2 campaign selesai"
+                                                <Label fx:id="profileCampaignSelesai" text="2 campaign selesai"
                                                        styleClass="profile-stat-description"/>
 
                                             </children>
@@ -304,10 +311,10 @@
                                                 <Label text="Campaign Dibuat"
                                                        styleClass="profile-stat-label"/>
 
-                                                <Label text="2"
+                                                <Label fx:id="profileCampaignDibuat" text="2"
                                                        styleClass="profile-stat-value"/>
 
-                                                <Label text="1 campaign aktif"
+                                                <Label fx:id="profileCampaignAktif" text="1 campaign aktif"
                                                        styleClass="profile-stat-description"/>
 
                                             </children>
@@ -322,10 +329,10 @@
                                                 <Label text="Dampak Sosial"
                                                        styleClass="profile-stat-label"/>
 
-                                                <Label text="156"
+                                                <Label fx:id="profileDampakSosial" text="156"
                                                        styleClass="profile-stat-value"/>
 
-                                                <Label text="orang terbantu"
+                                                <Label fx:id="profileOrangTerbantu" text="orang terbantu"
                                                        styleClass="profile-stat-description"/>
 
                                             </children>
@@ -376,9 +383,9 @@
                                                                 <Label text="Nama Lengkap"
                                                                        styleClass="profile-input-label"/>
 
-                                                                <TextField text="Argha"
-                                                                           prefHeight="44.0"
-                                                                           styleClass="profile-input"/>
+                                                                <TextField fx:id="profileNameField" text="Argha"
+                                                                            prefHeight="44.0"
+                                                                            styleClass="profile-input"/>
 
                                                             </children>
                                                         </VBox>
@@ -391,9 +398,9 @@
                                                                 <Label text="Nomor Telepon"
                                                                        styleClass="profile-input-label"/>
 
-                                                                <TextField text="081234567890"
-                                                                           prefHeight="44.0"
-                                                                           styleClass="profile-input"/>
+                                                                <TextField fx:id="profilePhoneField" text="081234567890"
+                                                                            prefHeight="44.0"
+                                                                            styleClass="profile-input"/>
 
                                                             </children>
                                                         </VBox>
@@ -408,9 +415,9 @@
                                                         <Label text="Email"
                                                                styleClass="profile-input-label"/>
 
-                                                        <TextField text="argha@example.com"
-                                                                   prefHeight="44.0"
-                                                                   styleClass="profile-input"/>
+                                                        <TextField fx:id="profileEmailField" text="argha@example.com"
+                                                                    prefHeight="44.0"
+                                                                    styleClass="profile-input"/>
 
                                                     </children>
                                                 </VBox>
@@ -422,9 +429,9 @@
                                                         <Label text="Alamat"
                                                                styleClass="profile-input-label"/>
 
-                                                        <TextField text="Medan, Sumatera Utara"
-                                                                   prefHeight="44.0"
-                                                                   styleClass="profile-input"/>
+                                                        <TextField fx:id="profileAddressField" text="Medan, Sumatera Utara"
+                                                                    prefHeight="44.0"
+                                                                    styleClass="profile-input"/>
 
                                                     </children>
                                                 </VBox>
@@ -436,10 +443,10 @@
                                                         <Label text="Tentang Saya"
                                                                styleClass="profile-input-label"/>
 
-                                                        <TextArea text="Saya ingin membantu campaign yang memberikan dampak positif bagi masyarakat."
-                                                                  prefHeight="110.0"
-                                                                  wrapText="true"
-                                                                  styleClass="profile-textarea"/>
+                                                        <TextArea fx:id="profileBioArea" text="Saya ingin membantu campaign yang memberikan dampak positif bagi masyarakat."
+                                                                   prefHeight="110.0"
+                                                                   wrapText="true"
+                                                                   styleClass="profile-textarea"/>
 
                                                     </children>
                                                 </VBox>
@@ -485,7 +492,7 @@
                                                                 <Label text="Jenis Akun"
                                                                        styleClass="profile-info-caption"/>
 
-                                                                <Label text="Donatur"
+                                                                <Label fx:id="profileInfoRoleLabel" text="Donatur"
                                                                        styleClass="profile-info-value"/>
 
                                                             </children>
@@ -503,11 +510,11 @@
 
                                                     <children>
 
-                                                        <Label text="ID Pengguna"
-                                                               styleClass="profile-info-caption"/>
+                                                                <Label text="ID Pengguna"
+                                                                       styleClass="profile-info-caption"/>
 
-                                                        <Label text="USR-2026-00128"
-                                                               styleClass="profile-info-value"/>
+                                                                <Label fx:id="profileInfoIdLabel" text="USR-2026-00128"
+                                                                       styleClass="profile-info-value"/>
 
                                                     </children>
                                                 </VBox>
@@ -519,7 +526,7 @@
                                                         <Label text="Tanggal Bergabung"
                                                                styleClass="profile-info-caption"/>
 
-                                                        <Label text="1 Juni 2026"
+                                                        <Label fx:id="profileInfoJoinLabel" text="1 Juni 2026"
                                                                styleClass="profile-info-value"/>
 
                                                     </children>
@@ -532,7 +539,7 @@
                                                         <Label text="Terakhir Masuk"
                                                                styleClass="profile-info-caption"/>
 
-                                                        <Label text="Hari ini, 20.15 WIB"
+                                                        <Label fx:id="profileInfoLoginLabel" text="Hari ini, 20.15 WIB"
                                                                styleClass="profile-info-value"/>
 
                                                     </children>
