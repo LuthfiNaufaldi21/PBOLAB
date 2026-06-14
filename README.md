@@ -120,7 +120,7 @@ Saat pertama kali dijalankan, aplikasi otomatis membuat akun berikut:
 
 ## 🎥 Video Presentasi
 
-▶️ **[Tonton di YouTube](...)**
+▶️ **[Tonton di YouTube](https://youtu.be/llADZ7oYcD4)**
 
 <br>
 
